@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{765E264F-02FB-6C69-2D2A-AA61A0E3DBFA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>WebGL:20</UnityBuildTarget>
+    <UnityVersion>5.3.0f4</UnityVersion>
+    <RootNamespace></RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_0;UNITY_5_3;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_DISABLE_WEB_VERIFICATION;ENABLE_TEXTUREID_MAP;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_IL2CPP;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>TRACE;UNITY_5_3_0;UNITY_5_3;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_DISABLE_WEB_VERIFICATION;ENABLE_TEXTUREID_MAP;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_IL2CPP;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="Boo.Lang" />
+    <Reference Include="UnityScript.Lang" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="Slash.Collections">
+      <HintPath>Assets\Slash Framework\Plugins\Slash.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Slash.ECS">
+      <HintPath>Assets\Slash Framework\Plugins\Slash.ECS.dll</HintPath>
+    </Reference>
+    <Reference Include="Slash.Math">
+      <HintPath>Assets\Slash Framework\Plugins\Slash.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="Slash.Reflection">
+      <HintPath>Assets\Slash Framework\Plugins\Slash.Reflection.dll</HintPath>
+    </Reference>
+    <Reference Include="Slash.Serialization">
+      <HintPath>Assets\Slash Framework\Plugins\Slash.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Slash.System">
+      <HintPath>Assets\Slash Framework\Plugins\Slash.System.dll</HintPath>
+    </Reference>
+    <Reference Include="Slash.Unity.Common">
+      <HintPath>Assets\Slash Framework\Plugins\Slash.Unity.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Scripts\CBES\EntityComponent.cs" />
+    <Compile Include="Assets\Scripts\CBES\MoveComponent.cs" />
+    <Compile Include="Assets\Scripts\CBES\MovementSystem.cs" />
+    <Compile Include="Assets\Scripts\CBES\TransformComponent.cs" />
+    <Compile Include="Assets\Scripts\Grid Manager\GridManager.cs" />
+    <Compile Include="Assets\Scripts\Temp\CameraDrag.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Examples\Collection\CollectionExampleContext.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Examples\Collection\CollectionExampleItemContext.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Examples\ContextProperty\ContextPropertyContext.cs.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Examples\ContextProperty\ContextPropertyItemContext.cs.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Examples\EnumEqualityCheck\DropDownUnity.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Examples\EnumEqualityCheck\EnumEqualityCheckContext.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Examples\EnumEqualityCheck\TestEnum.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Examples\InputFieldGetter\InputFieldGetterContext.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Examples\InputFieldGetter\MessageContext.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Examples\LabelSetter\LabelSetterContext.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Examples\StringToUpperFormatter\StringToUpperFormatter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Data\Collection.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Data\Context.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Data\DataDictionary.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Data\Property.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Presentation\ContextHolder.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Presentation\ContextNode.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Presentation\DataBinding.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Presentation\DataBindingType.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Presentation\DataProvider.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Presentation\MasterPath.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Utils\AssemblyUtils.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Utils\ContextMemberFilter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Utils\ContextPathAttribute.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Utils\ContextTypeAttribute.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Utils\EnumExtensions.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Utils\ReflectionUtils.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Utils\SystemExtensions.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Utils\TypeSelectionAttribute.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Utils\UnityUtils.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Commands\Command.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Diagnostics\ContextHolderInitializer.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Checks\ComparisonCheck.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Checks\EqualityCheck.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Checks\IsSetCheck.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Converters\DataConverter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Converters\Texture2DToSpriteConverter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Formatters\DurationFormatter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Formatters\PrependSignFormatter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Formatters\StringFormatter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Formatters\StringToUpperFormatter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Getters\ComponentSingleGetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Getters\ContextGetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Getters\EnumGetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Getters\TransformPositionProvider.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Loaders\SpriteLoader.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Loaders\TextAssetLoader.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Lookups\DictionaryLookup.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Objects\ColorObject.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Objects\NumberObject.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Operations\ArithmeticOperation.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Operations\GameObjectMapping.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Operations\InvertBoolOperation.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Operations\LogicalBoolOperation.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Operations\RoundToNearestOperation.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Operations\TweenOperation.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Switches\BooleanSwitch.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Switches\NumberRangeSwitch.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Switches\RangeOption.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Switches\RangeSwitch.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\ActiveSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\AnimatorBooleanSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\AnimatorTriggerSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\BehaviourEnabledSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\ComponentSingleSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\ContextHolderContextSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\GameObjectItemSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\GameObjectItemsSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\GameObjectSingleSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\ItemSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\ItemsSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\LocalPositionSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\PositionSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\Setter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\SingleSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\SlotItemsSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\SpriteRendererSpriteSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Commands\ButtonClickCommand.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Commands\UnityEventCommand.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Getters\InputFieldGetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Getters\SliderValueGetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Getters\ToggleIsOnGetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\CanvasGroupInteractableSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\GraphicColorSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\ImageFillAmountSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\ImageMaterialSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\ImageSpriteSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\InputFieldTextSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\LayoutGroupItemsSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\SelectableInteractableSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\SliderValueSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\TextTextSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\ToggleIsOnSetter.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Tests\ConstantDataProvider.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Tests\ConstantFloatProvider.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Tests\ConstantIntProvider.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Tests\ProviderValueCaster.cs" />
+    <Compile Include="Assets\Slash.Unity.DataBind\Tests\ProviderValueCasterBool.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Art\3DModels\Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
+    <None Include="Assets\Resources\Blueprints\Game.blueprints.xml" />
+    <None Include="Assets\Resources\Configuration\Game.configuration.xml" />
+    <None Include="Assets\Slash.Unity.DataBind\Readme.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
+</Project>
