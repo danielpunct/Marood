@@ -63,33 +63,24 @@
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
+    <Reference Include="Slash.Reflection">
+      <HintPath>Assets\Plugins\Slash.Reflection.dll</HintPath>
+    </Reference>
     <Reference Include="Slash.Collections">
-      <HintPath>Assets\Slash Framework\Plugins\Slash.Collections.dll</HintPath>
+      <HintPath>Assets\Plugins\Slash.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Slash.ECS">
-      <HintPath>Assets\Slash Framework\Plugins\Slash.ECS.dll</HintPath>
-    </Reference>
-    <Reference Include="Slash.Math">
-      <HintPath>Assets\Slash Framework\Plugins\Slash.Math.dll</HintPath>
-    </Reference>
-    <Reference Include="Slash.Reflection">
-      <HintPath>Assets\Slash Framework\Plugins\Slash.Reflection.dll</HintPath>
-    </Reference>
-    <Reference Include="Slash.Serialization">
-      <HintPath>Assets\Slash Framework\Plugins\Slash.Serialization.dll</HintPath>
+      <HintPath>Assets\Plugins\Slash.ECS.dll</HintPath>
     </Reference>
     <Reference Include="Slash.System">
-      <HintPath>Assets\Slash Framework\Plugins\Slash.System.dll</HintPath>
+      <HintPath>Assets\Plugins\Slash.System.dll</HintPath>
     </Reference>
-    <Reference Include="Slash.Unity.Common">
-      <HintPath>Assets\Slash Framework\Plugins\Slash.Unity.Common.dll</HintPath>
+    <Reference Include="Slash.Serialization">
+      <HintPath>Assets\Plugins\Slash.Serialization.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\CBES\EntityComponent.cs" />
     <Compile Include="Assets\Scripts\CBES\MoveComponent.cs" />
-    <Compile Include="Assets\Scripts\CBES\MovementSystem.cs" />
-    <Compile Include="Assets\Scripts\CBES\TransformComponent.cs" />
     <Compile Include="Assets\Scripts\Grid Manager\GridManager.cs" />
     <Compile Include="Assets\Scripts\Temp\CameraDrag.cs" />
     <Compile Include="Assets\Slash.Unity.DataBind\Examples\Collection\CollectionExampleContext.cs" />

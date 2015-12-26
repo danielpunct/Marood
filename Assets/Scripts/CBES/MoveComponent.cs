@@ -1,5 +1,7 @@
-﻿using Slash.ECS.Inspector.Attributes;
-using Slash.Math.Algebra.Vectors;
+﻿
+using Slash.ECS.Components;
+using Slash.ECS.Inspector.Attributes;
+using UnityEngine;
 
 [InspectorComponent]
 public class MovementComponent : EntityComponent
@@ -29,7 +31,7 @@ public class MovementComponent : EntityComponent
     /// <summary>
     ///   Current velocity (in m/s).
     /// </summary>
-    public Vector2F Velocity { get; set; }
+    public Vector2 Velocity { get; set; }
 
     #endregion
 }
