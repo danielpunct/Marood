@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slash.Serialization", "..\.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slash.System", "..\..\..\..\MadeByOthers\Slash\slash-framework\Source\Slash.System\Slash.System.csproj", "{2929B671-2BB6-4FF7-BAD8-AA296C4F6E0C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slash.Math", "..\..\..\..\MadeByOthers\Slash\slash-framework\Source\Slash.Math\Slash.Math.csproj", "{834E18DE-A529-4F17-A838-92B1EF259FE3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{2929B671-2BB6-4FF7-BAD8-AA296C4F6E0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2929B671-2BB6-4FF7-BAD8-AA296C4F6E0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2929B671-2BB6-4FF7-BAD8-AA296C4F6E0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{834E18DE-A529-4F17-A838-92B1EF259FE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{834E18DE-A529-4F17-A838-92B1EF259FE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{834E18DE-A529-4F17-A838-92B1EF259FE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{834E18DE-A529-4F17-A838-92B1EF259FE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

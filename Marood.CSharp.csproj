@@ -63,25 +63,37 @@
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
-    <Reference Include="Slash.Reflection">
-      <HintPath>Assets\Plugins\Slash.Reflection.dll</HintPath>
-    </Reference>
     <Reference Include="Slash.Collections">
       <HintPath>Assets\Plugins\Slash.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Slash.ECS">
       <HintPath>Assets\Plugins\Slash.ECS.dll</HintPath>
     </Reference>
-    <Reference Include="Slash.System">
-      <HintPath>Assets\Plugins\Slash.System.dll</HintPath>
+    <Reference Include="Slash.Math">
+      <HintPath>Assets\Plugins\Slash.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="Slash.Reflection">
+      <HintPath>Assets\Plugins\Slash.Reflection.dll</HintPath>
     </Reference>
     <Reference Include="Slash.Serialization">
       <HintPath>Assets\Plugins\Slash.Serialization.dll</HintPath>
     </Reference>
+    <Reference Include="Slash.System">
+      <HintPath>Assets\Plugins\Slash.System.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AStar\Path.cs" />
+    <Compile Include="Assets\Scripts\AStar\PathFinder.cs" />
+    <Compile Include="Assets\Scripts\AStar\PriorityQueue.cs" />
     <Compile Include="Assets\Scripts\CBES\MoveComponent.cs" />
+    <Compile Include="Assets\Scripts\Grid Manager\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\Grid Manager\GridManager.cs" />
+    <Compile Include="Assets\Scripts\Grid Manager\GridObject.cs" />
+    <Compile Include="Assets\Scripts\Grid Manager\IHasNeighbours.cs" />
+    <Compile Include="Assets\Scripts\Grid Manager\Point.cs" />
+    <Compile Include="Assets\Scripts\Grid Manager\Tile.cs" />
+    <Compile Include="Assets\Scripts\Grid Manager\TileBehaviour.cs" />
     <Compile Include="Assets\Scripts\Temp\CameraDrag.cs" />
     <Compile Include="Assets\Slash.Unity.DataBind\Examples\Collection\CollectionExampleContext.cs" />
     <Compile Include="Assets\Slash.Unity.DataBind\Examples\Collection\CollectionExampleItemContext.cs" />
