@@ -1,148 +1,112 @@
-﻿using System;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
+using System;
 
 public class GridManager : MonoBehaviour
 {
-    //following public variable is used to store the hex model prefab;
-    //instantiate it by dragging the prefab on this variable using unity editor
+    public GameObject Ground;
     public GameObject Hex;
-    //next two variables can also be instantiated using unity editor
-    public int gridWidthInHexes = 10;
-    public int gridHeightInHexes = 10;
+    public GameObject Line;
+    public GameObject Monster;
 
-    //Hexagon tile width and height in game world
-    private float hexWidth;
-    private float hexHeight;
-    private float groundWidth;
-    private float groundHeight;
-
-    Vector3 gridOrigin;
-
-    //Method to initialise Hexagon width and height
-    void setSizes()
-    {
-        //renderer component attached to the Hex prefab is used to get the current width and height
-        hexWidth = Hex.GetComponent<Renderer>().bounds.size.x;
-        hexHeight = Hex.GetComponent<Renderer>().bounds.size.z;
-    }
-
-    //Method to calculate the position of the first hexagon tile
-    //The center of the hex grid is (0,0,0)
-    Vector3 calcInitPos()
-    {
-        Vector3 initPos;
-        //the initial position will be in the left upper corner
-        initPos = new Vector3(-hexWidth * gridWidthInHexes / 2f + hexWidth / 2, 0,
-            gridHeightInHexes / 2f * hexHeight - hexHeight / 2);
-
-        return gridOrigin;// initPos;
-    }
-
-    //method used to convert hex grid coordinates to game world coordinates
-    public Vector3 calcWorldCoord(Vector2 gridPos)
-    {
-        //Position of the first hex tile
-        Vector3 initPos = calcInitPos();
-        //Every second row is offset by half of the tile width
-        float offset = 0;
-        if (gridPos.x % 2 != 0)
-            offset = hexHeight * 0.675f / 2;
-
-        float x = initPos.x + gridPos.x * hexWidth * 0.65f;
-        //Every new line is offset in z direction by 3/4 of the hexagon height
-        float z = initPos.z + offset - gridPos.y * hexHeight * 0.675f;
-        return new Vector3(x, gridOrigin.y, z);
-    }
-
-
-
-    //The grid should be generated on game start
-    void Start()
-    {
-        gridOrigin = transform.position;
-        setSizes();
-        createGrid();
-    }
-
-    //selectedTile stores the tile mouse cursor is hovering on
     public Tile selectedTile = null;
-    //TB of the tile which is the start of the path
     public TileBehaviour originTileTB = null;
-    //TB of the tile which is the end of the path
     public TileBehaviour destTileTB = null;
+    public Dictionary<Point, TileBehaviour> Board;
 
+    float hexSizeX, hexSizeY, hexSizeZ, groundSizeX, groundSizeY, groundSizeZ;
     public static GridManager instance = null;
+
+    List<GameObject> path;
 
     void Awake()
     {
         instance = this;
+        setSizes();
+        createGrid();
+        generateAndShowPath();
     }
-    
 
-    //Line should be initialised to some 3d object that can fit nicely in the center of a hex tile and will be used to indicate the path. For example, it can be just a simple small sphere with some material attached to it. Initialise the variable using inspector pane.
-    public GameObject Line;
-    //List to hold "Lines" indicating the path
-    List<GameObject> path;
+    void setSizes()
+    {
+        hexSizeX = Hex.GetComponent<Renderer>().bounds.size.x;
+        hexSizeY = Hex.GetComponent<Renderer>().bounds.size.y;
+        hexSizeZ = Hex.GetComponent<Renderer>().bounds.size.z;
+        groundSizeX = Ground.GetComponent<Renderer>().bounds.size.x;
+        groundSizeY = Ground.GetComponent<Renderer>().bounds.size.y;
+        groundSizeZ = Ground.GetComponent<Renderer>().bounds.size.z;
+    }
 
-    //Finally the method which initialises and positions all the tiles
-    //void createGrid()
-    //{
-    //    //Game object which is the parent of all the hex tiles
-    //    GameObject hexGridGO = new GameObject("HexGrid");
-    //    Dictionary<Point, Tile> board = new Dictionary<Point, Tile>();
+    Vector2 calcGridSize()
+    {
+        float sideLength = hexSizeZ / 2;
+        int nrOfSides = (int)(groundSizeZ / sideLength + 0.00005f);
+        int nrOfZHexes = (int)(nrOfSides * 2 / 3);
+        if (nrOfZHexes % 2 == 0
+            && (nrOfSides + 0.5f) * sideLength > groundSizeZ)
+            nrOfZHexes--;
 
-    //    for (float y = 0; y < gridHeightInHexes; y++)
-    //    {
-    //        for (float x = 0; x < gridWidthInHexes; x++)
-    //        {
-    //            ////GameObject assigned to Hex public variable is cloned
-    //            //GameObject hex = (GameObject)Instantiate(Hex);
-    //            ////Current position in grid
-    //            //Vector2 gridPos = new Vector2(x, y);
-    //            //hex.transform.position = calcWorldCoord(gridPos);
-    //            //hex.transform.parent = hexGridGO.transform;
+        return new Vector2((int)(groundSizeX / hexSizeX), nrOfZHexes);
+    }
 
-    //            GameObject hex = (GameObject)Instantiate(Hex);
-    //            Vector2 gridPos = new Vector2(x, y);
-    //            hex.transform.position = calcWorldCoord(gridPos);
-    //            hex.transform.parent = hexGridGO.transform;
-    //            var tb = (TileBehaviour)hex.GetComponent("TileBehaviour");
-    //            //y / 2 is subtracted from x because we are using straight axis coordinate system
-    //            tb.tile = new Tile((int)x - (int)(y / 2), (int)y);
-    //            board.Add(tb.tile.Location, tb.tile);
-    //        }
-    //    }
+    Vector3 calcInitPos()
+    {
+        Vector3 initPos;
+        initPos = new Vector3(hexSizeX / 2 - groundSizeX / 2,
+            groundSizeY / 2 + hexSizeY / 2, groundSizeZ / 2 - hexSizeZ / 2);
 
-    //    //variable to indicate if all rows have the same number of hexes in them
-    //    //this is checked by comparing width of the first hex row plus half of the hexWidth with groundWidth
-    //   // bool equalLineLengths = (gridWidthInHexes + 0.5) * hexWidth <= groundWidth;
-    //    //Neighboring tile coordinates of all the tiles are calculated
-    //    foreach (Tile tile in board.Values)
-    //        tile.FindNeighbours(board, new Vector2(gridWidthInHexes,gridHeightInHexes), false);
-    //}
+        return initPos;
+    }
+
+    public Vector3 calcWorldCoord(Vector2 gridPos)
+    {
+        Vector3 initPos = calcInitPos();
+        float offset = 0;
+        if (gridPos.y % 2 != 0)
+            offset = hexSizeX / 2;
+        float x = gridPos.x * hexSizeX + initPos.x + offset;
+        float z = initPos.z - gridPos.y * hexSizeZ * 0.75f;
+        float y = groundSizeY / 2 + 0.137f;
+        return new Vector3(x, y, z);
+    }
+
+    public Vector2 calcGridPos(Vector3 coord)
+    {
+        Vector3 initPos = calcInitPos();
+        Vector2 gridPos = new Vector2();
+        float offset = 0;
+        gridPos.y = Mathf.RoundToInt((initPos.z - coord.z) / (hexSizeZ * 0.75f));
+        if (gridPos.y % 2 != 0)
+            offset = hexSizeX / 2;
+        gridPos.x = Mathf.RoundToInt((coord.x - initPos.x - offset) / hexSizeX);
+        return gridPos;
+    }
 
     void createGrid()
     {
-
-        //Game object which is the parent of all the hex tiles
+        Vector2 gridSize = calcGridSize();
         GameObject hexGridGO = new GameObject("HexGrid");
-        Dictionary<Point, Tile> board = new Dictionary<Point, Tile>();
+        hexGridGO.transform.SetParent(transform);
+        Board = new Dictionary<Point, TileBehaviour>();
 
-        for (float y = 0; y < gridHeightInHexes; y++)
+        for (float y = 0; y < gridSize.y; y++)
         {
-            for (float x = 0; x < gridWidthInHexes; x++)
+            float sizeX = gridSize.x;
+            if (y % 2 != 0 && (gridSize.x + 0.5) * hexSizeX > groundSizeX)
+                sizeX--;
+            for (float x = 0; x < sizeX; x++)
             {
                 GameObject hex = (GameObject)Instantiate(Hex);
                 Vector2 gridPos = new Vector2(x, y);
                 hex.transform.position = calcWorldCoord(gridPos);
                 hex.transform.parent = hexGridGO.transform;
                 var tb = (TileBehaviour)hex.GetComponent("TileBehaviour");
-                //y / 2 is subtracted from x because we are using straight axis coordinate system
                 tb.tile = new Tile((int)x - (int)(y / 2), (int)y);
-                board.Add(tb.tile.Location, tb.tile);
-                //Mark originTile as the tile with (0,0) coordinates
+                tb.textMesh.text = (int)x - (int)(y / 2) + ":" + (int)y;
+                Board.Add(tb.tile.Location, tb);
+
                 if (x == 0 && y == 0)
                 {
                     tb.GetComponent<Renderer>().material = tb.OpaqueMaterial;
@@ -153,79 +117,25 @@ public class GridManager : MonoBehaviour
                 }
             }
         }
-        //variable to indicate if all rows have the same number of hexes in them
-        //this is checked by comparing width of the first hex row plus half of the hexWidth with groundWidth
-        foreach (Tile tile in board.Values)
-            tile.FindNeighbours(board, new Vector2(gridWidthInHexes, gridHeightInHexes), false);
-    }
-
-    public void generateAndShowPath()
-    {
-        //Don't do anything if origin or destination is not defined yet
-        if (originTileTB == null || destTileTB == null)
-        {
-            DrawPath(new List<Tile>());
-            return;
-        }
-        //We assume that the distance between any two adjacent tiles is 1
-        //If you want to have some mountains, rivers, dirt roads or something else which might slow down the player you should replace the function with something that suits better your needs
-        Func<Tile, Tile, double> distance = (node1, node2) => 1;
-        
-        var path = PathFinder.FindPath(originTileTB.tile, destTileTB.tile);
-        DrawPath(path);
-        CharacterMovement.instance.StartMoving(path.ToList());
-    }
-
-
-    //The method used to calculate the number hexagons in a row and number of rows
-    //Vector2.x is gridWidthInHexes and Vector2.y is gridHeightInHexes
-    Vector2 calcGridSize()
-    {
-        //According to the math textbook hexagon's side length is half of the height
-        float sideLength = hexHeight / 2;
-        //the number of whole hex sides that fit inside inside ground height
-        int nrOfSides = (int)(groundHeight / sideLength);
-        //I will not try to explain the following calculation because I made some assumptions, which might not be correct in all cases, to come up with the formula. So you'll have to trust me or figure it out yourselves.
-        int gridHeightInHexes = (int)(nrOfSides * 2 / 3);
-        //When the number of hexes is even the tip of the last hex in the offset column might stick up.
-        //The number of hexes in that case is reduced.
-        if (gridHeightInHexes % 2 == 0
-            && (nrOfSides + 0.5f) * sideLength > groundHeight)
-            gridHeightInHexes--;
-        //gridWidth in hexes is calculated by simply dividing ground width by hex width
-        return new Vector2((int)(groundWidth / hexWidth), gridHeightInHexes);
-    }
-
-    //Distance between destination tile and some other tile in the grid
-    double calcDistance(Tile tile)
-    {
-        Tile destTile = destTileTB.tile;
-        //Formula used here can be found in Chris Schetter's article
-        float deltaX = Mathf.Abs(destTile.X - tile.X);
-        float deltaY = Mathf.Abs(destTile.Y - tile.Y);
-        int z1 = -(tile.X + tile.Y);
-        int z2 = -(destTile.X + destTile.Y);
-        float deltaZ = Mathf.Abs(z2 - z1);
-
-        return Mathf.Max(deltaX, deltaY, deltaZ);
+        bool equalLineLengths = (gridSize.x + 0.5) * hexSizeX <= groundSizeX;
+        foreach (TileBehaviour tb in Board.Values)
+            tb.tile.FindNeighbours(Board, gridSize, equalLineLengths);
     }
 
     private void DrawPath(IEnumerable<Tile> path)
     {
         if (this.path == null)
             this.path = new List<GameObject>();
-        //Destroy game objects which used to indicate the path
+
         this.path.ForEach(Destroy);
         this.path.Clear();
 
-        //Lines game object is used to hold all the "Line" game objects indicating the path
         GameObject lines = GameObject.Find("Lines");
         if (lines == null)
             lines = new GameObject("Lines");
         foreach (Tile tile in path)
         {
             var line = (GameObject)Instantiate(Line);
-            //calcWorldCoord method uses squiggly axis coordinates so we add y / 2 to convert x coordinate from straight axis coordinate system
             Vector2 gridPos = new Vector2(tile.X + tile.Y / 2, tile.Y);
             line.transform.position = calcWorldCoord(gridPos);
             this.path.Add(line);
@@ -233,20 +143,56 @@ public class GridManager : MonoBehaviour
         }
     }
 
-    //public void generateAndShowPath()
-    //{
-    //    //Don't do anything if origin or destination is not defined yet
-    //    if (originTileTB == null || destTileTB == null)
-    //    {
-    //        DrawPath(new List<Tile>());
-    //        return;
-    //    }
-    //    //We assume that the distance between any two adjacent tiles is 1
-    //    //If you want to have some mountains, rivers, dirt roads or something else which might slow down the player you should replace the function with something that suits better your needs
-    //    Func<Tile, Tile, double> distance = (node1, node2) => 1;
+    public void generateAndShowPath()
+    {
+        if (originTileTB == null || destTileTB == null)
+        {
+            DrawPath(new List<Tile>());
+            return;
+        }
 
-    //    var path = PathFinder.FindPath(originTileTB.tile, destTileTB.tile   );
-    //    DrawPath(path);
-    //}
+        var path = PathFinder.FindPath(originTileTB.tile, destTileTB.tile);
+        DrawPath(path);
+        CharacterMovement.instance.StartMoving(path.ToList());
 
+    }
+
+    public static float calcDistance(Tile tile, Tile destTile)
+    {
+        float dx = Mathf.Abs(destTile.X - tile.X);
+        float dy = Mathf.Abs(destTile.Y - tile.Y);
+        int z1 = -(tile.X + tile.Y);
+        int z2 = -(destTile.X + destTile.Y);
+        float dz = Mathf.Abs(z2 - z1);
+
+        return Mathf.Max(dx, dy, dz);
+    }
+
+    void switchOriginAndDestTiles()
+    {
+        Material originMaterial = originTileTB.GetComponent<Renderer>().material;
+        originTileTB.GetComponent<Renderer>().material = destTileTB.defaultMaterial;
+        originTileTB.tile.Passable = true;
+        originTileTB = destTileTB;
+        originTileTB.GetComponent<Renderer>().material = originMaterial;
+        originTileTB.tile.Passable = false;
+        destTileTB = null;
+        generateAndShowPath();
+    }
+
+    public void setGroundSize(float width, float height)
+    {
+        destTileTB = null;
+        originTileTB = null;
+        Destroy(GameObject.Find("Lines"));
+        Destroy(GameObject.Find("HexGrid"));
+        Vector3 groundScale = Ground.transform.localScale;
+        Vector3 groundSize = new Vector3(width, groundScale.y, height);
+        Ground.transform.localScale = groundSize;
+        Vector2 textureTiling = new Vector2(width * 2, height * 2);
+        Ground.GetComponent<Renderer>().material.mainTextureScale = textureTiling;
+        setSizes();
+        createGrid();
+    }
 }
+

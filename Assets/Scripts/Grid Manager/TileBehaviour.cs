@@ -3,6 +3,7 @@ using System.Collections;
 
 public class TileBehaviour : MonoBehaviour
 {
+    public TextMesh textMesh;
     public Tile tile;
     //After attaching this script to hex tile prefab don't forget to initialize following materials with the ones we created earlier
     public Material OpaqueMaterial;
@@ -14,7 +15,7 @@ public class TileBehaviour : MonoBehaviour
     {
         //If transparency is not set already, set it to default value
         if (color.a == 1)
-            color.a = 130f / 255f;
+            color.a = 200f / 255f;
         GetComponent<Renderer>().material = OpaqueMaterial;
         GetComponent<Renderer>().material.color = color;
     }
@@ -27,7 +28,7 @@ public class TileBehaviour : MonoBehaviour
         if (tile.Passable && this != GridManager.instance.destTileTB
             && this != GridManager.instance.originTileTB)
         {
-            changeColor(orange);
+            changeColor(Color.red);
         }
     }
 

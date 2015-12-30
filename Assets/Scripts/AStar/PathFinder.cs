@@ -21,14 +21,16 @@ public static class PathFinder
                 return path;
 
             closed.Add(path.LastStep);
-
+            //Debug.Log(" last step: " + path.LastStep.X+" "+path.LastStep.Y);
             foreach (Tile n in path.LastStep.Neighbours)
             {
+                //Debug.Log(" nb: " + n.X + " " + n.Y);
                 double d = distance(path.LastStep, n);
                 var newPath = path.AddStep(n, d);
                 queue.Enqueue(newPath.TotalCost + estimate(n, destination), 
                     newPath);
             }
+            //Debug.Log("---------------");
         }
 
         return null;
