@@ -102,23 +102,26 @@
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
-    <Reference Include="Slash.Reflection">
-      <HintPath>Assets\Plugins\Slash.Reflection.dll</HintPath>
-    </Reference>
     <Reference Include="Slash.Collections">
       <HintPath>Assets\Plugins\Slash.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Slash.ECS">
       <HintPath>Assets\Plugins\Slash.ECS.dll</HintPath>
     </Reference>
-    <Reference Include="Slash.System">
-      <HintPath>Assets\Plugins\Slash.System.dll</HintPath>
+    <Reference Include="Slash.Math">
+      <HintPath>Assets\Plugins\Slash.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="Slash.Reflection">
+      <HintPath>Assets\Plugins\Slash.Reflection.dll</HintPath>
     </Reference>
     <Reference Include="Slash.Serialization">
       <HintPath>Assets\Plugins\Slash.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="Slash.Math">
-      <HintPath>Assets\Plugins\Slash.Math.dll</HintPath>
+    <Reference Include="Slash.System">
+      <HintPath>Assets\Plugins\Slash.System.dll</HintPath>
+    </Reference>
+    <Reference Include="Slash.Diagnostics">
+      <HintPath>Assets\Plugins\Slash.Diagnostics.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +131,55 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Build\BuildBlueprints.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Build\BuildConfiguration.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Build\BuildManager.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Build\BuildOptionSet.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Build\BuildSettings.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Build\BuildSettingsAndroid.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Build\BuildType.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Build\BuildWizard.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Build\BuildWizardPrefs.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Inspectors\Configuration\GameConfigurationEditor.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Inspectors\Delegates\MethodDelegateDrawer.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Inspectors\Diagnostics\DebugInputEditor.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Inspectors\ECS\EntityConfigurationEditor.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Inspectors\ExposeProperties.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Inspectors\Logging\EventManagerLogBehaviourEditor.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Inspectors\Logging\GameLogBehaviourEditor.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Inspectors\PropertyField.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Inspectors\Rendering\MeshRendererSortingEditor.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Inspectors\Utils\EditorGUIUtils.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Inspectors\Utils\MemberReferenceDrawer.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Inspectors\Utils\ShaderContext.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Inspectors\Utils\TooltipDrawer.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Inspectors\ViewModels\ViewEventDelegateDrawer.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\MenuItems\Util\CheckTextureAssets.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\MenuItems\Util\CreateEmptyInCenter.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\MenuItems\Util\FindMonoBehaviourUsages.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\MenuItems\Util\PlayerPrefsDeleteAll.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\MenuItems\Util\Utils.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\MenuItems\Windows\BlueprintEditorWindow.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\MenuItems\Windows\OpenSceneWindow.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\PropertyDrawers\TypePropertyDrawer.cs" />
+    <Compile Include="Assets\Editor\SlashImported\Slash.Unity.Editor.Common\Source\Utils\Options.cs" />
+    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Editor\DragRecognizerInspector.cs" />
+    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Editor\FingerDownDetectorInspector.cs" />
+    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Editor\FingerEventDetectorInspector.cs" />
+    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Editor\FingerGesturesEditorUtils.cs" />
+    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Editor\FingerGesturesInspector.cs" />
+    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Editor\FingerHoverDetectorInspector.cs" />
+    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Editor\FingerMotionDetectorInspector.cs" />
+    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Editor\FingerUpDetectorInspector.cs" />
+    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Editor\GestureRecognizerInspector.cs" />
+    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Editor\LongPressRecognizerInspector.cs" />
+    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Editor\PinchRecognizerInspector.cs" />
+    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Editor\PointCloudGestureEditor.cs" />
+    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Editor\PointCloudGestureTemplateInspector.cs" />
+    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Editor\PointCloudRecognizerInspector.cs" />
+    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Editor\SwipeRecognizerInspector.cs" />
+    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Editor\TapRecognizerInspector.cs" />
+    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Editor\TwistRecognizerInspector.cs" />
     <Compile Include="Assets\Slash.Unity.DataBind\Editor\Scripts\Editors\ContextHolderEditor.cs" />
     <Compile Include="Assets\Slash.Unity.DataBind\Editor\Scripts\PropertyDrawers\ContextTypeDrawer.cs" />
     <Compile Include="Assets\Slash.Unity.DataBind\Editor\Scripts\PropertyDrawers\DataBindingPropertyDrawer.cs" />
@@ -140,6 +192,7 @@
     <None Include="Assets\Art\3DModels\Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
     <None Include="Assets\Resources\Blueprints\Game.blueprints.xml" />
     <None Include="Assets\Resources\Configuration\Game.configuration.xml" />
+    <None Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Readme.txt" />
     <None Include="Assets\Slash.Unity.DataBind\Readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

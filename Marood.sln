@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slash.System", "..\..\..\..
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slash.Math", "..\..\..\..\MadeByOthers\Slash\slash-framework\Source\Slash.Math\Slash.Math.csproj", "{834E18DE-A529-4F17-A838-92B1EF259FE3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slash.Diagnostics", "..\..\..\..\MadeByOthers\Slash\slash-framework\Source\Slash.Diagnostics\Slash.Diagnostics.csproj", "{E155097A-6A57-498E-A707-F852AA672111}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{834E18DE-A529-4F17-A838-92B1EF259FE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{834E18DE-A529-4F17-A838-92B1EF259FE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{834E18DE-A529-4F17-A838-92B1EF259FE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E155097A-6A57-498E-A707-F852AA672111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E155097A-6A57-498E-A707-F852AA672111}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E155097A-6A57-498E-A707-F852AA672111}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E155097A-6A57-498E-A707-F852AA672111}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
