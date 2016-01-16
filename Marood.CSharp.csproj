@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
     <UnityVersion>5.3.0f4</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -66,6 +68,9 @@
     <Reference Include="Slash.Collections">
       <HintPath>Assets\Plugins\Slash.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="Slash.Diagnostics">
+      <HintPath>Assets\Plugins\Slash.Diagnostics.dll</HintPath>
+    </Reference>
     <Reference Include="Slash.ECS">
       <HintPath>Assets\Plugins\Slash.ECS.dll</HintPath>
     </Reference>
@@ -81,20 +86,22 @@
     <Reference Include="Slash.System">
       <HintPath>Assets\Plugins\Slash.System.dll</HintPath>
     </Reference>
-    <Reference Include="Slash.Diagnostics">
-      <HintPath>Assets\Plugins\Slash.Diagnostics.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AStar\Path.cs" />
     <Compile Include="Assets\Scripts\AStar\PathFinder.cs" />
     <Compile Include="Assets\Scripts\AStar\PriorityQueue.cs" />
+    <Compile Include="Assets\Scripts\CBES\Character_InputComponent.cs" />
+    <Compile Include="Assets\Scripts\CBES\Character_InputSystem.cs" />
+    <Compile Include="Assets\Scripts\CBES\DestinationData.cs" />
+    <Compile Include="Assets\Scripts\CBES\InputAction.cs" />
     <Compile Include="Assets\Scripts\CBES\MoveComponent.cs" />
     <Compile Include="Assets\Scripts\CBES\MovementSystem.cs" />
-    <Compile Include="Assets\Scripts\CBES\TransformBehaviour.cs" />
+    <Compile Include="Assets\Scripts\CBES\Character_TransformBehaviour.cs" />
     <Compile Include="Assets\Scripts\CBES\TransformComponent.cs" />
     <Compile Include="Assets\Scripts\Grid Manager\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\Grid Manager\GridManager.cs" />
+    <Compile Include="Assets\Scripts\Grid Manager\GridManagerInputHandler.cs" />
     <Compile Include="Assets\Scripts\Grid Manager\GridObject.cs" />
     <Compile Include="Assets\Scripts\Grid Manager\IHasNeighbours.cs" />
     <Compile Include="Assets\Scripts\Grid Manager\Point.cs" />

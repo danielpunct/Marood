@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class CharacterMovement : MonoBehaviour
 {
+
     //speed in meters per second
     public float speed = 0.0025F;
     public float rotationSpeed = 0.004F;
@@ -29,7 +31,7 @@ public class CharacterMovement : MonoBehaviour
     {
         controller = this.GetComponent<CharacterController>();
         //all the animations by default should loop
-        GetComponent<Animation>().wrapMode = WrapMode.Loop;
+        //GetComponent<Animation>().wrapMode = WrapMode.Loop;
         //caching the transform for better performance
         myTransform = transform;
     }
@@ -82,7 +84,7 @@ public class CharacterMovement : MonoBehaviour
             if (path.IndexOf(curTile) == 0)
             {
                 IsMoving = false;
-                GetComponent<Animation>().CrossFade("idle");
+                //GetComponent<Animation>().CrossFade("idle");
                 switchOriginAndDestinationTiles();
                 return;
             }

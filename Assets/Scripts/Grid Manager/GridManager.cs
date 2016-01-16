@@ -18,7 +18,6 @@ public class GridManager : MonoBehaviour
 
     float hexSizeX, hexSizeY, hexSizeZ, groundSizeX, groundSizeY, groundSizeZ;
     public static GridManager instance = null;
-
     List<GameObject> path;
 
     void Awake()
@@ -103,9 +102,9 @@ public class GridManager : MonoBehaviour
                 hex.transform.position = calcWorldCoord(gridPos);
                 hex.transform.parent = hexGridGO.transform;
                 var tb = (TileBehaviour)hex.GetComponent("TileBehaviour");
-                tb.tile = new Tile((int)x - (int)(y / 2), (int)y);
+                tb.Tile = new Tile((int)x - (int)(y / 2), (int)y);
                 tb.textMesh.text = (int)x - (int)(y / 2) + ":" + (int)y;
-                Board.Add(tb.tile.Location, tb);
+                Board.Add(tb.Tile.Location, tb);
 
                 if (x == 0 && y == 0)
                 {
@@ -119,7 +118,7 @@ public class GridManager : MonoBehaviour
         }
         bool equalLineLengths = (gridSize.x + 0.5) * hexSizeX <= groundSizeX;
         foreach (TileBehaviour tb in Board.Values)
-            tb.tile.FindNeighbours(Board, gridSize, equalLineLengths);
+            tb.Tile.FindNeighbours(Board, gridSize, equalLineLengths);
     }
 
     private void DrawPath(IEnumerable<Tile> path)
@@ -151,7 +150,7 @@ public class GridManager : MonoBehaviour
             return;
         }
 
-        var path = PathFinder.FindPath(originTileTB.tile, destTileTB.tile);
+        var path = PathFinder.FindPath(originTileTB.Tile, destTileTB.Tile);
         DrawPath(path);
         CharacterMovement.instance.StartMoving(path.ToList());
 
@@ -172,10 +171,10 @@ public class GridManager : MonoBehaviour
     {
         Material originMaterial = originTileTB.GetComponent<Renderer>().material;
         originTileTB.GetComponent<Renderer>().material = destTileTB.defaultMaterial;
-        originTileTB.tile.Passable = true;
+        originTileTB.Tile.Passable = true;
         originTileTB = destTileTB;
         originTileTB.GetComponent<Renderer>().material = originMaterial;
-        originTileTB.tile.Passable = false;
+        originTileTB.Tile.Passable = false;
         destTileTB = null;
         generateAndShowPath();
     }
@@ -194,5 +193,34 @@ public class GridManager : MonoBehaviour
         setSizes();
         createGrid();
     }
-}
 
+    public void OriginTileChanged(TileBehaviour tileBehaviour)
+    {
+        //deselect origin tile if user clicks on current origin tile
+        if (tileBehaviour == originTileTB)
+        {
+            originTileTB = null;
+            tileBehaviour.SetVisualDefaultState();
+            return;
+        }
+        //if origin tile is not specified already mark this tile as origin
+        originTileTB = tileBehaviour;
+        tileBehaviour.ChangeColor(Color.red);
+    }
+
+    public void DestTileChanged(TileBehaviour tileBehaviour)
+    {
+        //deselect destination tile if user clicks on current destination tile
+        if (tileBehaviour == destTileTB)
+        {
+            destTileTB = null;
+            tileBehaviour.SetVisualActiveState();
+            return;
+        }
+        //if there was other tile marked as destination, change its material to default (fully transparent) one
+        if (destTileTB != null)
+            destTileTB.SetVisualDefaultState();
+        destTileTB = tileBehaviour;
+        tileBehaviour.ChangeColor(Color.blue);
+    }
+}
