@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-public class DestinationData
+public class MoveData
 {
     #region Properties
 
@@ -19,7 +20,7 @@ public class DestinationData
     ///// </summary>
     public int EntityId { get; set; }
 
-    public GameObject DestinationTile { get; set; }
+    public Vector3 Destination { get; set; }
 
     #endregion
 }

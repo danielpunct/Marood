@@ -30,7 +30,10 @@ namespace Slash.Unity.Common.ECS
         protected void Start()
         {
             this.Component = this.Entity != null ? this.Entity.GetLogicComponent<T>() : null;
+            OnStart();
         }
+
+        protected virtual void OnStart() { }
 
         #endregion
     }

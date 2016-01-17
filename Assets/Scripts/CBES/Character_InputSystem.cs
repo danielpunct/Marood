@@ -7,7 +7,6 @@ using Slash.Math.Algebra.Vectors;
 public class Character_InputSystem : GameSystem
 {
     #region Fields
-
     private CompoundEntities<CharacterInputEntity> inputEntities;
 
     #endregion
@@ -18,7 +17,7 @@ public class Character_InputSystem : GameSystem
     {
         base.Init(configuration);
 
-        this.EventManager.RegisterListener(InputAction.SetDestination, this.OnNewDestination);
+        this.EventManager.RegisterListener(InputAction.MoveTowards, this.OnGridStartMoving);
 
         this.inputEntities = new CompoundEntities<CharacterInputEntity>(this.EntityManager);
     }
@@ -26,32 +25,11 @@ public class Character_InputSystem : GameSystem
     #endregion
 
     #region Methods
+    
 
-    //private static Vector2I GetDirection(MoveDirection moveDirections)
-    //{
-    //    var direction = new Vector2I();
-    //    if (moveDirections.IsOptionSet(MoveDirection.Forward))
-    //    {
-    //        direction.Y += 1;
-    //    }
-    //    if (moveDirections.IsOptionSet(MoveDirection.Backward))
-    //    {
-    //        direction.Y -= 1;
-    //    }
-    //    if (moveDirections.IsOptionSet(MoveDirection.Right))
-    //    {
-    //        direction.X += 1;
-    //    }
-    //    if (moveDirections.IsOptionSet(MoveDirection.Left))
-    //    {
-    //        direction.X -= 1;
-    //    }
-    //    return direction;
-    //}
-
-    private void OnNewDestination(GameEvent e)
+    private void OnGridStartMoving(GameEvent e)
     {
-        var data = (DestinationData)e.EventData;
+        var data = (MoveData)e.EventData;
 
         var inputEntity = this.inputEntities.GetEntity(data.EntityId);
         if (inputEntity == null)
@@ -62,17 +40,17 @@ public class Character_InputSystem : GameSystem
         // Adjust move direction.
         //if (data.Enable)
         //{
-           // inputEntity.Input.MoveDestination = data.Destination;
-       // }
-       // else
+        //  inputEntity.Input.MoveDestination = data.Destination;
+        // }
+        // else
         //{
-            //inputEntity.Input.MoveDirections =
-            //    (MoveDirection)
-            //        inputEntity.Input.MoveDirections.AndComplementOption(data.Direction, typeof(MoveDirection));
-       // }
+        //inputEntity.Input.MoveDirections =
+        //    (MoveDirection)
+        //        inputEntity.Input.MoveDirections.AndComplementOption(data.Direction, typeof(MoveDirection));
+        // }
 
         // Adjust velocity.
-        inputEntity.Movement.Velocity = new Vector2F(0.5f, 0.5f);
+        inputEntity.Movement.Destination = data.Destination;
         //GetDirection(inputEntity.Input.MoveDirections)
          //                               * inputEntity.Movement.MaxSpeed;
     }

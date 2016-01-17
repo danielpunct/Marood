@@ -1,6 +1,7 @@
 ﻿using Slash.ECS.Components;
 using Slash.ECS.Inspector.Attributes;
 using Slash.Math.Algebra.Vectors;
+using UnityEngine;
 
 [InspectorComponent]
 public class TransformComponent : EntityComponent
@@ -8,19 +9,19 @@ public class TransformComponent : EntityComponent
     #region Constants
 
     /// <summary>
-    ///   Attribute: Position.
+    ///   Attribute: Destination.
     /// </summary>
-    public const string AttributePosition = "TransformComponent.Position";
+    public const string AttributePosition = "TransformComponent.Destination";
 
     #endregion
 
     #region Properties
 
     /// <summary>
-    ///   Position.
+    ///   Destination.
     /// </summary>
-    [InspectorVector(AttributePosition, Description = "Position.")]
-    public Vector2F Position { get; set; }
+    [InspectorVector(AttributePosition, Description = "Destination.")]
+    public Vector3 Destination { get; set; }
 
     #endregion
 }

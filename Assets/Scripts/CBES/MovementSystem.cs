@@ -23,8 +23,8 @@ public class MovementSystem : GameSystem
     {
         foreach (var movementEntity in this.movementEntities)
         {
-            // Update position.
-            movementEntity.Transform.Position += movementEntity.Movement.Velocity * dt;
+            // Update destination.
+            movementEntity.Transform.Destination = movementEntity.Movement.Destination;
         }
     }
 

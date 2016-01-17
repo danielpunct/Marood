@@ -1,17 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
 public class CharacterMovement : MonoBehaviour
 {
-
     //speed in meters per second
-    public float speed = 0.0025F;
-    public float rotationSpeed = 0.004F;
     //distance between character and tile position when we assume we reached it and start looking for the next. Explained in detail later on
     public static float MinNextTileDist = 0.07f;
 
-    private CharacterController controller;
     public static CharacterMovement instance = null;
     //position of the tile we are heading to
     Vector3 curTilePos;
@@ -29,7 +24,6 @@ public class CharacterMovement : MonoBehaviour
 
     void Start()
     {
-        controller = this.GetComponent<CharacterController>();
         //all the animations by default should loop
         //GetComponent<Animation>().wrapMode = WrapMode.Loop;
         //caching the transform for better performance
@@ -93,31 +87,6 @@ public class CharacterMovement : MonoBehaviour
             curTilePos = calcTilePos(curTile);
         }
 
-        MoveTowards(curTilePos);
-    }
-
-    void MoveTowards(Vector3 position)
-    {
-        //mevement direction
-        var position_plane = position; position_plane.y = 0;
-        var my_position_plane = myTransform.position; my_position_plane.y = 0;
-        Vector3 dir = position_plane - my_position_plane;
-
-        // Rotate towards the target
-        myTransform.rotation = Quaternion.Slerp(myTransform.rotation,
-            Quaternion.LookRotation(dir), rotationSpeed * Time.deltaTime);
-
-        Vector3 forwardDir = myTransform.forward;
-        forwardDir = forwardDir * speed;
-        float speedModifier = Vector3.Dot(dir.normalized, myTransform.forward);
-        forwardDir *= speedModifier;
-        if (speedModifier > 0.195f)
-        {
-            controller.SimpleMove(forwardDir);
-            //if (!GetComponent<Animation>()["walk"].enabled)
-            //    GetComponent<Animation>().CrossFade("walk");
-        }
-        //else if (!GetComponent<Animation>()["idle"].enabled)
-        //    GetComponent<Animation>().CrossFade("idle");
+        TemporaryGameManager.Instance.CurrentCharacter.UpdateDestination(curTilePos);
     }
 }

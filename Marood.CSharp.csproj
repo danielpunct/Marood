@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
     <UnityVersion>5.3.0f4</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -91,13 +89,15 @@
     <Compile Include="Assets\Scripts\AStar\Path.cs" />
     <Compile Include="Assets\Scripts\AStar\PathFinder.cs" />
     <Compile Include="Assets\Scripts\AStar\PriorityQueue.cs" />
+    <Compile Include="Assets\Scripts\CBES\Character_InputBehaviour.cs" />
     <Compile Include="Assets\Scripts\CBES\Character_InputComponent.cs" />
     <Compile Include="Assets\Scripts\CBES\Character_InputSystem.cs" />
-    <Compile Include="Assets\Scripts\CBES\DestinationData.cs" />
-    <Compile Include="Assets\Scripts\CBES\InputAction.cs" />
-    <Compile Include="Assets\Scripts\CBES\MoveComponent.cs" />
-    <Compile Include="Assets\Scripts\CBES\MovementSystem.cs" />
     <Compile Include="Assets\Scripts\CBES\Character_TransformBehaviour.cs" />
+    <Compile Include="Assets\Scripts\CBES\InputAction.cs" />
+    <Compile Include="Assets\Scripts\CBES\LevelSystem.cs" />
+    <Compile Include="Assets\Scripts\CBES\MoveData.cs" />
+    <Compile Include="Assets\Scripts\CBES\MovementComponent.cs" />
+    <Compile Include="Assets\Scripts\CBES\MovementSystem.cs" />
     <Compile Include="Assets\Scripts\CBES\TransformComponent.cs" />
     <Compile Include="Assets\Scripts\Grid Manager\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\Grid Manager\GridManager.cs" />
@@ -232,6 +232,7 @@
     <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGesturesExt\Scripts\Animations\FinishAnimationOnTapBehaviour.cs" />
     <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGesturesExt\Scripts\GestureRecognizers\SwipeValidDirections.cs" />
     <Compile Include="Assets\Scripts\Temp\CameraDrag.cs" />
+    <Compile Include="Assets\Scripts\Temp\TemporaryGameManager.cs" />
     <Compile Include="Assets\Slash.Unity.DataBind\Examples\Collection\CollectionExampleContext.cs" />
     <Compile Include="Assets\Slash.Unity.DataBind\Examples\Collection\CollectionExampleItemContext.cs" />
     <Compile Include="Assets\Slash.Unity.DataBind\Examples\ContextProperty\ContextPropertyContext.cs.cs" />

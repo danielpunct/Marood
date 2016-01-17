@@ -6,5 +6,5 @@
     ///     Event data: <see cref="DestinationData"/>.
     ///   </para>
     /// </summary>
-    SetDestination,
+    MoveTowards,
 }

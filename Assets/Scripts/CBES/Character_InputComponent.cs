@@ -13,4 +13,6 @@ public class Character_InputComponent : EntityComponent
     public Vector3 MoveDestination { get; set; }
 
     #endregion
+
+
 }

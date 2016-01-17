@@ -152,8 +152,7 @@ public class GridManager : MonoBehaviour
 
         var path = PathFinder.FindPath(originTileTB.Tile, destTileTB.Tile);
         DrawPath(path);
-        CharacterMovement.instance.StartMoving(path.ToList());
-
+        TemporaryGameManager.Instance.CurrentCharacter.StartMovingOnGrid(path.ToList());
     }
 
     public static float calcDistance(Tile tile, Tile destTile)
