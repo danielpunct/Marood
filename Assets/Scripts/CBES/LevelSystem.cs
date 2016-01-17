@@ -25,7 +25,13 @@ public class LevelSystem : GameSystem
         var playerBlueprint = new Blueprint
         {
             ComponentTypes =
-                new List<Type>() { typeof(TransformComponent), typeof(MovementComponent), typeof(Character_InputComponent) }
+                new List<Type>() {
+                    typeof(TransformComponent),
+                    typeof(MovementComponent),
+                    typeof(Character_InputComponent),
+                    typeof(VisualizationComponent)},
+            AttributeTable = new AttributeTable() { { VisualizationComponent.AttributePrefab, "Character" } }
+
         };
 
         // Create player entity.

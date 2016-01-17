@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using Slash.Unity.Common.ECS;
 using System.Collections.Generic;
 
@@ -16,6 +15,4 @@ public class Character_InputBehaviour : EntityComponentBehaviour<Character_Input
            InputAction.MoveTowards,
            new MoveData() { EntityId = this.Entity.EntityId, Destination = destination });
     }
-
-
 }

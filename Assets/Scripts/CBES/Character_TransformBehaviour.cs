@@ -1,7 +1,5 @@
 ﻿
 using Slash.Unity.Common.ECS;
-using Slash.Unity.Common.Math;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]

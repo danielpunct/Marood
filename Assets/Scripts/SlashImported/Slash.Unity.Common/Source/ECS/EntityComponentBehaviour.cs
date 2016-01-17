@@ -27,7 +27,7 @@ namespace Slash.Unity.Common.ECS
 
         #region Methods
 
-        protected void Start()
+        protected virtual void Start()
         {
             this.Component = this.Entity != null ? this.Entity.GetLogicComponent<T>() : null;
             OnStart();

@@ -99,6 +99,8 @@
     <Compile Include="Assets\Scripts\CBES\MovementComponent.cs" />
     <Compile Include="Assets\Scripts\CBES\MovementSystem.cs" />
     <Compile Include="Assets\Scripts\CBES\TransformComponent.cs" />
+    <Compile Include="Assets\Scripts\CBES\VisualizationBehaviour.cs" />
+    <Compile Include="Assets\Scripts\CBES\VisualizationComponent.cs" />
     <Compile Include="Assets\Scripts\Grid Manager\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\Grid Manager\GridManager.cs" />
     <Compile Include="Assets\Scripts\Grid Manager\GridManagerInputHandler.cs" />
