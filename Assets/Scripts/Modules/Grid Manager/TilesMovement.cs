@@ -34,7 +34,7 @@ public class TilesMovement : MonoBehaviour
     {
         //y / 2 is added to convert coordinates from straight axis coordinate system to squiggly axis system
         Vector2 tileGridPos = new Vector2(tile.X + tile.Y / 2, tile.Y);
-        Vector3 tilePos = GridManager.instance.calcWorldCoord(tileGridPos);
+        Vector3 tilePos = GridManager.instance.CalcWorldCoord(tileGridPos);
         //y coordinate is disregarded
         tilePos.y = myTransform.position.y;
         return tilePos;
@@ -51,7 +51,6 @@ public class TilesMovement : MonoBehaviour
         IsMoving = true;
         this.path = path;
     }
-
 
     void Update()
     {
@@ -116,7 +115,7 @@ public class TilesMovement : MonoBehaviour
 
     void DestinationReached()
     {
-        TriggerEvent("DestinationReached");
+        TriggerEvent(cEvents.DESTINATION_REACHED);
     }
 
 

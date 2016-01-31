@@ -66,6 +66,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Game\Behaviour\Grid\GridBehaviour.cs" />
     <Compile Include="Assets\Scripts\Game\Behaviour\Grid\TileBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Game\CharacterInvoker.cs" />
+    <Compile Include="Assets\Scripts\Game\Constants.cs" />
     <Compile Include="Assets\Scripts\Game\EventManager.cs" />
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
     <Compile Include="Assets\Scripts\Game\Input\Grid\TileInputHandler.cs" />

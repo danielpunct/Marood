@@ -25,7 +25,7 @@ public class GridManager : MonoBehaviour
         createGrid();
         generateAndShowPath();
     }
-
+    
     void setSizes()
     {
         hexSizeX = Hex.GetComponent<Renderer>().bounds.size.x;
@@ -57,7 +57,7 @@ public class GridManager : MonoBehaviour
         return initPos;
     }
 
-    public Vector3 calcWorldCoord(Vector2 gridPos)
+    public Vector3 CalcWorldCoord(Vector2 gridPos)
     {
         Vector3 initPos = calcInitPos();
         float offset = 0;
@@ -97,7 +97,7 @@ public class GridManager : MonoBehaviour
             {
                 GameObject hex = Instantiate(Hex);
                 Vector2 gridPos = new Vector2(x, y);
-                hex.transform.position = calcWorldCoord(gridPos);
+                hex.transform.position = CalcWorldCoord(gridPos);
                 hex.transform.parent = hexGridGO.transform;
                 var tb = hex.GetComponent<TileBehaviour>();
 
@@ -132,7 +132,7 @@ public class GridManager : MonoBehaviour
         {
             var line = (GameObject)Instantiate(Line);
             Vector2 gridPos = new Vector2(tile.X + tile.Y / 2, tile.Y);
-            line.transform.position = calcWorldCoord(gridPos);
+            line.transform.position = CalcWorldCoord(gridPos);
             this.path.Add(line);
             line.transform.parent = lines.transform;
         }
@@ -205,5 +205,15 @@ public class GridManager : MonoBehaviour
             destTileTB.Reset();
         destTileTB = tileBehaviour;
         //tileBehaviour.ChangeColor(Color.blue);
+    }
+
+    public void DestinationReached()
+    {
+        originTileTB.Reset();
+        originTileTB = destTileTB;
+
+        originTileTB.SetAsOrigin();
+        destTileTB = null;
+        generateAndShowPath();
     }
 }

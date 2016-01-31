@@ -8,8 +8,12 @@ namespace Assets.Scripts.Game
         void Awake()
         {
             gameObject.AddComponent<EventManager>();
+            gameObject.AddComponent<CharacterInvoker>();
         }
 
-        
+        void Start()
+        {
+            EventManager.TriggerEvent(cEvents.INVOKE_CHARACTER, new CharacterInvokerTag() { Character = "Character", X = 0, Y = 0 } );
+        }
     }
 }
