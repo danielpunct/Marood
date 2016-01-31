@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
-    <UnityVersion>5.3.0f4</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <UnityVersion>5.3.1f1</UnityVersion>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -26,7 +28,7 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_0;UNITY_5_3;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_DISABLE_WEB_VERIFICATION;ENABLE_TEXTUREID_MAP;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_IL2CPP;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_1;UNITY_5_3;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_DISABLE_WEB_VERIFICATION;ENABLE_TEXTUREID_MAP;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_IL2CPP;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -36,7 +38,7 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>TRACE;UNITY_5_3_0;UNITY_5_3;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_DISABLE_WEB_VERIFICATION;ENABLE_TEXTUREID_MAP;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_IL2CPP;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
+    <DefineConstants>TRACE;UNITY_5_3_1;UNITY_5_3;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_DISABLE_WEB_VERIFICATION;ENABLE_TEXTUREID_MAP;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_IL2CPP;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
@@ -60,286 +62,28 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="Slash.Collections">
-      <HintPath>Assets\Plugins\Slash.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="Slash.Diagnostics">
-      <HintPath>Assets\Plugins\Slash.Diagnostics.dll</HintPath>
-    </Reference>
-    <Reference Include="Slash.ECS">
-      <HintPath>Assets\Plugins\Slash.ECS.dll</HintPath>
-    </Reference>
-    <Reference Include="Slash.Math">
-      <HintPath>Assets\Plugins\Slash.Math.dll</HintPath>
-    </Reference>
-    <Reference Include="Slash.Reflection">
-      <HintPath>Assets\Plugins\Slash.Reflection.dll</HintPath>
-    </Reference>
-    <Reference Include="Slash.Serialization">
-      <HintPath>Assets\Plugins\Slash.Serialization.dll</HintPath>
-    </Reference>
-    <Reference Include="Slash.System">
-      <HintPath>Assets\Plugins\Slash.System.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AStar\Path.cs" />
-    <Compile Include="Assets\Scripts\AStar\PathFinder.cs" />
-    <Compile Include="Assets\Scripts\AStar\PriorityQueue.cs" />
-    <Compile Include="Assets\Scripts\CBES\Character_InputBehaviour.cs" />
-    <Compile Include="Assets\Scripts\CBES\Character_InputComponent.cs" />
-    <Compile Include="Assets\Scripts\CBES\Character_InputSystem.cs" />
-    <Compile Include="Assets\Scripts\CBES\Character_TransformBehaviour.cs" />
-    <Compile Include="Assets\Scripts\CBES\InputAction.cs" />
-    <Compile Include="Assets\Scripts\CBES\LevelSystem.cs" />
-    <Compile Include="Assets\Scripts\CBES\MoveData.cs" />
-    <Compile Include="Assets\Scripts\CBES\MovementComponent.cs" />
-    <Compile Include="Assets\Scripts\CBES\MovementSystem.cs" />
-    <Compile Include="Assets\Scripts\CBES\TransformComponent.cs" />
-    <Compile Include="Assets\Scripts\CBES\VisualizationBehaviour.cs" />
-    <Compile Include="Assets\Scripts\CBES\VisualizationComponent.cs" />
-    <Compile Include="Assets\Scripts\Grid Manager\CharacterMovement.cs" />
-    <Compile Include="Assets\Scripts\Grid Manager\GridManager.cs" />
-    <Compile Include="Assets\Scripts\Grid Manager\GridManagerInputHandler.cs" />
-    <Compile Include="Assets\Scripts\Grid Manager\GridObject.cs" />
-    <Compile Include="Assets\Scripts\Grid Manager\IHasNeighbours.cs" />
-    <Compile Include="Assets\Scripts\Grid Manager\Point.cs" />
-    <Compile Include="Assets\Scripts\Grid Manager\Tile.cs" />
-    <Compile Include="Assets\Scripts\Grid Manager\TileBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Animations\AnimationExtensions.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Attributes\ExposePropertyAttribute.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Configuration\GameConfigurationBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Configuration\GameSettings.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Delegates\MethodDelegate.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Diagnostics\CatchExceptionsBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Diagnostics\CheatConsole.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Diagnostics\DebugBuildBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Diagnostics\DebugInput.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Diagnostics\DisableWithSceneManager.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Diagnostics\FPSDisplay.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Diagnostics\GameCheatBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\ECS\EntityBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\ECS\EntityComponentBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\ECS\EntityConfigurationBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\ECS\EntityGameObjectMap.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\ECS\EntityGameObjectsBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\ECS\EntityObjectPool.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\ECS\EventManagerOperator.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\ECS\GameBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\ECS\GameEventBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\ECS\LogicToVisualDelegate.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\ECS\LogicToVisualDelegateAttribute.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\ECS\LogicToVisualMapping.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\ECS\LogicToVisualMappingAttribute.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\GUI\GUIHelper.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\GUI\GUILayoutExt.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\GUI\GuiExt.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\GUI\SleepTimeoutBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\GUI\SwitchFullscreenBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\GUI\ValueEditors\EnumValueEditor.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\GUI\ValueEditors\FloatValueEditor.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\GUI\ValueEditors\IValueEditor.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\GUI\ValueEditors\IValueEditorContext.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\GUI\ValueEditors\IValueEditorFactory.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\GUI\ValueEditors\IntegerValueEditor.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\GUI\ValueEditors\PropertyValueEditorContext.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\GUI\ValueEditors\SimpleValueEditorContext.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\GUI\ValueEditors\TextValueEditor.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\GUI\ValueEditors\ValueEditorContext.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\GUI\ValueEditors\Vector2IValueEditor.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Input\InputUtils.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Loading\DontDestroyOnLoadBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Loading\LoadSceneBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Loading\LoadSceneOnClickBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Loading\LoadSceneOnEscBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Loading\LoadSceneOnStartBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Logging\ConsoleAppender.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Logging\EventManagerLogBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Logging\GameLogBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Logging\LoggerExtensions.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Math\MathConversionExtensions.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\PropertyDrawers\TypePropertyAttribute.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Scenes\SceneManager.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Scenes\SceneRoot.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Scenes\WindowManager.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Scenes\WindowRoot.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Sound\AudioChannel.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Sound\AudioChannelType.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Sound\AudioPlayerPrefs.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Sound\FadingAudioSource.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Sound\PlayAudioBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Sound\PlaySoundOnClickBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Sound\SoundInterfaceBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Transforms\EasedMovementBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Triggers\Actions\IAction.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Triggers\Conditions\Condition.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Triggers\Conditions\EventCondition.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Triggers\Conditions\ICondition.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Triggers\Trigger.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Utils\ActiveOnPlatformBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Utils\GLUtils.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Utils\InspectorTooltipAttribute.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Utils\LogDeviceIdBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Utils\OpenUrlOnClickBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Utils\UnityColorUtils.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Utils\UnityGameObjectUtils.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Utils\UnityPathUtils.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Utils\VersionNumberBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\ViewModels\ViewEvent.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\ViewModels\ViewEventDelegate.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.Common\Source\Visual\HighlightSpriteAlpha.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.DataBind.Ext\Source\ECS\GameContext.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.DataBind.Ext\Source\ECS\GameEntityContext.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.DataBind.Ext\Source\Windows\GameWindowContext.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.DataBind.Ext\Source\Windows\WindowContext.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.DataBind.Ext\Source\Windows\WindowContextManager.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Dev\FingerDebug.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Base\ContinuousGestureRecognizer.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Base\DiscreteGestureRecognizer.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Base\FingerEventDetector.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Base\GestureRecognizer.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Base\GestureRecognizerDelegate.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Components\FingerClusterManager.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Components\ScreenRaycaster.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Finger Event Detectors\FingerDownDetector.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Finger Event Detectors\FingerHoverDetector.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Finger Event Detectors\FingerMotionDetector.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Finger Event Detectors\FingerUpDetector.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\FingerGestures.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Gesture Recognizers\DragRecognizer.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Gesture Recognizers\LongPressRecognizer.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Gesture Recognizers\PinchRecognizer.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Gesture Recognizers\PointCloudGestureTemplate.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Gesture Recognizers\PointCloudRegognizer.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Gesture Recognizers\SwipeRecognizer.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Gesture Recognizers\TapRecognizer.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Gesture Recognizers\TwistRecognizer.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Input Providers\FGInputProvider.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Input Providers\FGMouseInputProvider.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Input Providers\FGTouchInputProvider.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Toolbox\Camera\TBDragView.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Toolbox\Camera\TBLookAtTap.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Toolbox\Camera\TBOrbit.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Toolbox\Camera\TBPan.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Toolbox\Camera\TBPinchZoom.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Toolbox\TBDragToMove.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Toolbox\TBHoverChangeMaterial.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Toolbox\TBHoverChangeScale.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Toolbox\TBPinchToScale.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Toolbox\TBQuickSetup.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Scripts\Toolbox\TBTwistToRotate.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGesturesExt\Scripts\Animations\FinishAnimationOnTapBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGesturesExt\Scripts\GestureRecognizers\SwipeValidDirections.cs" />
+    <Compile Include="Assets\Scripts\Game\Behaviour\Grid\GridBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Game\Behaviour\Grid\TileBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Game\EventManager.cs" />
+    <Compile Include="Assets\Scripts\Game\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Game\Input\Grid\TileInputHandler.cs" />
+    <Compile Include="Assets\Scripts\Game\Visualization\Grid\TileVisualization.cs" />
+    <Compile Include="Assets\Scripts\Modules\AStar\Path.cs" />
+    <Compile Include="Assets\Scripts\Modules\AStar\PathFinder.cs" />
+    <Compile Include="Assets\Scripts\Modules\AStar\PriorityQueue.cs" />
+    <Compile Include="Assets\Scripts\Modules\Grid Manager\TilesMovement.cs" />
+    <Compile Include="Assets\Scripts\Modules\Grid Manager\GridManager.cs" />
+    <Compile Include="Assets\Scripts\Modules\Grid Manager\GridObject.cs" />
+    <Compile Include="Assets\Scripts\Modules\Grid Manager\IHasNeighbours.cs" />
+    <Compile Include="Assets\Scripts\Modules\Grid Manager\Point.cs" />
+    <Compile Include="Assets\Scripts\Modules\Grid Manager\Tile.cs" />
     <Compile Include="Assets\Scripts\Temp\CameraDrag.cs" />
     <Compile Include="Assets\Scripts\Temp\TemporaryGameManager.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Examples\Collection\CollectionExampleContext.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Examples\Collection\CollectionExampleItemContext.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Examples\ContextProperty\ContextPropertyContext.cs.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Examples\ContextProperty\ContextPropertyItemContext.cs.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Examples\EnumEqualityCheck\DropDownUnity.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Examples\EnumEqualityCheck\EnumEqualityCheckContext.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Examples\EnumEqualityCheck\TestEnum.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Examples\InputFieldGetter\InputFieldGetterContext.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Examples\InputFieldGetter\MessageContext.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Examples\LabelSetter\LabelSetterContext.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Examples\StringToUpperFormatter\StringToUpperFormatter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Data\Collection.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Data\Context.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Data\DataDictionary.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Data\Property.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Presentation\ContextHolder.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Presentation\ContextNode.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Presentation\DataBinding.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Presentation\DataBindingType.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Presentation\DataProvider.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Presentation\MasterPath.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Utils\AssemblyUtils.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Utils\ContextMemberFilter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Utils\ContextPathAttribute.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Utils\ContextTypeAttribute.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Utils\EnumExtensions.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Utils\ReflectionUtils.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Utils\SystemExtensions.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Utils\TypeSelectionAttribute.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Core\Utils\UnityUtils.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Commands\Command.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Diagnostics\ContextHolderInitializer.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Checks\ComparisonCheck.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Checks\EqualityCheck.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Checks\IsSetCheck.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Converters\DataConverter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Converters\Texture2DToSpriteConverter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Formatters\DurationFormatter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Formatters\PrependSignFormatter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Formatters\StringFormatter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Formatters\StringToUpperFormatter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Getters\ComponentSingleGetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Getters\ContextGetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Getters\EnumGetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Getters\TransformPositionProvider.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Loaders\SpriteLoader.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Loaders\TextAssetLoader.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Lookups\DictionaryLookup.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Objects\ColorObject.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Objects\NumberObject.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Operations\ArithmeticOperation.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Operations\GameObjectMapping.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Operations\InvertBoolOperation.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Operations\LogicalBoolOperation.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Operations\RoundToNearestOperation.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Operations\TweenOperation.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Switches\BooleanSwitch.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Switches\NumberRangeSwitch.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Switches\RangeOption.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Providers\Switches\RangeSwitch.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\ActiveSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\AnimatorBooleanSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\AnimatorTriggerSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\BehaviourEnabledSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\ComponentSingleSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\ContextHolderContextSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\GameObjectItemSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\GameObjectItemsSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\GameObjectSingleSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\ItemSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\ItemsSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\LocalPositionSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\PositionSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\Setter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\SingleSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\SlotItemsSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\Foundation\Setters\SpriteRendererSpriteSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Commands\ButtonClickCommand.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Commands\UnityEventCommand.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Getters\InputFieldGetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Getters\SliderValueGetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Getters\ToggleIsOnGetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\CanvasGroupInteractableSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\GraphicColorSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\ImageFillAmountSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\ImageMaterialSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\ImageSpriteSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\InputFieldTextSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\LayoutGroupItemsSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\SelectableInteractableSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\SliderValueSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\TextTextSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Scripts\UI\Unity\Setters\ToggleIsOnSetter.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Tests\ConstantDataProvider.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Tests\ConstantFloatProvider.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Tests\ConstantIntProvider.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Tests\ProviderValueCaster.cs" />
-    <Compile Include="Assets\Slash.Unity.DataBind\Tests\ProviderValueCasterBool.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Art\3DModels\Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
-    <None Include="Assets\Resources\Blueprints\Game.blueprints.xml" />
-    <None Include="Assets\Resources\Configuration\Game.configuration.xml" />
-    <None Include="Assets\Scripts\SlashImported\Slash.Unity.FingerGestures\Source\Unity\Assets\FingerGestures\Readme.txt" />
-    <None Include="Assets\Slash.Unity.DataBind\Readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
