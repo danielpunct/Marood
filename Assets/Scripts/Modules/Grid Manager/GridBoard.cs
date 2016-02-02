@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-public class GridManager : MonoBehaviour
+public class GridBoard : MonoBehaviour
 {
     public GameObject Ground;
     public GameObject Hex;
@@ -15,15 +15,15 @@ public class GridManager : MonoBehaviour
     public Dictionary<Point, TileBehaviour> Board;
 
     float hexSizeX, hexSizeY, hexSizeZ, groundSizeX, groundSizeY, groundSizeZ;
-    public static GridManager instance = null;
+    public static GridBoard Instance = null;
     List<GameObject> path;
 
     void Awake()
     {
-        instance = this;
+        Instance = this;
         setSizes();
         createGrid();
-        generateAndShowPath();
+        //GenerateAndShowPath();
     }
     
     void setSizes()
@@ -103,7 +103,7 @@ public class GridManager : MonoBehaviour
 
                 tb.InitTile((int)x - (int)(y / 2), (int)y, (int)x - (int)(y / 2) + ":" + (int)y);
               
-                Board.Add(tb.Tile.Location, tb);
+                Board.Add(tb.GridTile.Location, tb);
 
                 if (x == 0 && y == 0)
                 {
@@ -114,8 +114,14 @@ public class GridManager : MonoBehaviour
         }
         bool equalLineLengths = (gridSize.x + 0.5) * hexSizeX <= groundSizeX;
         foreach (TileBehaviour tb in Board.Values)
-            tb.Tile.FindNeighbours(Board, gridSize, equalLineLengths);
+            tb.GridTile.FindNeighbours(Board, gridSize, equalLineLengths);
     }
+
+    public void SetOriginTile()
+    {
+
+    }
+
 
     private void DrawPath(IEnumerable<Tile> path)
     {
@@ -131,14 +137,13 @@ public class GridManager : MonoBehaviour
         foreach (Tile tile in path)
         {
             var line = (GameObject)Instantiate(Line);
-            Vector2 gridPos = new Vector2(tile.X + tile.Y / 2, tile.Y);
-            line.transform.position = CalcWorldCoord(gridPos);
+            line.transform.position = CalcWorldPosFromCoords(tile.X, tile.Y);
             this.path.Add(line);
             line.transform.parent = lines.transform;
         }
     }
 
-    public void generateAndShowPath()
+    public void GenerateAndShowPath(CharacterMoveBehaviour movement)
     {
         if (originTileTB == null || destTileTB == null)
         {
@@ -146,9 +151,9 @@ public class GridManager : MonoBehaviour
             return;
         }
 
-        var path = PathFinder.FindPath(originTileTB.Tile, destTileTB.Tile);
+        var path = PathFinder.FindPath(originTileTB.GridTile, destTileTB.GridTile);
         DrawPath(path);
-        TilesMovement.instance.StartMoving(path.ToList());
+        movement.StartMoving(path.ToList());
     }
 
     public static float calcDistance(Tile tile, Tile destTile)
@@ -214,6 +219,13 @@ public class GridManager : MonoBehaviour
 
         originTileTB.SetAsOrigin();
         destTileTB = null;
-        generateAndShowPath();
+        //GenerateAndShowPath();
+    }
+
+    public Vector3 CalcWorldPosFromCoords(int X, int Y)
+    {
+        //y / 2 is added to convert coordinates from straight axis coordinate system to squiggly axis system
+        Vector2 gridPos = new Vector2(X + Y / 2, Y);
+        return CalcWorldCoord(gridPos);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-class GridBehaviour : MonoBehaviour
+class GridManager : MonoBehaviour
 {
     void OnEnable()
     {
@@ -9,6 +9,6 @@ class GridBehaviour : MonoBehaviour
 
     void OnDestinationReached(object tag)
     {
-        GridManager.instance.DestinationReached();
+        GridBoard.Instance.DestinationReached();
     }
 }

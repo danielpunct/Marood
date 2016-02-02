@@ -4,11 +4,11 @@ namespace Assets.Scripts.Game
 {
     class CharacterInvoker : MonoBehaviour
     {
-        GridManager boardGO;
+        GridBoard boardGO;
 
         void Awake()
         {
-            boardGO = GameObject.FindObjectOfType<GridManager>();
+            boardGO = GameObject.FindObjectOfType<GridBoard>();
 
             EventManager.StartListening(cEvents.INVOKE_CHARACTER, OnInvokeCharacter);
         }
@@ -19,11 +19,15 @@ namespace Assets.Scripts.Game
 
             var go = Instantiate(Resources.Load<GameObject>(invokerTag.Character));
 
+            var cm = go.AddComponent<CharacterManager>();
+            go.AddComponent<CharacterMoveBehaviour>();
+            go.AddComponent<CharacterVisualization>();
+
             var t = go.transform;
-            t.SetParent(boardGO.transform);
-            t.localPosition = boardGO.CalcWorldCoord(new Vector2(invokerTag.X, invokerTag.Y));
+            t.localPosition = boardGO.CalcWorldPosFromCoords(invokerTag.X, invokerTag.Y);
             t.localRotation = Quaternion.identity;
             t.localScale = Vector3.one;
+            t.SetParent(boardGO.transform);
             go.layer = boardGO.gameObject.layer;
         }
     }

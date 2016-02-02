@@ -4,7 +4,7 @@ using System.Collections;
 [RequireComponent(typeof(TileVisualization))]
 public class TileBehaviour : MonoBehaviour
 {
-    public Tile Tile { get; private set; }
+    public Tile GridTile { get; private set; }
     TileVisualization tileVisualization;
 
     void Awake()
@@ -13,10 +13,10 @@ public class TileBehaviour : MonoBehaviour
     }
     public void UserHoverStart()
     {
-        GridManager.instance.selectedTile = Tile;
+        GridBoard.Instance.selectedTile = GridTile;
         //when mouse is over some tile, the tile is passable and the current tile is neither destination nor origin tile, change color to orange
-        if (Tile.Passable && this != GridManager.instance.destTileTB
-            && this != GridManager.instance.originTileTB)
+        if (GridTile.Passable && this != GridBoard.Instance.destTileTB
+            && this != GridBoard.Instance.originTileTB)
         {
             tileVisualization.HighlightHover();
         }
@@ -24,9 +24,9 @@ public class TileBehaviour : MonoBehaviour
 
     public void UserHoverLeft()
     {
-        GridManager.instance.selectedTile = null;
-        if (Tile.Passable && this != GridManager.instance.destTileTB
-            && this != GridManager.instance.originTileTB)
+        GridBoard.Instance.selectedTile = null;
+        if (GridTile.Passable && this != GridBoard.Instance.destTileTB
+            && this != GridBoard.Instance.originTileTB)
         {
             tileVisualization.Reset();
         }
@@ -34,21 +34,21 @@ public class TileBehaviour : MonoBehaviour
 
     public void UserActivate()
     {
-        Tile.Passable = true;
+        GridTile.Passable = true;
 
-        TileBehaviour originTileTB = GridManager.instance.originTileTB;
+        TileBehaviour originTileTB = GridBoard.Instance.originTileTB;
         //if user clicks on origin tile or origin tile is not assigned yet
         if (this == originTileTB || originTileTB == null)
-            GridManager.instance.OriginTileChanged(this);
+            GridBoard.Instance.OriginTileChanged(this);
         else
-            GridManager.instance.DestTileChanged(this);
-
-        GridManager.instance.generateAndShowPath();
+            GridBoard.Instance.DestTileChanged(this);
+        
+        EventManager.TriggerEvent(cEvents.TILE_ACTIVATED, GridTile);
     }
 
     public void InitTile(int x, int y, string text)
     {
-        Tile = new Tile(x, y);
+        GridTile = new Tile(x, y);
         tileVisualization.SetText(text);
     }
 

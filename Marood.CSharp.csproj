@@ -64,19 +64,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Game\Behaviour\Grid\GridBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Game\Managers\GridManager.cs" />
     <Compile Include="Assets\Scripts\Game\Behaviour\Grid\TileBehaviour.cs" />
     <Compile Include="Assets\Scripts\Game\CharacterInvoker.cs" />
     <Compile Include="Assets\Scripts\Game\Constants.cs" />
     <Compile Include="Assets\Scripts\Game\EventManager.cs" />
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
     <Compile Include="Assets\Scripts\Game\Input\Grid\TileInputHandler.cs" />
+    <Compile Include="Assets\Scripts\Game\Managers\CharacterManager.cs" />
+    <Compile Include="Assets\Scripts\Game\Visualization\CharacterVisualization.cs" />
     <Compile Include="Assets\Scripts\Game\Visualization\Grid\TileVisualization.cs" />
     <Compile Include="Assets\Scripts\Modules\AStar\Path.cs" />
     <Compile Include="Assets\Scripts\Modules\AStar\PathFinder.cs" />
     <Compile Include="Assets\Scripts\Modules\AStar\PriorityQueue.cs" />
-    <Compile Include="Assets\Scripts\Modules\Grid Manager\TilesMovement.cs" />
-    <Compile Include="Assets\Scripts\Modules\Grid Manager\GridManager.cs" />
+    <Compile Include="Assets\Scripts\Game\Behaviour\CharacterMoveBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Modules\Grid Manager\GridBoard.cs" />
     <Compile Include="Assets\Scripts\Modules\Grid Manager\GridObject.cs" />
     <Compile Include="Assets\Scripts\Modules\Grid Manager\IHasNeighbours.cs" />
     <Compile Include="Assets\Scripts\Modules\Grid Manager\Point.cs" />

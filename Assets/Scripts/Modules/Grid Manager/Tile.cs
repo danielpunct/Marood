@@ -36,7 +36,7 @@ public class Tile : GridObject, IHasNeighbours<Tile>
             if (neighbourX >= 0 - xOffset &&
                 neighbourX < (int)BoardSize.x - xOffset &&
                 neighbourY >= 0 && neighbourY < (int)BoardSize.y)
-                neighbours.Add(Board[new Point(neighbourX, neighbourY)].Tile);
+                neighbours.Add(Board[new Point(neighbourX, neighbourY)].GridTile);
         }
 
         AllNeighbours = neighbours;
