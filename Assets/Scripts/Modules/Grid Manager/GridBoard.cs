@@ -7,83 +7,25 @@ public class GridBoard : MonoBehaviour
     public GameObject Ground;
     public GameObject Hex;
     public GameObject Line;
-    public GameObject Monster;
 
     public Tile selectedTile = null;
-    public TileBehaviour originTileTB = null;
-    public TileBehaviour destTileTB = null;
     public Dictionary<Point, TileBehaviour> Board;
 
     float hexSizeX, hexSizeY, hexSizeZ, groundSizeX, groundSizeY, groundSizeZ;
     public static GridBoard Instance = null;
-    List<GameObject> path;
+    //List<GameObject> path;
 
     void Awake()
     {
         Instance = this;
-        setSizes();
-        createGrid();
+        SetSizes();
+        CreateGrid();
         //GenerateAndShowPath();
     }
-    
-    void setSizes()
+
+    void CreateGrid()
     {
-        hexSizeX = Hex.GetComponent<Renderer>().bounds.size.x;
-        hexSizeY = Hex.GetComponent<Renderer>().bounds.size.y;
-        hexSizeZ = Hex.GetComponent<Renderer>().bounds.size.z;
-        groundSizeX = Ground.GetComponent<Renderer>().bounds.size.x;
-        groundSizeY = Ground.GetComponent<Renderer>().bounds.size.y;
-        groundSizeZ = Ground.GetComponent<Renderer>().bounds.size.z;
-    }
-
-    Vector2 calcGridSize()
-    {
-        float sideLength = hexSizeZ / 2;
-        int nrOfSides = (int)(groundSizeZ / sideLength + 0.00005f);
-        int nrOfZHexes = (int)(nrOfSides * 2 / 3);
-        if (nrOfZHexes % 2 == 0
-            && (nrOfSides + 0.5f) * sideLength > groundSizeZ)
-            nrOfZHexes--;
-
-        return new Vector2((int)(groundSizeX / hexSizeX), nrOfZHexes);
-    }
-
-    Vector3 calcInitPos()
-    {
-        Vector3 initPos;
-        initPos = new Vector3(hexSizeX / 2 - groundSizeX / 2,
-            groundSizeY / 2 + hexSizeY / 2, groundSizeZ / 2 - hexSizeZ / 2);
-
-        return initPos;
-    }
-
-    public Vector3 CalcWorldCoord(Vector2 gridPos)
-    {
-        Vector3 initPos = calcInitPos();
-        float offset = 0;
-        if (gridPos.y % 2 != 0)
-            offset = hexSizeX / 2;
-        float x = gridPos.x * hexSizeX + initPos.x + offset;
-        float z = initPos.z - gridPos.y * hexSizeZ * 0.75f;
-        float y = groundSizeY / 2 + 0.137f;
-        return new Vector3(x, y, z);
-    }
-
-    public Vector2 calcGridPos(Vector3 coord)
-    {
-        Vector3 initPos = calcInitPos();
-        Vector2 gridPos = new Vector2();
-        float offset = 0;
-        gridPos.y = Mathf.RoundToInt((initPos.z - coord.z) / (hexSizeZ * 0.75f));
-        if (gridPos.y % 2 != 0)
-            offset = hexSizeX / 2;
-        gridPos.x = Mathf.RoundToInt((coord.x - initPos.x - offset) / hexSizeX);
-        return gridPos;
-    }
-
-    void createGrid()
-    {
-        Vector2 gridSize = calcGridSize();
+        Vector2 gridSize = CalcGridSize();
         GameObject hexGridGO = new GameObject("HexGrid");
         hexGridGO.transform.SetParent(transform);
         Board = new Dictionary<Point, TileBehaviour>();
@@ -104,12 +46,6 @@ public class GridBoard : MonoBehaviour
                 tb.InitTile((int)x - (int)(y / 2), (int)y, (int)x - (int)(y / 2) + ":" + (int)y);
               
                 Board.Add(tb.GridTile.Location, tb);
-
-                if (x == 0 && y == 0)
-                {
-                    tb.SetAsOrigin();
-                    originTileTB = tb;
-                }
             }
         }
         bool equalLineLengths = (gridSize.x + 0.5) * hexSizeX <= groundSizeX;
@@ -117,19 +53,15 @@ public class GridBoard : MonoBehaviour
             tb.GridTile.FindNeighbours(Board, gridSize, equalLineLengths);
     }
 
-    public void SetOriginTile()
+    public void ErasePath( List<GameObject> indicators)
     {
-
+        indicators.ForEach(Destroy);
+        indicators.Clear();
     }
 
-
-    private void DrawPath(IEnumerable<Tile> path)
+    public void DrawPath(IEnumerable<Tile> path, List<GameObject> indicators)
     {
-        if (this.path == null)
-            this.path = new List<GameObject>();
-
-        this.path.ForEach(Destroy);
-        this.path.Clear();
+        indicators.Clear();
 
         GameObject lines = GameObject.Find("Lines");
         if (lines == null)
@@ -138,25 +70,70 @@ public class GridBoard : MonoBehaviour
         {
             var line = (GameObject)Instantiate(Line);
             line.transform.position = CalcWorldPosFromCoords(tile.X, tile.Y);
-            this.path.Add(line);
+            indicators.Add(line);
             line.transform.parent = lines.transform;
         }
     }
 
-    public void GenerateAndShowPath(CharacterMoveBehaviour movement)
+    
+    public Vector3 CalcWorldPosFromCoords(int X, int Y)
     {
-        if (originTileTB == null || destTileTB == null)
-        {
-            DrawPath(new List<Tile>());
-            return;
-        }
-
-        var path = PathFinder.FindPath(originTileTB.GridTile, destTileTB.GridTile);
-        DrawPath(path);
-        movement.StartMoving(path.ToList());
+        //y / 2 is added to convert coordinates from straight axis coordinate system to squiggly axis system
+        Vector2 gridPos = new Vector2(X + Y / 2, Y);
+        return CalcWorldCoord(gridPos);
     }
 
-    public static float calcDistance(Tile tile, Tile destTile)
+    public TileBehaviour GetTile(int x, int y)
+    {
+        return Board[new Point(x, y)];
+    }
+
+
+    void SetSizes()
+    {
+        hexSizeX = Hex.GetComponent<Renderer>().bounds.size.x;
+        hexSizeY = Hex.GetComponent<Renderer>().bounds.size.y;
+        hexSizeZ = Hex.GetComponent<Renderer>().bounds.size.z;
+        groundSizeX = Ground.GetComponent<Renderer>().bounds.size.x;
+        groundSizeY = Ground.GetComponent<Renderer>().bounds.size.y;
+        groundSizeZ = Ground.GetComponent<Renderer>().bounds.size.z;
+    }
+
+    Vector2 CalcGridSize()
+    {
+        float sideLength = hexSizeZ / 2;
+        int nrOfSides = (int)(groundSizeZ / sideLength + 0.00005f);
+        int nrOfZHexes = (int)(nrOfSides * 2 / 3);
+        if (nrOfZHexes % 2 == 0
+            && (nrOfSides + 0.5f) * sideLength > groundSizeZ)
+            nrOfZHexes--;
+
+        return new Vector2((int)(groundSizeX / hexSizeX), nrOfZHexes);
+    }
+
+    Vector3 CalcInitPos()
+    {
+        Vector3 initPos;
+        initPos = new Vector3(hexSizeX / 2 - groundSizeX / 2,
+            groundSizeY / 2 + hexSizeY / 2, groundSizeZ / 2 - hexSizeZ / 2);
+
+        return initPos;
+    }
+
+    Vector3 CalcWorldCoord(Vector2 gridPos)
+    {
+        Vector3 initPos = CalcInitPos();
+        float offset = 0;
+        if (gridPos.y % 2 != 0)
+            offset = hexSizeX / 2;
+        float x = gridPos.x * hexSizeX + initPos.x + offset;
+        float z = initPos.z - gridPos.y * hexSizeZ * 0.75f;
+        float y = groundSizeY / 2 + 0.137f;
+        return new Vector3(x, y, z);
+    }
+
+    #region not used
+    private static float CalcDistance(Tile tile, Tile destTile)
     {
         float dx = Mathf.Abs(destTile.X - tile.X);
         float dy = Mathf.Abs(destTile.Y - tile.Y);
@@ -167,10 +144,8 @@ public class GridBoard : MonoBehaviour
         return Mathf.Max(dx, dy, dz);
     }
 
-    public void setGroundSize(float width, float height)
+    private void setGroundSize(float width, float height)
     {
-        destTileTB = null;
-        originTileTB = null;
         Destroy(GameObject.Find("Lines"));
         Destroy(GameObject.Find("HexGrid"));
         Vector3 groundScale = Ground.transform.localScale;
@@ -178,54 +153,20 @@ public class GridBoard : MonoBehaviour
         Ground.transform.localScale = groundSize;
         Vector2 textureTiling = new Vector2(width * 2, height * 2);
         Ground.GetComponent<Renderer>().material.mainTextureScale = textureTiling;
-        setSizes();
-        createGrid();
+        SetSizes();
+        CreateGrid();
     }
 
-    public void OriginTileChanged(TileBehaviour tileBehaviour)
+    private Vector2 calcGridPos(Vector3 coord)
     {
-        //deselect origin tile if user clicks on current origin tile
-        if (tileBehaviour == originTileTB)
-        {
-            originTileTB = null;
-            tileBehaviour.Reset();
-            return;
-        }
-        //if origin tile is not specified already mark this tile as origin
-        originTileTB = tileBehaviour;
-        tileBehaviour.SetAsOrigin();
+        Vector3 initPos = CalcInitPos();
+        Vector2 gridPos = new Vector2();
+        float offset = 0;
+        gridPos.y = Mathf.RoundToInt((initPos.z - coord.z) / (hexSizeZ * 0.75f));
+        if (gridPos.y % 2 != 0)
+            offset = hexSizeX / 2;
+        gridPos.x = Mathf.RoundToInt((coord.x - initPos.x - offset) / hexSizeX);
+        return gridPos;
     }
-
-    public void DestTileChanged(TileBehaviour tileBehaviour)
-    {
-        //deselect destination tile if user clicks on current destination tile
-        if (tileBehaviour == destTileTB)
-        {
-            destTileTB = null;
-            tileBehaviour.Reset();
-            return;
-        }
-        //if there was other tile marked as destination, change its material to default (fully transparent) one
-        if (destTileTB != null)
-            destTileTB.Reset();
-        destTileTB = tileBehaviour;
-        //tileBehaviour.ChangeColor(Color.blue);
-    }
-
-    public void DestinationReached()
-    {
-        originTileTB.Reset();
-        originTileTB = destTileTB;
-
-        originTileTB.SetAsOrigin();
-        destTileTB = null;
-        //GenerateAndShowPath();
-    }
-
-    public Vector3 CalcWorldPosFromCoords(int X, int Y)
-    {
-        //y / 2 is added to convert coordinates from straight axis coordinate system to squiggly axis system
-        Vector2 gridPos = new Vector2(X + Y / 2, Y);
-        return CalcWorldCoord(gridPos);
-    }
+    #endregion
 }

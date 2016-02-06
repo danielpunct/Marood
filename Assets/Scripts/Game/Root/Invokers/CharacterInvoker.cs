@@ -20,15 +20,8 @@ namespace Assets.Scripts.Game
             var go = Instantiate(Resources.Load<GameObject>(invokerTag.Character));
 
             var cm = go.AddComponent<CharacterManager>();
-            go.AddComponent<CharacterMoveBehaviour>();
-            go.AddComponent<CharacterVisualization>();
 
-            var t = go.transform;
-            t.localPosition = boardGO.CalcWorldPosFromCoords(invokerTag.X, invokerTag.Y);
-            t.localRotation = Quaternion.identity;
-            t.localScale = Vector3.one;
-            t.SetParent(boardGO.transform);
-            go.layer = boardGO.gameObject.layer;
+            cm.Init(GridBoard.Instance.GetTile(invokerTag.X, invokerTag.Y).GridTile);
         }
     }
 

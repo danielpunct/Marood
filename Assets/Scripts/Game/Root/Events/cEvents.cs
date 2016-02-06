@@ -8,5 +8,4 @@ class cEvents
 
     //GAME
     public const string INVOKE_CHARACTER = "InvokeCharacter";
-
 }

@@ -6,15 +6,16 @@ class CharacterVisualization : MonoBehaviour
     public int RotationSpeed { get; set; }
     public static float MinNextTileDist { get; set; }
 
-CharacterMoveBehaviour characterMoveBehaviour;
+    CharacterMoveBehaviour characterMoveBehaviour;
+
     Transform myTransform;
 
     void Awake()
     {
         myTransform = transform;
-        Speed = 15;
+        Speed = 4;
         RotationSpeed = 2;
-        MinNextTileDist = 0.1f;
+        MinNextTileDist = 0.5f;
     }
 
     void Start()
@@ -27,19 +28,16 @@ CharacterMoveBehaviour characterMoveBehaviour;
         if (!characterMoveBehaviour.IsMoving)
             return;
         //if the distance between the character and the center of the next tile is short enough
-        var position_plane = characterMoveBehaviour.NextTilePos;
+        var position_plane = characterMoveBehaviour.NextDestination;
         position_plane.y = 0;
         var my_position_plane = transform.position;
         my_position_plane.y = 0;
-        if ((position_plane - my_position_plane).sqrMagnitude < MinNextTileDist * MinNextTileDist)
+        if ((position_plane - my_position_plane).magnitude < MinNextTileDist )
         {
-            if(characterMoveBehaviour.CheckDestination())
-            {
-                return;
-            }
+            characterMoveBehaviour.MoveDestinationReached();
         }
 
-        MoveTowards(characterMoveBehaviour.NextTilePos);
+        MoveTowards(characterMoveBehaviour.NextDestination);
     }
 
     void MoveTowards(Vector3 position)
@@ -53,7 +51,7 @@ CharacterMoveBehaviour characterMoveBehaviour;
         dir = position - myPos;
 
         // Rotate towards the target
-        myTransform.rotation = Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(dir), rotationSpeed * Time.deltaTime);
+        myTransform.rotation = Quaternion.Lerp(myTransform.rotation, Quaternion.LookRotation(dir), rotationSpeed * Time.deltaTime);
 
         // Modify speed so we slow down when we are not facing the target
         Vector3 forwardDir = myTransform.forward;

@@ -13,7 +13,7 @@ namespace Assets.Scripts.Game
 
         void Start()
         {
-            EventManager.TriggerEvent(cEvents.INVOKE_CHARACTER, new CharacterInvokerTag() { Character = "Character", X = -5, Y = 14 } );
+            EventManager.TriggerEvent(cEvents.INVOKE_CHARACTER, new CharacterInvokerTag() { Character = "Character", X = -3, Y = 6 } );
         }
     }
 }
