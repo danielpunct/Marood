@@ -60,12 +60,6 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -75,12 +69,13 @@
     <Compile Include="Assets\Scripts\Game\Character\CharacterMoveBehaviour.cs" />
     <Compile Include="Assets\Scripts\Game\Character\CharacterVisualization.cs" />
     <Compile Include="Assets\Scripts\Game\Grid\GridManager.cs" />
-    <Compile Include="Assets\Scripts\Game\Root\Invokers\CharacterInvoker.cs" />
-    <Compile Include="Assets\Scripts\Game\Root\Events\cEvents.cs" />
     <Compile Include="Assets\Scripts\Game\Root\Events\EventManager.cs" />
+    <Compile Include="Assets\Scripts\Game\Root\Events\cEvents.cs" />
     <Compile Include="Assets\Scripts\Game\Root\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Game\Tile\TileBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Game\Root\Invokers\CharacterInvoker.cs" />
+    <Compile Include="Assets\Scripts\Game\Tile\TileInteractionBehaviour.cs" />
     <Compile Include="Assets\Scripts\Game\Tile\TileInputHandler.cs" />
+    <Compile Include="Assets\Scripts\Game\Tile\TileManager.cs" />
     <Compile Include="Assets\Scripts\Game\Tile\TileVisualization.cs" />
     <Compile Include="Assets\Scripts\Modules\AStar\Path.cs" />
     <Compile Include="Assets\Scripts\Modules\AStar\PathFinder.cs" />
@@ -97,6 +92,5 @@
   <ItemGroup>
     <None Include="Assets\Art\3DModels\Raw Mocap Data\Animations\_CompleteAnimationList.txt" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

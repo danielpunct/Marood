@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(TileVisualization))]
-public class TileBehaviour : MonoBehaviour
+public class TileInteractionBehaviour : MonoBehaviour
 {
     public Tile GridTile { get; private set; }
     TileVisualization tileVisualization;
+    public TileState StateTile { get; private set; }
 
     void Awake()
     {
+        StateTile = TileState.Inactive;
         tileVisualization = GetComponent<TileVisualization>();
+        EventManager.StartListening(cEvents.TILE_ACTIVATED, OnTileActivated);
     }
     public void UserHoverStart()
     {
@@ -23,17 +26,19 @@ public class TileBehaviour : MonoBehaviour
 
     public void UserHoverLeft()
     {
-        GridBoard.Instance.selectedTile = null;
-       // if (GridTile.Passable && this != GridBoard.Instance.destTileTB
-       //     && this != GridBoard.Instance.originTileTB)
-      //  {
-            tileVisualization.Reset();
-       // }
+      //  GridBoard.Instance.selectedTile = null;
+      // // if (GridTile.Passable && this != GridBoard.Instance.destTileTB
+      // //     && this != GridBoard.Instance.originTileTB)
+      ////  {
+      //      tileVisualization.Reset();
+      //  // }
+      //  tileVisualization.SetVisualDefaultState();
+
     }
 
     public void UserActivate()
     {
-        GridTile.Passable = true;
+        //GridTile.Passable = true;
 
         //TileBehaviour originTileTB = GridBoard.Instance.originTileTB;
         ////if user clicks on origin tile or origin tile is not assigned yet
@@ -43,6 +48,34 @@ public class TileBehaviour : MonoBehaviour
         //    GridBoard.Instance.DestTileChanged(this);
         
         EventManager.TriggerEvent(cEvents.TILE_ACTIVATED, this);
+    }
+
+    void OnTileActivated(object tag)
+    {
+        var tile = tag as TileInteractionBehaviour;
+
+        if (tile == this)
+        {
+            switch (StateTile)
+            {
+                case TileState.Inactive:
+                    tileVisualization.SetVisualActiveState();
+                    StateTile = TileState.Active;
+                    break;
+                case TileState.Active:
+                    tileVisualization.SetVisualDefaultState();
+                    StateTile = TileState.Inactive;
+                    break;
+            }
+        }
+        else
+        {
+            if (StateTile == TileState.Active)
+            {
+                tileVisualization.SetVisualDefaultState();
+                StateTile = TileState.Inactive;
+            }
+        }
     }
 
     public void InitTile(int x, int y, string text)
@@ -61,3 +94,5 @@ public class TileBehaviour : MonoBehaviour
         tileVisualization.HighlightHover();
     }
 }
+
+public enum TileState { Inactive, Active }

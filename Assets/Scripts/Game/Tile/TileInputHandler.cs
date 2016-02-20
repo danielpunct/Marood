@@ -2,21 +2,16 @@
 
 class TileInputHandler : MonoBehaviour
 {
-    TileBehaviour tileBehaviour;
-
-    void Awake()
-    {
-        tileBehaviour = GetComponent<TileBehaviour>();
-    }
+    public TileInteractionBehaviour TileBehaviour { get; set; }
 
     void OnMouseEnter()
     {
-        tileBehaviour.UserHoverStart();
+        TileBehaviour.UserHoverStart();
     }
 
     void OnMouseExit()
     {
-        tileBehaviour.UserHoverLeft();
+        TileBehaviour.UserHoverLeft();
     }
 
     void OnMouseOver()
@@ -38,7 +33,7 @@ class TileInputHandler : MonoBehaviour
         //if user left-clicks the tile
         if (Input.GetMouseButtonUp(0))
         {
-            tileBehaviour.UserActivate();
+            TileBehaviour.UserActivate();
         }
     }
 }

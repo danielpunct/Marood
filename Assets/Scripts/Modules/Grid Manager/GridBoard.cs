@@ -9,18 +9,16 @@ public class GridBoard : MonoBehaviour
     public GameObject Line;
 
     public Tile selectedTile = null;
-    public Dictionary<Point, TileBehaviour> Board;
+    public Dictionary<Point, TileInteractionBehaviour> Board;
 
     float hexSizeX, hexSizeY, hexSizeZ, groundSizeX, groundSizeY, groundSizeZ;
     public static GridBoard Instance = null;
-    //List<GameObject> path;
 
     void Awake()
     {
         Instance = this;
         SetSizes();
         CreateGrid();
-        //GenerateAndShowPath();
     }
 
     void CreateGrid()
@@ -28,7 +26,7 @@ public class GridBoard : MonoBehaviour
         Vector2 gridSize = CalcGridSize();
         GameObject hexGridGO = new GameObject("HexGrid");
         hexGridGO.transform.SetParent(transform);
-        Board = new Dictionary<Point, TileBehaviour>();
+        Board = new Dictionary<Point, TileInteractionBehaviour>();
 
         for (float y = 0; y < gridSize.y; y++)
         {
@@ -41,7 +39,7 @@ public class GridBoard : MonoBehaviour
                 Vector2 gridPos = new Vector2(x, y);
                 hex.transform.position = CalcWorldCoord(gridPos);
                 hex.transform.parent = hexGridGO.transform;
-                var tb = hex.GetComponent<TileBehaviour>();
+                var tb = hex.GetComponent<TileInteractionBehaviour>();
 
                 tb.InitTile((int)x - (int)(y / 2), (int)y, (int)x - (int)(y / 2) + ":" + (int)y);
               
@@ -49,7 +47,7 @@ public class GridBoard : MonoBehaviour
             }
         }
         bool equalLineLengths = (gridSize.x + 0.5) * hexSizeX <= groundSizeX;
-        foreach (TileBehaviour tb in Board.Values)
+        foreach (TileInteractionBehaviour tb in Board.Values)
             tb.GridTile.FindNeighbours(Board, gridSize, equalLineLengths);
     }
 
@@ -83,7 +81,7 @@ public class GridBoard : MonoBehaviour
         return CalcWorldCoord(gridPos);
     }
 
-    public TileBehaviour GetTile(int x, int y)
+    public TileInteractionBehaviour GetTile(int x, int y)
     {
         return Board[new Point(x, y)];
     }
@@ -91,9 +89,11 @@ public class GridBoard : MonoBehaviour
 
     void SetSizes()
     {
-        hexSizeX = Hex.GetComponent<Renderer>().bounds.size.x;
-        hexSizeY = Hex.GetComponent<Renderer>().bounds.size.y;
-        hexSizeZ = Hex.GetComponent<Renderer>().bounds.size.z;
+        var tilebounds = Hex.GetComponent<TileVisualization>().GetBounds();
+
+        hexSizeX = tilebounds.x;
+        hexSizeY = tilebounds.y;
+        hexSizeZ = tilebounds.z;
         groundSizeX = Ground.GetComponent<Renderer>().bounds.size.x;
         groundSizeY = Ground.GetComponent<Renderer>().bounds.size.y;
         groundSizeZ = Ground.GetComponent<Renderer>().bounds.size.z;

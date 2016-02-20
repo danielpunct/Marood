@@ -63,7 +63,6 @@ class CharacterVisualization : MonoBehaviour
 
         if (speedModifier > speedModMin)
         {
-
             CC.SimpleMove(forwardDir);
             //if (!monster && !GetComponent<Animation>()["walk"].enabled)
             //    GetComponent<Animation>().CrossFade("walk");
@@ -75,5 +74,4 @@ class CharacterVisualization : MonoBehaviour
         //else if (monster && !GetComponent<Animation>()["IdleFeM"].enabled)
         //    GetComponent<Animation>().CrossFade("IdleFeM");
     }
-
 }

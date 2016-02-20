@@ -6,16 +6,15 @@ class BoardMovement
 {
     public Vector3 NextTilePos { get; private set; }
     public bool IsMoving { get; set; }
+    public Tile CurrentTile { get; private set; }
 
-    Tile currentTile;
     List<Tile> path;
     List<GameObject> indicators;
-    TileBehaviour originTileTB = null;
-    TileBehaviour destTileTB = null;
+    TileInteractionBehaviour originTileTB = null;
+    TileInteractionBehaviour destTileTB = null;
 
     public BoardMovement()
     {
-        EventManager.StartListening(cEvents.TILE_ACTIVATED, OnTileActivated);
         indicators = new List<GameObject>();
     }
 
@@ -31,9 +30,10 @@ class BoardMovement
         var tb = GridBoard.Instance.GetTile(x, y);
         tb.SetAsOrigin();
         originTileTB = tb;
+        CurrentTile = tb.GridTile;
     }
 
-    public void DestTileChanged(TileBehaviour tileBehaviour)
+    public void DestTileChanged(TileInteractionBehaviour tileBehaviour)
     {
         //deselect destination tile if user clicks on current destination tile
         if (tileBehaviour == destTileTB)
@@ -49,7 +49,7 @@ class BoardMovement
         //tileBehaviour.ChangeColor(Color.blue);
     }
 
-    public void OriginTileChanged(TileBehaviour tileBehaviour)
+    public void OriginTileChanged(TileInteractionBehaviour tileBehaviour)
     {
         //deselect origin tile if user clicks on current origin tile
         if (tileBehaviour == originTileTB)
@@ -76,9 +76,8 @@ class BoardMovement
         StartMoving(path.ToList());
     }
 
-    void OnTileActivated(object tag)
+    public void SetNewDestination(TileInteractionBehaviour tile)
     {
-        var tile = tag as TileBehaviour;
         if (tile.GridTile == originTileTB.GridTile) //|| originTileTB == null)
             OriginTileChanged(tile);
         else
@@ -93,8 +92,8 @@ class BoardMovement
         if (path.Count == 0)
             return;
         //the first tile we need to reach is actually in the end of the list just before the one the character is currently on
-        currentTile = path[path.Count - 2];
-        NextTilePos = GetWorldTilePos(currentTile);
+        CurrentTile = path[path.Count - 2];
+        NextTilePos = GetWorldTilePos(CurrentTile);
         IsMoving = true;
         this.path = path;
     }
@@ -102,7 +101,7 @@ class BoardMovement
     public bool CheckPathDestination()
     {
         //if we reached the destination tile
-        if (path.IndexOf(currentTile) == 0)
+        if (path.IndexOf(CurrentTile) == 0)
         {
             IsMoving = false;
             //GetComponent<Animation>().CrossFade("idle");
@@ -113,8 +112,8 @@ class BoardMovement
         else
         {
             //curTile becomes the next one
-            currentTile = path[path.IndexOf(currentTile) - 1];
-            NextTilePos = GetWorldTilePos(currentTile);
+            CurrentTile = path[path.IndexOf(CurrentTile) - 1];
+            NextTilePos = GetWorldTilePos(CurrentTile);
             return false;
         }
     }

@@ -9,6 +9,14 @@ class TileVisualization : MonoBehaviour
     public Material defaultMaterial;
     //Slightly transparent orange
     Color orange = new Color(255f / 255f, 127f / 255f, 0, 127f / 255f);
+    public Renderer renderer;
+
+    Animator animatorComponent;
+
+    void Awake()
+    {
+        animatorComponent = GetComponent<Animator>();
+    }
 
     public void HighlightHover()
     {
@@ -17,8 +25,8 @@ class TileVisualization : MonoBehaviour
 
     public void Reset()
     {
-        this.GetComponent<Renderer>().material = defaultMaterial;
-        this.GetComponent<Renderer>().material.color = Color.white;
+        renderer.material = defaultMaterial;
+        renderer.material.color = Color.white;
     }
 
 
@@ -27,8 +35,8 @@ class TileVisualization : MonoBehaviour
         //If transparency is not set already, set it to default value
         if (color.a == 1)
             color.a = 200f / 255f;
-        GetComponent<Renderer>().material = OpaqueMaterial;
-        GetComponent<Renderer>().material.color = color;
+        renderer.material = OpaqueMaterial;
+        renderer.material.color = color;
     }
 
 
@@ -39,11 +47,18 @@ class TileVisualization : MonoBehaviour
 
     public void SetVisualDefaultState()
     {
-        GetComponent<Renderer>().material = defaultMaterial;
+        //GetComponent<Renderer>().material = defaultMaterial;
+        animatorComponent.SetBool("IsActive", false);
     }
 
     public void SetVisualActiveState()
     {
-        GetComponent<Renderer>().material.color = orange;
+        //GetComponent<Renderer>().material.color = orange;
+        animatorComponent.SetBool("IsActive", true);
+    }
+
+    public Vector3 GetBounds()
+    {
+        return renderer.bounds.size;
     }
 }

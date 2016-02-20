@@ -41,4 +41,14 @@ public class CharacterMoveBehaviour : MonoBehaviour
 
         boardMovement.SetOrigin(x, y);
     }
+
+    public void SetNewDestination(TileInteractionBehaviour tile)
+    {
+        boardMovement.SetNewDestination(tile);
+    }
+
+    public bool IsCurrentTile(Tile tile)
+    {
+        return tile.Location.Equals(boardMovement.CurrentTile.Location);
+    }
 }

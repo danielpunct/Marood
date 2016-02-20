@@ -4,12 +4,8 @@ namespace Assets.Scripts.Game
 {
     class CharacterInvoker : MonoBehaviour
     {
-        GridBoard boardGO;
-
         void Awake()
         {
-            boardGO = GameObject.FindObjectOfType<GridBoard>();
-
             EventManager.StartListening(cEvents.INVOKE_CHARACTER, OnInvokeCharacter);
         }
 
