@@ -2,7 +2,6 @@
 
 public class TileManager : MonoBehaviour
 {
-
     TileInteractionBehaviour tileBehaviour;
 
     void Awake()
@@ -10,11 +9,6 @@ public class TileManager : MonoBehaviour
         tileBehaviour = gameObject.AddComponent<TileInteractionBehaviour>();
         var tileViz = GetComponent<TileVisualization>();
         tileViz.renderer.gameObject.AddComponent<TileInputHandler>().TileBehaviour = tileBehaviour;
-
-
     }
-
-
-   
 }
 

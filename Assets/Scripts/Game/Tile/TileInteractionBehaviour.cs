@@ -11,8 +11,9 @@ public class TileInteractionBehaviour : MonoBehaviour
     {
         StateTile = TileState.Inactive;
         tileVisualization = GetComponent<TileVisualization>();
-        EventManager.StartListening(cEvents.TILE_ACTIVATED, OnTileActivated);
+        EventManager.StartListening(cEvents.TILE_USER_CLIK, OnTileUserClick);
     }
+
     public void UserHoverStart()
     {
         GridBoard.Instance.selectedTile = GridTile;
@@ -46,11 +47,11 @@ public class TileInteractionBehaviour : MonoBehaviour
         //    GridBoard.Instance.OriginTileChanged(this);
         //else
         //    GridBoard.Instance.DestTileChanged(this);
-        
-        EventManager.TriggerEvent(cEvents.TILE_ACTIVATED, this);
+
+        EventManager.TriggerEvent(cEvents.TILE_USER_CLIK, this);
     }
 
-    void OnTileActivated(object tag)
+    void OnTileUserClick(object tag)
     {
         var tile = tag as TileInteractionBehaviour;
 
@@ -61,10 +62,14 @@ public class TileInteractionBehaviour : MonoBehaviour
                 case TileState.Inactive:
                     tileVisualization.SetVisualActiveState();
                     StateTile = TileState.Active;
+                    EventManager.TriggerEvent(cEvents.TILE_ACTIVATED, this);
+
                     break;
                 case TileState.Active:
                     tileVisualization.SetVisualDefaultState();
                     StateTile = TileState.Inactive;
+                    EventManager.TriggerEvent(cEvents.TILE_DEACTIVATED, this);
+
                     break;
             }
         }

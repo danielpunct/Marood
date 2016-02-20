@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Game
-{
     class CharacterInvoker : MonoBehaviour
     {
         void Awake()
@@ -27,4 +25,3 @@ namespace Assets.Scripts.Game
         public int Y;
         public string Character;
     }
-}

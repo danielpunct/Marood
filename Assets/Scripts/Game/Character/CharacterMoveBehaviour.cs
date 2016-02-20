@@ -4,7 +4,7 @@ using UnityEngine;
 public class CharacterMoveBehaviour : MonoBehaviour
 {
 
-    CharacterVisualization characterVisualization;
+    public CharacterVisualization CharacterVisualization { get; private set; } 
 
     BoardMovement boardMovement;
 
@@ -27,7 +27,7 @@ public class CharacterMoveBehaviour : MonoBehaviour
         //all the animations by default should loop
         //GetComponent<Animation>().wrapMode = WrapMode.Loop;
         //caching the transform for better performance
-        characterVisualization = GetComponent<CharacterVisualization>();
+        CharacterVisualization = GetComponent<CharacterVisualization>();
     }
 
     public void Init(int x, int y)

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-class CharacterVisualization : MonoBehaviour
+public class CharacterVisualization : MonoBehaviour
 {
     public int Speed { get; set; }
     public int RotationSpeed { get; set; }
@@ -9,9 +9,11 @@ class CharacterVisualization : MonoBehaviour
     CharacterMoveBehaviour characterMoveBehaviour;
 
     Transform myTransform;
+    Animator animatorComponent;
 
     void Awake()
     {
+        animatorComponent = GetComponent<Animator>();
         myTransform = transform;
         Speed = 4;
         RotationSpeed = 2;
@@ -73,5 +75,15 @@ class CharacterVisualization : MonoBehaviour
         //    GetComponent<Animation>().CrossFade("idle");
         //else if (monster && !GetComponent<Animation>()["IdleFeM"].enabled)
         //    GetComponent<Animation>().CrossFade("IdleFeM");
+    }
+
+    public void SetActiveState()
+    {
+        animatorComponent.SetBool("IsActive", true);
+    }
+
+    public void SetInactiveState()
+    {
+        animatorComponent.SetBool("IsActive", false);
     }
 }

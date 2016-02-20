@@ -1,21 +1,69 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-namespace Assets.Scripts.Game
+public class GameManager : MonoBehaviour
 {
-    class GameManager : MonoBehaviour
+    public static GameManager Instance { get; private set; }
+    List<CharacterManager> characters;
+
+    void Awake()
     {
-        void Awake()
+        Instance = this;
+        characters = new List<CharacterManager>();
+        gameObject.AddComponent<EventManager>();
+        gameObject.AddComponent<CharacterInvoker>();
+
+        EventManager.StartListening(cEvents.TILE_ACTIVATED, OnTileActivated);
+        EventManager.StartListening(cEvents.TILE_DEACTIVATED, OnTileDeactivated);
+    }
+
+    void Start()
+    {
+        EventManager.TriggerEvent(cEvents.INVOKE_CHARACTER, new CharacterInvokerTag() { Character = "Character", X = -3, Y = 6 });
+        EventManager.TriggerEvent(cEvents.INVOKE_CHARACTER, new CharacterInvokerTag() { Character = "Character", X = -3, Y = 8 });
+    }
+
+    public void AddCharacter(CharacterManager character)
+    {
+        characters.Add(character);
+    }
+
+
+    void OnTileActivated(object tag)
+    {
+        var tile = tag as TileInteractionBehaviour;
+
+        var tileSelectedCharacter = characters.FirstOrDefault(x => x.CharacterMoveBehaviour.IsCurrentTile(tile.GridTile));
+
+        if (tileSelectedCharacter == null)
         {
-            gameObject.AddComponent<EventManager>();
-            gameObject.AddComponent<CharacterInvoker>();
+            if (PlayerManager.SelectedCharacter != null)
+            {
+                PlayerManager.SelectedCharacter.CharacterMoveBehaviour.SetNewDestination(tile);
+            }
+        }
+        else
+        {
+            PlayerManager.SelectedCharacter = tileSelectedCharacter;
         }
 
-        void Start()
-        {
-            EventManager.TriggerEvent(cEvents.INVOKE_CHARACTER, new CharacterInvokerTag() { Character = "Character", X = -3, Y = 6 } );
+    }
 
-            EventManager.TriggerEvent(cEvents.INVOKE_CHARACTER, new CharacterInvokerTag() { Character = "Character", X = -3, Y = 8 } );
+    void OnTileDeactivated(object tag)
+    {
+        var tile = tag as TileInteractionBehaviour;
+
+        var tileSelectedCharacter = characters.FirstOrDefault(x => x.CharacterMoveBehaviour.IsCurrentTile(tile.GridTile));
+
+        if (tileSelectedCharacter == null)
+        {
+
+        }
+        else
+        {
+            PlayerManager.SelectedCharacter = null;
         }
     }
 }

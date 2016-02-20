@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Game\Root\Events\cEvents.cs" />
     <Compile Include="Assets\Scripts\Game\Root\GameManager.cs" />
     <Compile Include="Assets\Scripts\Game\Root\Invokers\CharacterInvoker.cs" />
+    <Compile Include="Assets\Scripts\Game\Root\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Game\Tile\TileInteractionBehaviour.cs" />
     <Compile Include="Assets\Scripts\Game\Tile\TileInputHandler.cs" />
     <Compile Include="Assets\Scripts\Game\Tile\TileManager.cs" />
