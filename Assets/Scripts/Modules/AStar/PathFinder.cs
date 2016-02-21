@@ -3,13 +3,13 @@ using UnityEngine;
 
 public static class PathFinder
 {
-    public static Path<Tile> FindPath(
-        Tile start,
-        Tile destination)
+    public static Path<TileInteractionBehaviour> FindPath(
+        TileInteractionBehaviour start,
+        TileInteractionBehaviour destination)
     {
-        var closed = new HashSet<Tile>();
-        var queue = new PriorityQueue<double, Path<Tile>>();
-        queue.Enqueue(0, new Path<Tile>(start));
+        var closed = new HashSet<TileInteractionBehaviour>();
+        var queue = new PriorityQueue<double, Path<TileInteractionBehaviour>>();
+        queue.Enqueue(0, new Path<TileInteractionBehaviour>(start));
 
         while (!queue.IsEmpty)
         {
@@ -22,10 +22,10 @@ public static class PathFinder
 
             closed.Add(path.LastStep);
             //Debug.Log(" last step: " + path.LastStep.X+" "+path.LastStep.Y);
-            foreach (Tile n in path.LastStep.Neighbours)
+            foreach (TileInteractionBehaviour n in path.LastStep.GridTile.Neighbours)
             {
                 //Debug.Log(" nb: " + n.X + " " + n.Y);
-                double d = distance(path.LastStep, n);
+                double d = 1;// distance(path.LastStep.GridTile, n);
                 var newPath = path.AddStep(n, d);
                 queue.Enqueue(newPath.TotalCost + estimate(n, destination), 
                     newPath);
@@ -41,12 +41,12 @@ public static class PathFinder
         return 1;
     }
 
-    static double estimate(Tile tile, Tile destTile)
+    static double estimate(TileInteractionBehaviour tile, TileInteractionBehaviour destTile)
     {
-        float dx = Mathf.Abs(destTile.X - tile.X);
-        float dy = Mathf.Abs(destTile.Y - tile.Y);
-        int z1 = -(tile.X + tile.Y);
-        int z2 = -(destTile.X + destTile.Y);
+        float dx = Mathf.Abs(destTile.GridTile.X - tile.GridTile.X);
+        float dy = Mathf.Abs(destTile.GridTile.Y - tile.GridTile.Y);
+        int z1 = -(tile.GridTile.X + tile.GridTile.Y);
+        int z2 = -(destTile.GridTile.X + destTile.GridTile.Y);
         float dz = Mathf.Abs(z2 - z1);
 
         return Mathf.Max(dx, dy, dz);

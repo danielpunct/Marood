@@ -6,79 +6,80 @@ class BoardMovement
 {
     public Vector3 NextTilePos { get; private set; }
     public bool IsMoving { get; set; }
-    public Tile CurrentTile { get; private set; }
 
-    List<Tile> path;
+    List<TileInteractionBehaviour> path;
     List<GameObject> indicators;
-    TileInteractionBehaviour originTileTB = null;
-    TileInteractionBehaviour destTileTB = null;
+    public TileInteractionBehaviour CurrentTile { get; private set; }
+    public TileInteractionBehaviour OriginTileTB { get; private set; }
+    public TileInteractionBehaviour DestTileTB { get; private set; }
 
     public BoardMovement()
     {
+        OriginTileTB = null;
         indicators = new List<GameObject>();
     }
 
     //!! to use
     public void Reset()
     {
-        destTileTB = null;
-        originTileTB = null;
+        DestTileTB = null;
+        OriginTileTB = null;
     }
 
     public void SetOrigin(int x, int y)
     {
         var tb = GridBoard.Instance.GetTile(x, y);
         tb.SetAsOrigin();
-        originTileTB = tb;
-        CurrentTile = tb.GridTile;
+        OriginTileTB = tb;
+        CurrentTile = tb;
     }
 
     public void DestTileChanged(TileInteractionBehaviour tileBehaviour)
     {
         //deselect destination tile if user clicks on current destination tile
-        if (tileBehaviour == destTileTB)
+        if (tileBehaviour == DestTileTB)
         {
-            destTileTB = null;
+            DestTileTB = null;
             tileBehaviour.Reset();
             return;
         }
         //if there was other tile marked as destination, change its material to default (fully transparent) one
-        if (destTileTB != null)
-            destTileTB.Reset();
-        destTileTB = tileBehaviour;
+        if (DestTileTB != null)
+            DestTileTB.Reset();
+        DestTileTB = tileBehaviour;
         //tileBehaviour.ChangeColor(Color.blue);
     }
 
     public void OriginTileChanged(TileInteractionBehaviour tileBehaviour)
     {
         //deselect origin tile if user clicks on current origin tile
-        if (tileBehaviour == originTileTB)
+        if (tileBehaviour == OriginTileTB)
         {
-            originTileTB = null;
+            OriginTileTB = null;
             tileBehaviour.Reset();
             return;
         }
         //if origin tile is not specified already mark this tile as origin
-        originTileTB = tileBehaviour;
+        OriginTileTB = tileBehaviour;
         tileBehaviour.SetAsOrigin();
     }
 
     public void GenerateAndShowPath()
     {
-        if (originTileTB == null || destTileTB == null)
+        if (OriginTileTB == null || DestTileTB == null)
         {
             GridBoard.Instance.ErasePath(indicators);
             return;
         }
 
-        var path = PathFinder.FindPath(originTileTB.GridTile, destTileTB.GridTile);
-        GridBoard.Instance.DrawPath(path, indicators);
+        var path = PathFinder.FindPath(OriginTileTB, DestTileTB);
+        GridBoard.Instance.DrawPath(path.Select(x => x.GridTile).ToList(), indicators);
         StartMoving(path.ToList());
     }
 
     public void SetNewDestination(TileInteractionBehaviour tile)
     {
-        if (tile.GridTile == originTileTB.GridTile) //|| originTileTB == null)
+        if (tile.GridTile == OriginTileTB.GridTile) //|| originTileTB == null)
             OriginTileChanged(tile);
         else
             DestTileChanged(tile);
@@ -87,13 +88,13 @@ class BoardMovement
     }
 
     //method argument is a list of tiles we got from the path finding algorithm
-    public void StartMoving(List<Tile> path)
+    public void StartMoving(List<TileInteractionBehaviour> path)
     {
         if (path.Count == 0)
             return;
         //the first tile we need to reach is actually in the end of the list just before the one the character is currently on
         CurrentTile = path[path.Count - 2];
-        NextTilePos = GetWorldTilePos(CurrentTile);
+        NextTilePos = GetWorldTilePos(CurrentTile.GridTile);
         IsMoving = true;
         this.path = path;
     }
@@ -113,18 +114,18 @@ class BoardMovement
         {
             //curTile becomes the next one
             CurrentTile = path[path.IndexOf(CurrentTile) - 1];
-            NextTilePos = GetWorldTilePos(CurrentTile);
+            NextTilePos = GetWorldTilePos(CurrentTile.GridTile);
             return false;
         }
     }
 
     public void DestinationReached()
     {
-        originTileTB.Reset();
-        originTileTB = destTileTB;
+        OriginTileTB.Reset();
+        OriginTileTB = DestTileTB;
 
-        originTileTB.SetAsOrigin();
-        destTileTB = null;
+        OriginTileTB.SetAsOrigin();
+        DestTileTB = null;
         GridBoard.Instance.ErasePath(indicators);
     }
 

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CharacterMoveBehaviour : MonoBehaviour
 {
@@ -49,6 +48,11 @@ public class CharacterMoveBehaviour : MonoBehaviour
 
     public bool IsCurrentTile(Tile tile)
     {
-        return tile.Location.Equals(boardMovement.CurrentTile.Location);
+        return tile.Location.Equals(boardMovement.CurrentTile.GridTile.Location);
+    }
+
+    public TileInteractionBehaviour GetActiveTile()
+    {
+        return IsMoving ? boardMovement.DestTileTB : boardMovement.CurrentTile;
     }
 }

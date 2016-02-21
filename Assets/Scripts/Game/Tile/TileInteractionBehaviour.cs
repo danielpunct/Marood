@@ -12,6 +12,12 @@ public class TileInteractionBehaviour : MonoBehaviour
         StateTile = TileState.Inactive;
         tileVisualization = GetComponent<TileVisualization>();
         EventManager.StartListening(cEvents.TILE_USER_CLIK, OnTileUserClick);
+
+        EventManager.StartListening(cEvents.TILE_USER_ACTIVATED, OnTileActivated);
+        EventManager.StartListening(cEvents.TILE_USER_DEACTIVATED, OnTileDeactivated);
+
+        EventManager.StartListening(cEvents.TILE_HIGHLIGHTED, OnTileHighlighted);
+        EventManager.StartListening(cEvents.TILE_DEHIGHLIGHTED, OnTileDehighlighted);
     }
 
     public void UserHoverStart()
@@ -21,7 +27,7 @@ public class TileInteractionBehaviour : MonoBehaviour
        // if (GridTile.Passable && this != GridBoard.Instance.destTileTB
         //    && this != GridBoard.Instance.originTileTB)
         //{
-            tileVisualization.HighlightHover();
+           // tileVisualization.HighlightHover();
       //  }
     }
 
@@ -49,10 +55,69 @@ public class TileInteractionBehaviour : MonoBehaviour
         //    GridBoard.Instance.DestTileChanged(this);
 
         EventManager.TriggerEvent(cEvents.TILE_USER_CLIK, this);
+
     }
+
+
+    void OnTileActivated(object tag)
+    {
+        var tile = tag as TileInteractionBehaviour;
+
+        if (this == tile)
+        {
+            tileVisualization.SetVisualActiveState(); 
+            StateTile = TileState.Active;
+        }
+        else
+        {
+            tileVisualization.SetVisualDefaultState();
+            StateTile = TileState.Inactive;
+        }
+    }
+
+    void OnTileDeactivated(object tag)
+    {
+        var tile = tag as TileInteractionBehaviour;
+
+        if (this == tile)
+        {
+            tileVisualization.SetVisualDefaultState();
+            StateTile = TileState.Inactive;
+        }
+    }
+
+    void OnTileHighlighted(object tag)
+    {
+        var tile = tag as TileInteractionBehaviour;
+
+        if (this == tile)
+        {
+            tileVisualization.SetVisualActiveState();
+        }
+        else
+        {
+            tileVisualization.SetVisualDefaultState();
+        }
+    }
+
+    void OnTileDehighlighted(object tag)
+    {
+        var tile = tag as TileInteractionBehaviour;
+
+        if (this == tile)
+        {
+            tileVisualization.SetVisualDefaultState();
+        }
+    }
+
 
     void OnTileUserClick(object tag)
     {
+        if(PlayerManager.SelectedCharacter == null || PlayerManager.SelectedCharacter.InteractionState == CharacterState.Inactive)
+        {
+            return;
+        }
+
         var tile = tag as TileInteractionBehaviour;
 
         if (tile == this)
@@ -60,16 +125,11 @@ public class TileInteractionBehaviour : MonoBehaviour
             switch (StateTile)
             {
                 case TileState.Inactive:
-                    tileVisualization.SetVisualActiveState();
-                    StateTile = TileState.Active;
-                    EventManager.TriggerEvent(cEvents.TILE_ACTIVATED, this);
+                    EventManager.TriggerEvent(cEvents.TILE_USER_ACTIVATED, this);
 
                     break;
                 case TileState.Active:
-                    tileVisualization.SetVisualDefaultState();
-                    StateTile = TileState.Inactive;
-                    EventManager.TriggerEvent(cEvents.TILE_DEACTIVATED, this);
-
+                    EventManager.TriggerEvent(cEvents.TILE_USER_DEACTIVATED, this);
                     break;
             }
         }
@@ -77,8 +137,7 @@ public class TileInteractionBehaviour : MonoBehaviour
         {
             if (StateTile == TileState.Active)
             {
-                tileVisualization.SetVisualDefaultState();
-                StateTile = TileState.Inactive;
+                EventManager.TriggerEvent(cEvents.TILE_USER_DEACTIVATED, this);
             }
         }
     }

@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour
         gameObject.AddComponent<EventManager>();
         gameObject.AddComponent<CharacterInvoker>();
 
-        EventManager.StartListening(cEvents.TILE_ACTIVATED, OnTileActivated);
-        EventManager.StartListening(cEvents.TILE_DEACTIVATED, OnTileDeactivated);
+        EventManager.StartListening(cEvents.TILE_USER_ACTIVATED, OnTileActivated);
+        EventManager.StartListening(cEvents.TILE_USER_DEACTIVATED, OnTileDeactivated);
     }
 
     void Start()
@@ -33,37 +33,33 @@ public class GameManager : MonoBehaviour
 
     void OnTileActivated(object tag)
     {
-        var tile = tag as TileInteractionBehaviour;
+        var tileBehaviour = tag as TileInteractionBehaviour;
 
-        var tileSelectedCharacter = characters.FirstOrDefault(x => x.CharacterMoveBehaviour.IsCurrentTile(tile.GridTile));
+        var tileSelectedCharacter = characters.FirstOrDefault(x => x.IsOnTile(tileBehaviour.GridTile));
 
         if (tileSelectedCharacter == null)
         {
             if (PlayerManager.SelectedCharacter != null)
             {
-                PlayerManager.SelectedCharacter.CharacterMoveBehaviour.SetNewDestination(tile);
+                PlayerManager.SelectedCharacter.SetNewDestination(tileBehaviour);
             }
-        }
-        else
-        {
-            PlayerManager.SelectedCharacter = tileSelectedCharacter;
         }
 
     }
 
     void OnTileDeactivated(object tag)
     {
-        var tile = tag as TileInteractionBehaviour;
+        //var tile = tag as TileInteractionBehaviour;
 
-        var tileSelectedCharacter = characters.FirstOrDefault(x => x.CharacterMoveBehaviour.IsCurrentTile(tile.GridTile));
+        //var tileSelectedCharacter = characters.FirstOrDefault(x => x.IsOnTile(tile.GridTile));
 
-        if (tileSelectedCharacter == null)
-        {
+        //if (tileSelectedCharacter == null)
+        //{
 
-        }
-        else
-        {
-            PlayerManager.SelectedCharacter = null;
-        }
+        //}
+        //else
+        //{
+        //    PlayerManager.SelectedCharacter = null;
+        //}
     }
 }

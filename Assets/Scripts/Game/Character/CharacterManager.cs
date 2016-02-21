@@ -2,82 +2,36 @@
 
 public class CharacterManager : MonoBehaviour
 {
-    public CharacterPlayerState StateUser { get; set; }
-
-    public CharacterMoveBehaviour CharacterMoveBehaviour { get; private set; }
+    CharacterMoveBehaviour characterMoveBehaviour;
+    CharacterInteractionBehaviour characterInteractionBehaviour;
 
     void Awake()
     {
         GameManager.Instance.AddCharacter(this);
-        CharacterMoveBehaviour = gameObject.AddComponent<CharacterMoveBehaviour>();
+        characterMoveBehaviour = gameObject.AddComponent<CharacterMoveBehaviour>();
         gameObject.AddComponent<CharacterVisualization>();
-        EventManager.StartListening(cEvents.TILE_ACTIVATED, OnTileActivated);
-        EventManager.StartListening(cEvents.TILE_DEACTIVATED, OnTileDeactivated);
-
-
-        EventManager.StartListening(cEvents.CHARACTER_ACTIVATED, OnCharacterActivated);
-        EventManager.StartListening(cEvents.CHARACTER_DEACTIVATED, OnCharacterDeactivated);
+        characterInteractionBehaviour = gameObject.AddComponent<CharacterInteractionBehaviour>();
+        gameObject.AddComponent<CharacterInputHandler>();
     }
 
     public void Init(Tile originTile)
     {
-        CharacterMoveBehaviour.Init(originTile.Location.X, originTile.Location.Y);
+        characterMoveBehaviour.Init(originTile.Location.X, originTile.Location.Y);
     }
 
-    void OnTileActivated(object tag)
+
+    #region Getters&Setters
+
+    public CharacterState InteractionState { get { return characterInteractionBehaviour.StateCharacter; } }
+    
+    public bool IsOnTile(Tile tile)
     {
-        var tile = tag as TileInteractionBehaviour;
-        var isOnCurrentTile = CharacterMoveBehaviour.IsCurrentTile(tile.GridTile);
-
-        if (isOnCurrentTile)
-        {
-            EventManager.TriggerEvent(cEvents.CHARACTER_ACTIVATED, this);
-        }
-        else
-        {
-
-        }
+        return characterMoveBehaviour.IsCurrentTile(tile);
     }
 
-    void OnTileDeactivated(object tag)
+    public void SetNewDestination(TileInteractionBehaviour tile)
     {
-        var tile = tag as TileInteractionBehaviour;
-        var isOnCurrentTile = CharacterMoveBehaviour.IsCurrentTile(tile.GridTile);
-
-        if (isOnCurrentTile)
-        {
-            EventManager.TriggerEvent(cEvents.CHARACTER_DEACTIVATED, this);
-        }
-        else
-        {
-
-        }
+        characterMoveBehaviour.SetNewDestination(tile);
     }
-
-
-    void OnCharacterActivated(object tag)
-    {
-        var character = tag as CharacterManager;
-
-        if (character == this)
-        {
-            CharacterMoveBehaviour.CharacterVisualization.SetActiveState();
-        }
-        else
-        {
-            CharacterMoveBehaviour.CharacterVisualization.SetInactiveState();
-        }
-    }
-
-    void OnCharacterDeactivated(object tag)
-    {
-        var character = tag as CharacterManager;
-
-        if (character == this)
-        {
-            CharacterMoveBehaviour.CharacterVisualization.SetInactiveState();
-        }
-    }
+    #endregion
 }
-
-public enum CharacterPlayerState { Inactive, Active}
