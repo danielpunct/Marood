@@ -2,13 +2,14 @@
 using System.Linq;
 using UnityEngine;
 
-class BoardMovement
+public class BoardMovement
 {
+
+
     public Vector3 NextTilePos { get; private set; }
     public bool IsMoving { get; set; }
-
-    List<TileInteractionBehaviour> path;
-    List<GameObject> indicators;
+    public List<TileInteractionBehaviour> CurrentPath { get; private set; }
+    public List<GameObject> IndicatorsCollector { get; private set; }
     public TileInteractionBehaviour CurrentTile { get; private set; }
     public TileInteractionBehaviour OriginTileTB { get; private set; }
     public TileInteractionBehaviour DestTileTB { get; private set; }
@@ -16,7 +17,7 @@ class BoardMovement
     public BoardMovement()
     {
         OriginTileTB = null;
-        indicators = new List<GameObject>();
+        IndicatorsCollector = new List<GameObject>();
     }
 
     //!! to use
@@ -68,14 +69,16 @@ class BoardMovement
     {
         if (OriginTileTB == null || DestTileTB == null)
         {
-            GridBoard.Instance.ErasePath(indicators);
+            //GridBoard.Instance.BdVisualization.ErasePath(IndicatorsCollector);
             return;
         }
 
         var path = PathFinder.FindPath(OriginTileTB, DestTileTB);
-        GridBoard.Instance.DrawPath(path.Select(x => x.GridTile).ToList(), indicators);
+        //GridBoard.Instance.BdVisualization.DrawPath(path.Select(x => x.GridTile).ToList(), IndicatorsCollector);
         StartMoving(path.ToList());
     }
+
+
 
     public void SetNewDestination(TileInteractionBehaviour tile)
     {
@@ -96,13 +99,13 @@ class BoardMovement
         CurrentTile = path[path.Count - 2];
         NextTilePos = GetWorldTilePos(CurrentTile.GridTile);
         IsMoving = true;
-        this.path = path;
+        this.CurrentPath = path;
     }
 
     public bool CheckPathDestination()
     {
         //if we reached the destination tile
-        if (path.IndexOf(CurrentTile) == 0)
+        if (CurrentPath.IndexOf(CurrentTile) == 0)
         {
             IsMoving = false;
             //GetComponent<Animation>().CrossFade("idle");
@@ -113,7 +116,7 @@ class BoardMovement
         else
         {
             //curTile becomes the next one
-            CurrentTile = path[path.IndexOf(CurrentTile) - 1];
+            CurrentTile = CurrentPath[CurrentPath.IndexOf(CurrentTile) - 1];
             NextTilePos = GetWorldTilePos(CurrentTile.GridTile);
             return false;
         }
@@ -126,7 +129,7 @@ class BoardMovement
 
         OriginTileTB.SetAsOrigin();
         DestTileTB = null;
-        GridBoard.Instance.ErasePath(indicators);
+        //GridBoard.Instance.BdVisualization.ErasePath(IndicatorsCollector);
     }
 
 
@@ -134,7 +137,7 @@ class BoardMovement
     //gets tile position in world space
     Vector3 GetWorldTilePos(Tile tile)
     {
-        Vector3 worldPos = GridBoard.Instance.CalcWorldPosFromCoords(tile.X, tile.Y);
+        Vector3 worldPos = GridBoard.CalcWorldPosFromCoords(tile.X, tile.Y);
         //y coordinate is disregarded
         worldPos.y = 0;
         return worldPos;

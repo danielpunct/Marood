@@ -4,9 +4,10 @@ using System.Linq;
 
 public class GridBoard : MonoBehaviour
 {
+    public BoardVisualization BdVisualization { get; private set;}
+
     public GameObject Ground;
     public GameObject Hex;
-    public GameObject Line;
 
     public Tile selectedTile = null;
     public Dictionary<Point, TileInteractionBehaviour> Board;
@@ -16,6 +17,7 @@ public class GridBoard : MonoBehaviour
 
     void Awake()
     {
+        BdVisualization = GetComponent<BoardVisualization>();
         Instance = this;
         SetSizes();
         CreateGrid();
@@ -51,34 +53,16 @@ public class GridBoard : MonoBehaviour
             tb.GridTile.FindNeighbours(Board, gridSize, equalLineLengths);
     }
 
-    public void ErasePath( List<GameObject> indicators)
-    {
-        indicators.ForEach(Destroy);
-        indicators.Clear();
-    }
 
-    public void DrawPath(IEnumerable<Tile> path, List<GameObject> indicators)
-    {
-        indicators.Clear();
-
-        GameObject lines = GameObject.Find("Lines");
-        if (lines == null)
-            lines = new GameObject("Lines");
-        foreach (Tile tile in path)
-        {
-            var line = (GameObject)Instantiate(Line);
-            line.transform.position = CalcWorldPosFromCoords(tile.X, tile.Y);
-            indicators.Add(line);
-            line.transform.parent = lines.transform;
-        }
-    }
 
     
-    public Vector3 CalcWorldPosFromCoords(int X, int Y)
+
+    
+    public static Vector3 CalcWorldPosFromCoords(int X, int Y)
     {
         //y / 2 is added to convert coordinates from straight axis coordinate system to squiggly axis system
         Vector2 gridPos = new Vector2(X + Y / 2, Y);
-        return CalcWorldCoord(gridPos);
+        return Instance.CalcWorldCoord(gridPos);
     }
 
     public TileInteractionBehaviour GetTile(int x, int y)

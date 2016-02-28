@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-class TileVisualization : MonoBehaviour
+public class TileVisualization : MonoBehaviour
 {
     public TextMesh textMesh;
     public Tile Tile;
@@ -9,7 +9,7 @@ class TileVisualization : MonoBehaviour
     public Material defaultMaterial;
     //Slightly transparent orange
     Color orange = new Color(255f / 255f, 127f / 255f, 0, 127f / 255f);
-    public Renderer renderer;
+    public Renderer RendererGO;
 
     Animator animatorComponent;
 
@@ -25,8 +25,8 @@ class TileVisualization : MonoBehaviour
 
     public void Reset()
     {
-        renderer.material = defaultMaterial;
-        renderer.material.color = Color.white;
+        RendererGO.material = defaultMaterial;
+        RendererGO.material.color = Color.white;
     }
 
 
@@ -35,8 +35,8 @@ class TileVisualization : MonoBehaviour
         //If transparency is not set already, set it to default value
         if (color.a == 1)
             color.a = 200f / 255f;
-        renderer.material = OpaqueMaterial;
-        renderer.material.color = color;
+        RendererGO.material = OpaqueMaterial;
+        RendererGO.material.color = color;
     }
 
 
@@ -45,20 +45,26 @@ class TileVisualization : MonoBehaviour
         textMesh.text = text;
     }
 
-    public void SetVisualDefaultState()
+    public void ShowAsDefault()
     {
         //GetComponent<Renderer>().material = defaultMaterial;
-        animatorComponent.SetBool("IsActive", false);
+        animatorComponent.SetTrigger("Default");
     }
 
-    public void SetVisualActiveState()
+    public void ShowAsDestination()
     {
         //GetComponent<Renderer>().material.color = orange;
-        animatorComponent.SetBool("IsActive", true);
+        animatorComponent.SetTrigger("IsDestination");
+    }
+
+    public void ShowAsPath()
+    {
+        //GetComponent<Renderer>().material.color = orange;
+        animatorComponent.SetTrigger("IsPath");
     }
 
     public Vector3 GetBounds()
     {
-        return renderer.bounds.size;
+        return RendererGO.bounds.size;
     }
 }

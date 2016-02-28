@@ -2,18 +2,18 @@
 
 public class CharacterInputHandler : MonoBehaviour
 {
-    CharacterInteractionBehaviour characterInteractionBehaviour;
+    CharacterManager charactermanager;
 
     void Awake()
     {
-        characterInteractionBehaviour = GetComponent<CharacterInteractionBehaviour>();
+        charactermanager = GetComponent<CharacterManager>();
     }
 
     void OnMouseOver()
     {
         if (Input.GetMouseButtonUp(0))
         {
-            characterInteractionBehaviour.UserActivate();
+            charactermanager.ChInteraction.OnUserClick();
         }
     }
 }

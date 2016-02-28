@@ -1,37 +1,49 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
-    CharacterMoveBehaviour characterMoveBehaviour;
-    CharacterInteractionBehaviour characterInteractionBehaviour;
+    public CharacterMoveBehaviour ChMove { get; private set; }
+    public CharacterVisualization ChVisualizaton { get; private set; }
+    public CharacterInteractionBehaviour ChInteraction { get; private set; }
 
     void Awake()
     {
         GameManager.Instance.AddCharacter(this);
-        characterMoveBehaviour = gameObject.AddComponent<CharacterMoveBehaviour>();
-        gameObject.AddComponent<CharacterVisualization>();
-        characterInteractionBehaviour = gameObject.AddComponent<CharacterInteractionBehaviour>();
+        ChMove = gameObject.AddComponent<CharacterMoveBehaviour>();
+        ChVisualizaton = gameObject.AddComponent<CharacterVisualization>();
+        ChInteraction = gameObject.AddComponent<CharacterInteractionBehaviour>();
         gameObject.AddComponent<CharacterInputHandler>();
     }
 
     public void Init(Tile originTile)
     {
-        characterMoveBehaviour.Init(originTile.Location.X, originTile.Location.Y);
+        ChMove.Init(originTile.Location.X, originTile.Location.Y);
     }
 
 
-    #region Getters&Setters
+    #region Out Methods
 
-    public CharacterState InteractionState { get { return characterInteractionBehaviour.StateCharacter; } }
-    
+    public CharacterState InteractionState { get { return ChInteraction.StateCharacter; } }
+
     public bool IsOnTile(Tile tile)
     {
-        return characterMoveBehaviour.IsCurrentTile(tile);
+        return ChMove.IsCurrentTile(tile);
     }
 
-    public void SetNewDestination(TileInteractionBehaviour tile)
+    public TileInteractionBehaviour[] CurrentPath
     {
-        characterMoveBehaviour.SetNewDestination(tile);
+        get
+        {
+            return ChMove.IsMoving ? ChMove.Movement.CurrentPath.ToArray() : (new TileInteractionBehaviour[] { ChMove.GetActiveTile() });
+        }
+    }
+
+    public void SetNewDestination(TileManager tile)
+    {
+        ChMove.SetNewDestination(tile.TlInteraction);
+
+        EventManager.TriggerEvent(cEvents.BOARD_SHOW_MOVEMENT, CurrentPath);
     }
     #endregion
 }

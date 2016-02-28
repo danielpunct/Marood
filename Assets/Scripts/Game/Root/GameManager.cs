@@ -15,8 +15,7 @@ public class GameManager : MonoBehaviour
         gameObject.AddComponent<EventManager>();
         gameObject.AddComponent<CharacterInvoker>();
 
-        EventManager.StartListening(cEvents.TILE_USER_ACTIVATED, OnTileActivated);
-        EventManager.StartListening(cEvents.TILE_USER_DEACTIVATED, OnTileDeactivated);
+        //EventManager.StartListening(cEvents.TILE_USER_DEACTIVATED, OnTileDeactivated);
     }
 
     void Start()
@@ -31,35 +30,28 @@ public class GameManager : MonoBehaviour
     }
 
 
-    void OnTileActivated(object tag)
+    public void OnUserSendTile(TileManager tile)
     {
-        var tileBehaviour = tag as TileInteractionBehaviour;
-
-        var tileSelectedCharacter = characters.FirstOrDefault(x => x.IsOnTile(tileBehaviour.GridTile));
-
-        if (tileSelectedCharacter == null)
+        if (PlayerManager.SelectedCharacter != null)
         {
-            if (PlayerManager.SelectedCharacter != null)
-            {
-                PlayerManager.SelectedCharacter.SetNewDestination(tileBehaviour);
-            }
+            PlayerManager.SelectedCharacter.SetNewDestination(tile);
         }
 
     }
 
-    void OnTileDeactivated(object tag)
-    {
-        //var tile = tag as TileInteractionBehaviour;
+    //void OnTileDeactivated(object tag)
+    //{
+    //    //var tile = tag as TileInteractionBehaviour;
 
-        //var tileSelectedCharacter = characters.FirstOrDefault(x => x.IsOnTile(tile.GridTile));
+    //    //var tileSelectedCharacter = characters.FirstOrDefault(x => x.IsOnTile(tile.GridTile));
 
-        //if (tileSelectedCharacter == null)
-        //{
+    //    //if (tileSelectedCharacter == null)
+    //    //{
 
-        //}
-        //else
-        //{
-        //    PlayerManager.SelectedCharacter = null;
-        //}
-    }
+    //    //}
+    //    //else
+    //    //{
+    //    //    PlayerManager.SelectedCharacter = null;
+    //    //}
+    //}
 }

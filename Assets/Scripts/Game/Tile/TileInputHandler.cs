@@ -11,7 +11,7 @@ class TileInputHandler : MonoBehaviour
 
     void OnMouseExit()
     {
-        TileBehaviour.UserHoverLeft();
+        //TileBehaviour.UserHoverLeft();
     }
 
     void OnMouseOver()
@@ -33,7 +33,7 @@ class TileInputHandler : MonoBehaviour
         //if user left-clicks the tile
         if (Input.GetMouseButtonUp(0))
         {
-            TileBehaviour.UserActivate();
+            TileBehaviour.UserClick();
         }
     }
 }

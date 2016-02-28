@@ -2,14 +2,14 @@
 
 public class TileManager : MonoBehaviour
 {
-    TileInteractionBehaviour tileBehaviour;
+    public TileVisualization TlVisualization { get; private set; }
+    public TileInteractionBehaviour TlInteraction { get; private set; }
 
     void Awake()
     {
-        tileBehaviour = gameObject.AddComponent<TileInteractionBehaviour>();
-        var tileViz = GetComponent<TileVisualization>();
-        tileViz.renderer.gameObject.AddComponent<TileInputHandler>().TileBehaviour = tileBehaviour;
-
+        TlInteraction = gameObject.AddComponent<TileInteractionBehaviour>();
+        TlVisualization = GetComponent<TileVisualization>();
+        TlVisualization.RendererGO.gameObject.AddComponent<TileInputHandler>().TileBehaviour = TlInteraction;
     }
      
 }
