@@ -43,7 +43,7 @@ public class CharacterManager : MonoBehaviour
     {
         ChMove.SetNewDestination(tile.TlInteraction);
 
-        EventManager.TriggerEvent(cEvents.BOARD_SHOW_MOVEMENT, CurrentPath);
+        EventManager.TriggerEvent(cEvents.CHARACTER_UI_UPDATED, this);
     }
     #endregion
 }

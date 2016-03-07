@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BoardVisualization : MonoBehaviour
 {
-    public GameObject Line;
+   // public GameObject Line;
     
     //public void DrawPath(IEnumerable<Tile> path, List<GameObject> indicators)
     //{

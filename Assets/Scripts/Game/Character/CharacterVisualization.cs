@@ -9,15 +9,19 @@ public class CharacterVisualization : MonoBehaviour
     CharacterMoveBehaviour characterMoveBehaviour;
 
     Transform myTransform;
-    Animator animatorComponent;
+    Animator animatorComponent_indicator;
+    Animator animatorComponent_model;
+    ModelAnimationState modelAnimaitonState;
 
     void Awake()
     {
-        animatorComponent = GetComponent<Animator>();
+        animatorComponent_indicator = GetComponent<Animator>();
+        animatorComponent_model = gameObject.FindComponentInChildWithTag<Animator>("Model");
         myTransform = transform;
         Speed = 4;
         RotationSpeed = 2;
         MinNextTileDist = 0.5f;
+        modelAnimaitonState = ModelAnimationState.Idle;
     }
 
     void Start()
@@ -28,13 +32,20 @@ public class CharacterVisualization : MonoBehaviour
     void Update()
     {
         if (!characterMoveBehaviour.IsMoving)
+        {
+            if (modelAnimaitonState != ModelAnimationState.Idle)
+            {
+                animatorComponent_model.SetTrigger("Idle");
+                modelAnimaitonState = ModelAnimationState.Idle;
+            }
             return;
+        }
         //if the distance between the character and the center of the next tile is short enough
         var position_plane = characterMoveBehaviour.NextDestination;
         position_plane.y = 0;
         var my_position_plane = transform.position;
         my_position_plane.y = 0;
-        if ((position_plane - my_position_plane).magnitude < MinNextTileDist )
+        if ((position_plane - my_position_plane).magnitude < MinNextTileDist)
         {
             characterMoveBehaviour.MoveDestinationReached();
         }
@@ -66,24 +77,25 @@ public class CharacterVisualization : MonoBehaviour
         if (speedModifier > speedModMin)
         {
             CC.SimpleMove(forwardDir);
-            //if (!monster && !GetComponent<Animation>()["walk"].enabled)
-            //    GetComponent<Animation>().CrossFade("walk");
-            //else if (monster && !GetComponent<Animation>()["CreepFem"].enabled)
-            //    GetComponent<Animation>().CrossFade("CreepFem");
+
+            //@#$ test daca deja face miscarea asta
+            if (modelAnimaitonState != ModelAnimationState.Move)
+            {
+                animatorComponent_model.SetTrigger("Move");
+                modelAnimaitonState = ModelAnimationState.Move;
+            }
         }
-        //else if (!monster && !GetComponent<Animation>()["idle"].enabled)
-        //    GetComponent<Animation>().CrossFade("idle");
-        //else if (monster && !GetComponent<Animation>()["IdleFeM"].enabled)
-        //    GetComponent<Animation>().CrossFade("IdleFeM");
     }
 
     public void SetActiveState()
     {
-        animatorComponent.SetBool("IsActive", true);
+        animatorComponent_indicator.SetBool("IsActive", true);
     }
 
     public void SetInactiveState()
     {
-        animatorComponent.SetBool("IsActive", false);
+        animatorComponent_indicator.SetBool("IsActive", false);
     }
+
+    public enum ModelAnimationState { Idle, Move }
 }

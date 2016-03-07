@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -14,8 +12,6 @@ public class GameManager : MonoBehaviour
         characters = new List<CharacterManager>();
         gameObject.AddComponent<EventManager>();
         gameObject.AddComponent<CharacterInvoker>();
-
-        //EventManager.StartListening(cEvents.TILE_USER_DEACTIVATED, OnTileDeactivated);
     }
 
     void Start()
@@ -38,20 +34,4 @@ public class GameManager : MonoBehaviour
         }
 
     }
-
-    //void OnTileDeactivated(object tag)
-    //{
-    //    //var tile = tag as TileInteractionBehaviour;
-
-    //    //var tileSelectedCharacter = characters.FirstOrDefault(x => x.IsOnTile(tile.GridTile));
-
-    //    //if (tileSelectedCharacter == null)
-    //    //{
-
-    //    //}
-    //    //else
-    //    //{
-    //    //    PlayerManager.SelectedCharacter = null;
-    //    //}
-    //}
 }

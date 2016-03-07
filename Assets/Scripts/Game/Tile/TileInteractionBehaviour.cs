@@ -12,7 +12,7 @@ public class TileInteractionBehaviour : MonoBehaviour
     {
         tileManager = GetComponent<TileManager>();
 
-        EventManager.StartListening(cEvents.BOARD_SHOW_MOVEMENT, OnBOARD_SHOW_MOVEMENT);
+        EventManager.StartListening(cEvents.CHARACTER_UI_UPDATED, OnCHARACTER_UI_UPDATED);
 
     }
 
@@ -27,7 +27,7 @@ public class TileInteractionBehaviour : MonoBehaviour
         GameManager.Instance.OnUserSendTile(tileManager);
     }
 
-    void OnBOARD_SHOW_MOVEMENT(object tag)
+    void OnCHARACTER_UI_UPDATED(object tag)
     {
         if(tag == null)
         {
@@ -35,8 +35,9 @@ public class TileInteractionBehaviour : MonoBehaviour
             return;
         }
 
-        var tiles = tag as TileInteractionBehaviour[];
-        int tileIndex = Array.IndexOf(tiles, this);
+        var character = tag as CharacterManager;
+
+        int tileIndex = Array.IndexOf(character.CurrentPath, this);
         if (tileIndex >= 0)
         {
             if (tileIndex == 0)

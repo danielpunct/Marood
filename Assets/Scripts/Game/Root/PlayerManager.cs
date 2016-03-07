@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-public static class PlayerManager
+﻿public static class PlayerManager
 {
     public static TileManager SelectedTile { get; set; }
 
@@ -24,7 +19,7 @@ public static class PlayerManager
                 selectedCharacter.ChInteraction.SetActiveUI();
             }
 
-            EventManager.TriggerEvent(cEvents.CHARACTER_UI_ACTIVATED, selectedCharacter);
+            EventManager.TriggerEvent(cEvents.CHARACTER_UI_UPDATED, selectedCharacter);
         }
     }
 

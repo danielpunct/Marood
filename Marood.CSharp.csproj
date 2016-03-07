@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Game\Character\CharacterMoveBehaviour.cs" />
     <Compile Include="Assets\Scripts\Game\Character\CharacterVisualization.cs" />
     <Compile Include="Assets\Scripts\Game\Grid\GridManager.cs" />
+    <Compile Include="Assets\Scripts\Game\Logistic\HelperClass.cs" />
     <Compile Include="Assets\Scripts\Game\Root\Events\EventManager.cs" />
     <Compile Include="Assets\Scripts\Game\Root\Events\cEvents.cs" />
     <Compile Include="Assets\Scripts\Game\Root\GameManager.cs" />
