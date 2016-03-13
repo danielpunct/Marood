@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Linq;
-using UnityEngine;
 
-[RequireComponent(typeof(TileVisualization))]
 public class TileInteraction : TileMonoBehaviour
 {
     public Tile GridTile { get; private set; }
 
     internal override void TemplateAfterAwake()
     {
-        base.TemplateAfterAwake();
         EventManager.StartListening(cEvents.CHARACTER_UI_UPDATED, OnCHARACTER_UI_UPDATED);
 
     }

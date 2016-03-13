@@ -41,11 +41,11 @@ public class GridBoard : MonoBehaviour
                 Vector2 gridPos = new Vector2(x, y);
                 hex.transform.position = CalcWorldCoord(gridPos);
                 hex.transform.parent = hexGridGO.transform;
-                var tb = hex.GetComponent<TileInteraction>();
+                var tb = hex.GetComponent<TileEntity>();
 
-                tb.InitTile((int)x - (int)(y / 2), (int)y, (int)x - (int)(y / 2) + ":" + (int)y);
+                tb.InteractionComponent.InitTile((int)x - (int)(y / 2), (int)y, (int)x - (int)(y / 2) + ":" + (int)y);
               
-                Board.Add(tb.GridTile.Location, tb);
+                Board.Add(tb.InteractionComponent.GridTile.Location, tb.InteractionComponent);
             }
         }
         bool equalLineLengths = (gridSize.x + 0.5) * hexSizeX <= groundSizeX;

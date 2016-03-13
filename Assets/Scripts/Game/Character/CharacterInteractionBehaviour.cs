@@ -1,14 +1,6 @@
-﻿using UnityEngine;
-
-public class CharacterInteractionBehaviour : MonoBehaviour
+﻿public class CharacterInteractionBehaviour : CharacterMonoBehaviour
 {
     public CharacterState StateCharacter { get; private set; }
-    CharacterEntity characterManager;
-
-    public void Awake()
-    {
-        characterManager = GetComponent<CharacterEntity>();
-    }
     
 
     public void OnUserClick()
@@ -16,7 +8,7 @@ public class CharacterInteractionBehaviour : MonoBehaviour
         switch (StateCharacter)
         {
             case CharacterState.Inactive:
-                PlayerManager.SelectedCharacter = characterManager;
+                PlayerManager.SelectedCharacter = cEntity;
                 break;
             case CharacterState.Active:
                 PlayerManager.SelectedCharacter = null;
@@ -28,13 +20,13 @@ public class CharacterInteractionBehaviour : MonoBehaviour
     public void SetActiveUI()
     {
         StateCharacter = CharacterState.Active;
-        characterManager.VisualizationComponent.SetActiveState();
+        cEntity.VisualizationComponent.SetActiveState();
     }
 
     public void SetInactiveUI()
     {
         StateCharacter = CharacterState.Inactive;
-        characterManager.VisualizationComponent.SetInactiveState();
+        cEntity.VisualizationComponent.SetInactiveState();
     }
 }
 

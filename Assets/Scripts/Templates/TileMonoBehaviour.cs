@@ -2,8 +2,8 @@
 
 public class TileMonoBehaviour : MonoBehaviour
 {
-    public TileVisualization VisualizationComponent { get; internal set; }
-    public TileInteraction InteractionComponent { get; internal set; }
+    public TileVisualization VisualizationComponent { get { return tEntity._VisualizationComponent; } }
+    public TileInteraction InteractionComponent { get { return tEntity._InteractionComponent; } }
 
     internal TileEntity tEntity;
     internal virtual void TemplateAfterAwake() { }

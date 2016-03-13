@@ -1,11 +1,14 @@
 ﻿public class TileEntity : TileMonoBehaviour
 {
+    public TileVisualization _VisualizationComponent { get; private set; }
+    public TileInteraction _InteractionComponent { get; private set; }
 
     internal override void TemplateAfterAwake()
     {
         base.TemplateAfterAwake();
-        InteractionComponent = gameObject.AddComponent<TileInteraction>();
-        VisualizationComponent = GetComponent<TileVisualization>();
+        _InteractionComponent = gameObject.AddComponent<TileInteraction>();
+        _VisualizationComponent = GetComponent<TileVisualization>();
+
         VisualizationComponent.RendererGO.gameObject.AddComponent<TileInputHandler>().TileBehaviour = InteractionComponent;
     }
 

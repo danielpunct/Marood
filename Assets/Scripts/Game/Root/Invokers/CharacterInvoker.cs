@@ -1,27 +1,27 @@
 ﻿using UnityEngine;
 
-    class CharacterInvoker : MonoBehaviour
+class CharacterInvoker : MonoBehaviour
+{
+    void Awake()
     {
-        void Awake()
-        {
-            EventManager.StartListening(cEvents.INVOKE_CHARACTER, OnInvokeCharacter);
-        }
-
-        void OnInvokeCharacter(object tag)
-        {
-            var invokerTag = tag as CharacterInvokerTag;
-
-            var go = Instantiate(Resources.Load<GameObject>(invokerTag.Character.ToString()));
-
-            var cm = go.AddComponent<CharacterEntity>();
-
-            cm.Init(GridBoard.Instance.GetTile(invokerTag.X, invokerTag.Y), invokerTag.Character);
-        }
+        EventManager.StartListening(cEvents.INVOKE_CHARACTER, OnInvokeCharacter);
     }
 
-    class CharacterInvokerTag
+    void OnInvokeCharacter(object tag)
     {
-        public int X;
-        public int Y;
-        public cCharacters Character;
+        var invokerTag = tag as CharacterInvokerTag;
+
+        var go = Instantiate(Resources.Load<GameObject>(invokerTag.Character.ToString()));
+
+        var cm = go.AddComponent<CharacterEntity>();
+
+        cm.Init(GridBoard.Instance.GetTile(invokerTag.X, invokerTag.Y), invokerTag.Character);
     }
+}
+
+class CharacterInvokerTag
+{
+    public int X;
+    public int Y;
+    public cCharacters Character;
+}
