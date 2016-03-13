@@ -11,6 +11,4 @@ public class TileManager : MonoBehaviour
         TlVisualization = GetComponent<TileVisualization>();
         TlVisualization.RendererGO.gameObject.AddComponent<TileInputHandler>().TileBehaviour = TlInteraction;
     }
-     
 }
-

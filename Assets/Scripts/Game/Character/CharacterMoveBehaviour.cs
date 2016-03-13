@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class CharacterMoveBehaviour : MonoBehaviour
 {
 
-    public CharacterVisualization CharacterVisualization { get; private set; } 
+    public CharacterVisualization ChVisualization { get; private set; } 
 
     public BoardMovement Movement { get; private set; }
 
@@ -23,7 +24,7 @@ public class CharacterMoveBehaviour : MonoBehaviour
 
     void Start()
     {
-        CharacterVisualization = GetComponent<CharacterVisualization>();
+        ChVisualization = GetComponent<CharacterVisualization>();
     }
 
     public void Init(int x, int y)
@@ -53,5 +54,24 @@ public class CharacterMoveBehaviour : MonoBehaviour
         return IsMoving ? Movement.DestTileTB : Movement.CurrentTile;
     }
 
+    public TileInteractionBehaviour GetCurrentTile()
+    {
+        return Movement.CurrentTile;
+    }
 
+    public void StopOnCurrentTile()
+    {
+        Movement.StopOnCurrentTile();
+        StartCoroutine(TauntAfterStop());
+    }
+
+    IEnumerator TauntAfterStop()
+    {
+        while(IsMoving)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+        ChVisualization.SetTauntState();
+
+    }
 }

@@ -1,19 +1,17 @@
 ﻿using UnityEngine;
 
-public class CharacterVisualization : MonoBehaviour
+public class CharacterVisualization : CharacterMonoBehaviour
 {
     public int Speed { get; set; }
     public int RotationSpeed { get; set; }
     public static float MinNextTileDist { get; set; }
-
-    CharacterMoveBehaviour characterMoveBehaviour;
 
     Transform myTransform;
     Animator animatorComponent_indicator;
     Animator animatorComponent_model;
     ModelAnimationState modelAnimaitonState;
 
-    void Awake()
+    internal override void TemplateAfterStart()
     {
         animatorComponent_indicator = GetComponent<Animator>();
         animatorComponent_model = gameObject.FindComponentInChildWithTag<Animator>("Model");
@@ -23,14 +21,10 @@ public class CharacterVisualization : MonoBehaviour
         MinNextTileDist = 0.5f;
         modelAnimaitonState = ModelAnimationState.Idle;
     }
-
-    void Start()
-    {
-        characterMoveBehaviour = GetComponent<CharacterMoveBehaviour>();
-    }
-
+    
     void Update()
     {
+        var characterMoveBehaviour = characterManager.ChMove;
         if (!characterMoveBehaviour.IsMoving)
         {
             if (modelAnimaitonState != ModelAnimationState.Idle)
@@ -95,6 +89,11 @@ public class CharacterVisualization : MonoBehaviour
     public void SetInactiveState()
     {
         animatorComponent_indicator.SetBool("IsActive", false);
+    }
+
+    public void SetTauntState()
+    {
+        animatorComponent_model.SetTrigger("Taunt");
     }
 
     public enum ModelAnimationState { Idle, Move }

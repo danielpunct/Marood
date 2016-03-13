@@ -11,11 +11,11 @@
         {
             var invokerTag = tag as CharacterInvokerTag;
 
-            var go = Instantiate(Resources.Load<GameObject>(invokerTag.Character));
+            var go = Instantiate(Resources.Load<GameObject>(invokerTag.Character.ToString()));
 
             var cm = go.AddComponent<CharacterManager>();
 
-            cm.Init(GridBoard.Instance.GetTile(invokerTag.X, invokerTag.Y).GridTile);
+            cm.Init(GridBoard.Instance.GetTile(invokerTag.X, invokerTag.Y).GridTile, invokerTag.Character);
         }
     }
 
@@ -23,5 +23,5 @@
     {
         public int X;
         public int Y;
-        public string Character;
+        public cCharacters Character;
     }

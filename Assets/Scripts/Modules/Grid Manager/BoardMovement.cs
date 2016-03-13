@@ -142,4 +142,10 @@ public class BoardMovement
         worldPos.y = 0;
         return worldPos;
     }
+
+    public void StopOnCurrentTile()
+    {
+        DestTileTB = CurrentTile;
+        CurrentPath[0] = CurrentTile;
+    }
 }

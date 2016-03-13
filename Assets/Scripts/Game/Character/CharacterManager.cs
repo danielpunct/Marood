@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
@@ -16,9 +15,19 @@ public class CharacterManager : MonoBehaviour
         gameObject.AddComponent<CharacterInputHandler>();
     }
 
-    public void Init(Tile originTile)
+    public void Init(Tile originTile, cCharacters characterType)
     {
         ChMove.Init(originTile.Location.X, originTile.Location.Y);
+
+        switch(characterType)
+        {
+            case cCharacters.Beetle:
+                gameObject.AddComponent<BeetleBehaviour>();
+                break;
+            case cCharacters.RedBeetle:
+                gameObject.AddComponent<RedBeetleBehaviour>();
+                break;
+        }
     }
 
 
@@ -44,6 +53,12 @@ public class CharacterManager : MonoBehaviour
         ChMove.SetNewDestination(tile.TlInteraction);
 
         EventManager.TriggerEvent(cEvents.CHARACTER_UI_UPDATED, this);
+    }
+
+
+    public void EnterAttack()
+    {
+        ChMove.StopOnCurrentTile();
     }
     #endregion
 }
