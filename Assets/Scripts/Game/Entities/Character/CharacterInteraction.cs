@@ -1,4 +1,4 @@
-﻿public class CharacterInteractionBehaviour : CharacterMonoBehaviour
+﻿public class CharacterInteraction : CharacterMonoBehaviour
 {
     public CharacterState StateCharacter { get; private set; }
     

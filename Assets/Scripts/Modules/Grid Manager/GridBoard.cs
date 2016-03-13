@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
 
 public class GridBoard : MonoBehaviour
 {
-    public BoardVisualization BdVisualization { get; private set;}
 
     public GameObject Ground;
     public GameObject Hex;
@@ -17,7 +15,6 @@ public class GridBoard : MonoBehaviour
 
     void Awake()
     {
-        BdVisualization = GetComponent<BoardVisualization>();
         Instance = this;
         SetSizes();
         CreateGrid();

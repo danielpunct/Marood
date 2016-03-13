@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 
-public class CharacterMoveBehaviour : CharacterMonoBehaviour
+public class CharacterMove : CharacterMonoBehaviour
 {
-
     public BoardMovement Movement { get; private set; }
 
     public bool IsMoving { get { return Movement.IsMoving; } }

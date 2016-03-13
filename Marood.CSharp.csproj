@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebGL:20</UnityBuildTarget>
     <UnityVersion>5.3.3f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -65,28 +63,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Combat\AttackBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Game Behaviours\Characters\BeetleBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Game Behaviours\Characters\RedBeetleBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Game\Board\BoardInteractionBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Game\Board\BoardVisualization.cs" />
-    <Compile Include="Assets\Scripts\Game\Character\CharacterInputHandler.cs" />
-    <Compile Include="Assets\Scripts\Game\Character\CharacterInteractionBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Game\Character\CharacterEntity.cs" />
-    <Compile Include="Assets\Scripts\Game\Character\CharacterMoveBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Game\Character\CharacterVisualization.cs" />
-    <Compile Include="Assets\Scripts\Game\Grid\GridManager.cs" />
-    <Compile Include="Assets\Scripts\Game\Logistic\HelperClass.cs" />
-    <Compile Include="Assets\Scripts\Game\Root\Events\EventManager.cs" />
-    <Compile Include="Assets\Scripts\Game\Root\Events\cEvents.cs" />
-    <Compile Include="Assets\Scripts\Game\Root\GameSuperviser.cs" />
-    <Compile Include="Assets\Scripts\Game\Root\Invokers\CharacterInvoker.cs" />
-    <Compile Include="Assets\Scripts\Game\Root\PlayerManager.cs" />
+    <Compile Include="Assets\Scripts\Game\Core\Events\EventManager.cs" />
+    <Compile Include="Assets\Scripts\Game\Core\GameSuperviser.cs" />
+    <Compile Include="Assets\Scripts\Game\Core\Invokers\CharacterInvoker.cs" />
+    <Compile Include="Assets\Scripts\Game\Core\PlayerManager.cs" />
+    <Compile Include="Assets\Scripts\Game\Entities\Character\CharacterEntity.cs" />
+    <Compile Include="Assets\Scripts\Game\Entities\Character\CharacterInputHandler.cs" />
+    <Compile Include="Assets\Scripts\Game\Entities\Character\CharacterInteraction.cs" />
+    <Compile Include="Assets\Scripts\Game\Entities\Character\CharacterMonoBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Game\Entities\Character\CharacterMove.cs" />
+    <Compile Include="Assets\Scripts\Game\Entities\Character\CharacterVisualization.cs" />
+    <Compile Include="Assets\Scripts\Game\Entities\Character\Combat\AttackBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Game\Entities\Character\Types\BeetleBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Game\Entities\Character\Types\RedBeetleBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Game\Entities\Tile\TileEntity.cs" />
+    <Compile Include="Assets\Scripts\Game\Entities\Tile\TileInputHandler.cs" />
+    <Compile Include="Assets\Scripts\Game\Entities\Tile\TileInteraction.cs" />
+    <Compile Include="Assets\Scripts\Game\Entities\Tile\TileMonoBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Game\Entities\Tile\TileVisualization.cs" />
+    <Compile Include="Assets\Scripts\Game\Root\HolyTools.cs" />
     <Compile Include="Assets\Scripts\Game\Root\cCharacters.cs" />
-    <Compile Include="Assets\Scripts\Game\Tile\TileInputHandler.cs" />
-    <Compile Include="Assets\Scripts\Game\Tile\TileInteraction.cs" />
-    <Compile Include="Assets\Scripts\Game\Tile\TileEntity.cs" />
-    <Compile Include="Assets\Scripts\Game\Tile\TileVisualization.cs" />
+    <Compile Include="Assets\Scripts\Game\Root\cEvents.cs" />
+    <Compile Include="Assets\Scripts\Logistic\HelperClass.cs" />
     <Compile Include="Assets\Scripts\Modules\AStar\Path.cs" />
     <Compile Include="Assets\Scripts\Modules\AStar\PathFinder.cs" />
     <Compile Include="Assets\Scripts\Modules\AStar\PriorityQueue.cs" />
@@ -96,11 +94,7 @@
     <Compile Include="Assets\Scripts\Modules\Grid Manager\IHasNeighbours.cs" />
     <Compile Include="Assets\Scripts\Modules\Grid Manager\Point.cs" />
     <Compile Include="Assets\Scripts\Modules\Grid Manager\Tile.cs" />
-    <Compile Include="Assets\Scripts\Templates\HolyTools.cs" />
-    <Compile Include="Assets\Scripts\Templates\TileMonoBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Temp\CameraDrag.cs" />
-    <Compile Include="Assets\Scripts\Temp\TemporaryGameManager.cs" />
-    <Compile Include="Assets\Scripts\Templates\CharacterMonoBehaviour.cs" />
+    <Compile Include="Assets\Scripts\UI\CameraDrag.cs" />
     <Compile Include="Assets\Support\Warrior Pack Bundle 3 FREE\Code\IKHands.cs" />
     <Compile Include="Assets\Support\Warrior Pack Bundle 3 FREE\Code\SmoothFollow.cs" />
     <Compile Include="Assets\Support\Warrior Pack Bundle 3 FREE\Code\WarriorAnimationDemoFREE.cs" />

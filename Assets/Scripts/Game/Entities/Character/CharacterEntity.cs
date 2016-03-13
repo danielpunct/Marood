@@ -1,17 +1,17 @@
 ﻿public class CharacterEntity : CharacterMonoBehaviour
 {
-    public CharacterMoveBehaviour _MoveComponent { get; private set; }
+    public CharacterMove _MoveComponent { get; private set; }
     public CharacterVisualization _VisualizationComponent { get; private set; }
-    public CharacterInteractionBehaviour _InteractionComponent { get; private set; }
+    public CharacterInteraction _InteractionComponent { get; private set; }
 
 
     internal override void TemplateAfterAwake()
     {
         base.TemplateAfterAwake();
         GameSuperviser.Instance.AddCharacter(this);
-        _MoveComponent = gameObject.AddComponent<CharacterMoveBehaviour>();
+        _MoveComponent = gameObject.AddComponent<CharacterMove>();
         _VisualizationComponent = gameObject.AddComponent<CharacterVisualization>();
-        _InteractionComponent = gameObject.AddComponent<CharacterInteractionBehaviour>();
+        _InteractionComponent = gameObject.AddComponent<CharacterInteraction>();
         gameObject.AddComponent<CharacterInputHandler>();
     }
 
