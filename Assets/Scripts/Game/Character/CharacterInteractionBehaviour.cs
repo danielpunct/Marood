@@ -3,11 +3,11 @@
 public class CharacterInteractionBehaviour : MonoBehaviour
 {
     public CharacterState StateCharacter { get; private set; }
-    CharacterManager characterManager;
+    CharacterEntity characterManager;
 
     public void Awake()
     {
-        characterManager = GetComponent<CharacterManager>();
+        characterManager = GetComponent<CharacterEntity>();
     }
     
 

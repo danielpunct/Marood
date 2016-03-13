@@ -2,12 +2,12 @@
 
 public class CharacterMonoBehaviour : MonoBehaviour
 {
-    internal CharacterManager characterManager;
+    internal CharacterEntity characterManager;
     internal virtual void TemplateAfterStart() { }
 
     void Awake()
     {
-        characterManager = GetComponent<CharacterManager>();
+        characterManager = GetComponent<CharacterEntity>();
 
         TemplateAfterStart();
     }

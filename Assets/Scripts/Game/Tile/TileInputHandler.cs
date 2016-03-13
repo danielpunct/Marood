@@ -2,7 +2,7 @@
 
 class TileInputHandler : MonoBehaviour
 {
-    public TileInteractionBehaviour TileBehaviour { get; set; }
+    public TileInteraction TileBehaviour { get; set; }
 
     void OnMouseEnter()
     {

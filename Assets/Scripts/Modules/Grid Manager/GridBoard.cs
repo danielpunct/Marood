@@ -10,7 +10,7 @@ public class GridBoard : MonoBehaviour
     public GameObject Hex;
 
     public Tile selectedTile = null;
-    public Dictionary<Point, TileInteractionBehaviour> Board;
+    public Dictionary<Point, TileInteraction> Board;
 
     float hexSizeX, hexSizeY, hexSizeZ, groundSizeX, groundSizeY, groundSizeZ;
     public static GridBoard Instance = null;
@@ -28,7 +28,7 @@ public class GridBoard : MonoBehaviour
         Vector2 gridSize = CalcGridSize();
         GameObject hexGridGO = new GameObject("HexGrid");
         hexGridGO.transform.SetParent(transform);
-        Board = new Dictionary<Point, TileInteractionBehaviour>();
+        Board = new Dictionary<Point, TileInteraction>();
 
         for (float y = 0; y < gridSize.y; y++)
         {
@@ -41,7 +41,7 @@ public class GridBoard : MonoBehaviour
                 Vector2 gridPos = new Vector2(x, y);
                 hex.transform.position = CalcWorldCoord(gridPos);
                 hex.transform.parent = hexGridGO.transform;
-                var tb = hex.GetComponent<TileInteractionBehaviour>();
+                var tb = hex.GetComponent<TileInteraction>();
 
                 tb.InitTile((int)x - (int)(y / 2), (int)y, (int)x - (int)(y / 2) + ":" + (int)y);
               
@@ -49,7 +49,7 @@ public class GridBoard : MonoBehaviour
             }
         }
         bool equalLineLengths = (gridSize.x + 0.5) * hexSizeX <= groundSizeX;
-        foreach (TileInteractionBehaviour tb in Board.Values)
+        foreach (TileInteraction tb in Board.Values)
             tb.GridTile.FindNeighbours(Board, gridSize, equalLineLengths);
     }
 
@@ -65,7 +65,7 @@ public class GridBoard : MonoBehaviour
         return Instance.CalcWorldCoord(gridPos);
     }
 
-    public TileInteractionBehaviour GetTile(int x, int y)
+    public TileInteraction GetTile(int x, int y)
     {
         return Board[new Point(x, y)];
     }

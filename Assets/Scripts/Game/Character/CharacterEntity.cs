@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Linq;
+using UnityEngine;
 
-public class CharacterManager : MonoBehaviour
+public class CharacterEntity : MonoBehaviour
 {
     public CharacterMoveBehaviour ChMove { get; private set; }
     public CharacterVisualization ChVisualizaton { get; private set; }
@@ -8,18 +10,18 @@ public class CharacterManager : MonoBehaviour
 
     void Awake()
     {
-        GameManager.Instance.AddCharacter(this);
+        GameSuperviser.Instance.AddCharacter(this);
         ChMove = gameObject.AddComponent<CharacterMoveBehaviour>();
         ChVisualizaton = gameObject.AddComponent<CharacterVisualization>();
         ChInteraction = gameObject.AddComponent<CharacterInteractionBehaviour>();
         gameObject.AddComponent<CharacterInputHandler>();
     }
 
-    public void Init(Tile originTile, cCharacters characterType)
+    public void Init(TileInteraction originTile, cCharacters characterType)
     {
-        ChMove.Init(originTile.Location.X, originTile.Location.Y);
+        ChMove.Init(originTile.GridTile.Location.X, originTile.GridTile.Location.Y);
 
-        switch(characterType)
+        switch (characterType)
         {
             case cCharacters.Beetle:
                 gameObject.AddComponent<BeetleBehaviour>();
@@ -31,24 +33,23 @@ public class CharacterManager : MonoBehaviour
     }
 
 
-    #region Out Methods
 
     public CharacterState InteractionState { get { return ChInteraction.StateCharacter; } }
 
     public bool IsOnTile(Tile tile)
     {
-        return ChMove.IsCurrentTile(tile);
+        return ChMove.IsOnTile(tile);
     }
 
-    public TileInteractionBehaviour[] CurrentPath
+    public TileInteraction[] CurrentPath
     {
         get
         {
-            return ChMove.IsMoving ? ChMove.Movement.CurrentPath.ToArray() : (new TileInteractionBehaviour[] { ChMove.GetActiveTile() });
+            return ChMove.IsMoving ? ChMove.Movement.CurrentPath.ToArray() : (new TileInteraction[] { ChMove.GetActiveTile() });
         }
     }
 
-    public void SetNewDestination(TileManager tile)
+    public void SetNewDestination(TileEntity tile)
     {
         ChMove.SetNewDestination(tile.TlInteraction);
 
@@ -59,6 +60,6 @@ public class CharacterManager : MonoBehaviour
     public void EnterAttack()
     {
         ChMove.StopOnCurrentTile();
+        ChVisualizaton.SetTauntState();
     }
-    #endregion
 }

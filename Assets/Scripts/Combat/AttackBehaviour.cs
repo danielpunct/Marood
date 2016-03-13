@@ -18,19 +18,16 @@ class AttackBehaviour : CharacterMonoBehaviour
     {
         var currentTile = characterManager.ChMove.GetCurrentTile();
 
-        foreach(var neighbour in currentTile.GridTile.Neighbours)
+        foreach (var neighbour in currentTile.GridTile.Neighbours.Select(x=> x.TileManager))
         {
-            foreach( var character in GameManager.Instance.Characters.Where(x => x!=characterManager))
+            var foundCharacter = neighbour.CharacterOnTile();
+            if (foundCharacter != null && foundCharacter != characterManager)
             {
-                if(character.ChMove.IsCurrentTile(neighbour.GridTile))
-                {
-                    character.EnterAttack();
-                    characterManager.EnterAttack();
+                foundCharacter.EnterAttack();
+                characterManager.EnterAttack();
 
-                    CancelInvoke("CheckNeighbours");
-                    return;
-
-                }
+                CancelInvoke("CheckNeighbours");
+                return;
             }
         }
     }

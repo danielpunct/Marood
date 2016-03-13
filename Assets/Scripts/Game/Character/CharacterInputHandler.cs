@@ -2,11 +2,11 @@
 
 public class CharacterInputHandler : MonoBehaviour
 {
-    CharacterManager charactermanager;
+    CharacterEntity charactermanager;
 
     void Awake()
     {
-        charactermanager = GetComponent<CharacterManager>();
+        charactermanager = GetComponent<CharacterEntity>();
     }
 
     void OnMouseOver()

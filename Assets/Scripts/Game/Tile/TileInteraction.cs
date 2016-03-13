@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(TileVisualization))]
-public class TileInteractionBehaviour : MonoBehaviour
+public class TileInteraction : MonoBehaviour
 {
     public Tile GridTile { get; private set; }
-    TileManager tileManager;
+    public TileEntity TileManager { get; private set; }
 
     void Awake()
     {
-        tileManager = GetComponent<TileManager>();
+        TileManager = GetComponent<TileEntity>();
 
         EventManager.StartListening(cEvents.CHARACTER_UI_UPDATED, OnCHARACTER_UI_UPDATED);
 
@@ -24,51 +24,61 @@ public class TileInteractionBehaviour : MonoBehaviour
 
     public void UserClick()
     {
-        GameManager.Instance.OnUserSendTile(tileManager);
+        //GameManager.Instance.OnUserSendTile(tileManager);
+        EventManager.TriggerEvent(cEvents.USER_SEND_TILE, TileManager);
     }
 
     void OnCHARACTER_UI_UPDATED(object tag)
     {
         if(tag == null)
         {
-            tileManager.TlVisualization.ShowAsDefault();
+            TileManager.TlVisualization.ShowAsDefault();
             return;
         }
 
-        var character = tag as CharacterManager;
+        var character = tag as CharacterEntity;
 
         int tileIndex = Array.IndexOf(character.CurrentPath, this);
         if (tileIndex >= 0)
         {
             if (tileIndex == 0)
             {
-                tileManager.TlVisualization.ShowAsDestination();
+                TileManager.TlVisualization.ShowAsDestination();
                 return;
             }
-            tileManager.TlVisualization.ShowAsPath();
+            TileManager.TlVisualization.ShowAsPath();
             return;
         }
         else
         {
-            tileManager.TlVisualization.ShowAsDefault();
+            TileManager.TlVisualization.ShowAsDefault();
         }
     }
 
+    public TileInteraction[] InteractionNeighbours
+    {
+        get
+        {
+            return GridTile.Neighbours.ToArray();
+        }
+    }
+
+   
 
 
     public void InitTile(int x, int y, string text)
     {
         GridTile = new Tile(x, y);
-        tileManager.TlVisualization.SetText(text);
+        TileManager.TlVisualization.SetText(text);
     }
 
     public void Reset()
     {
-        tileManager.TlVisualization.Reset();
+        TileManager.TlVisualization.Reset();
     }
 
     public void SetAsOrigin()
     {
-        tileManager.TlVisualization.HighlightHover();
+        TileManager.TlVisualization.HighlightHover();
     }
 }

@@ -13,9 +13,9 @@
 
             var go = Instantiate(Resources.Load<GameObject>(invokerTag.Character.ToString()));
 
-            var cm = go.AddComponent<CharacterManager>();
+            var cm = go.AddComponent<CharacterEntity>();
 
-            cm.Init(GridBoard.Instance.GetTile(invokerTag.X, invokerTag.Y).GridTile, invokerTag.Character);
+            cm.Init(GridBoard.Instance.GetTile(invokerTag.X, invokerTag.Y), invokerTag.Character);
         }
     }
 

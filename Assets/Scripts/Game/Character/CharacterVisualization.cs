@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class CharacterVisualization : CharacterMonoBehaviour
 {
@@ -93,6 +94,15 @@ public class CharacterVisualization : CharacterMonoBehaviour
 
     public void SetTauntState()
     {
+        StartCoroutine(TauntAfterStop());
+    }
+
+    IEnumerator TauntAfterStop()
+    {
+        while (characterManager.ChMove.IsMoving)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
         animatorComponent_model.SetTrigger("Taunt");
     }
 

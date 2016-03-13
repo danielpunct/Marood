@@ -1,8 +1,8 @@
 ﻿public static class PlayerManager
 {
-    public static TileManager SelectedTile { get; set; }
+    public static TileEntity SelectedTile { get; set; }
 
-    public static CharacterManager SelectedCharacter
+    public static CharacterEntity SelectedCharacter
     {
         get { return selectedCharacter; }
         set
@@ -23,5 +23,5 @@
         }
     }
 
-    static CharacterManager selectedCharacter;
+    static CharacterEntity selectedCharacter;
 }

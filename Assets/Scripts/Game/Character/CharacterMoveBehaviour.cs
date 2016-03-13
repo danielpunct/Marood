@@ -39,22 +39,23 @@ public class CharacterMoveBehaviour : MonoBehaviour
         Movement.SetOrigin(x, y);
     }
 
-    public void SetNewDestination(TileInteractionBehaviour tile)
+    public void SetNewDestination(TileInteraction tile)
     {
         Movement.SetNewDestination(tile);
     }
 
-    public bool IsCurrentTile(Tile tile)
+    public bool IsOnTile(Tile tile)
     {
         return tile.Location.Equals(Movement.CurrentTile.GridTile.Location);
+
     }
 
-    public TileInteractionBehaviour GetActiveTile()
+    public TileInteraction GetActiveTile()
     {
         return IsMoving ? Movement.DestTileTB : Movement.CurrentTile;
     }
 
-    public TileInteractionBehaviour GetCurrentTile()
+    public TileInteraction GetCurrentTile()
     {
         return Movement.CurrentTile;
     }
@@ -62,16 +63,7 @@ public class CharacterMoveBehaviour : MonoBehaviour
     public void StopOnCurrentTile()
     {
         Movement.StopOnCurrentTile();
-        StartCoroutine(TauntAfterStop());
     }
 
-    IEnumerator TauntAfterStop()
-    {
-        while(IsMoving)
-        {
-            yield return new WaitForSeconds(0.5f);
-        }
-        ChVisualization.SetTauntState();
-
-    }
+     
 }

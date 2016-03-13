@@ -3,13 +3,13 @@ using UnityEngine;
 
 public static class PathFinder
 {
-    public static Path<TileInteractionBehaviour> FindPath(
-        TileInteractionBehaviour start,
-        TileInteractionBehaviour destination)
+    public static Path<TileInteraction> FindPath(
+        TileInteraction start,
+        TileInteraction destination)
     {
-        var closed = new HashSet<TileInteractionBehaviour>();
-        var queue = new PriorityQueue<double, Path<TileInteractionBehaviour>>();
-        queue.Enqueue(0, new Path<TileInteractionBehaviour>(start));
+        var closed = new HashSet<TileInteraction>();
+        var queue = new PriorityQueue<double, Path<TileInteraction>>();
+        queue.Enqueue(0, new Path<TileInteraction>(start));
 
         while (!queue.IsEmpty)
         {
@@ -22,7 +22,7 @@ public static class PathFinder
 
             closed.Add(path.LastStep);
             //Debug.Log(" last step: " + path.LastStep.X+" "+path.LastStep.Y);
-            foreach (TileInteractionBehaviour n in path.LastStep.GridTile.Neighbours)
+            foreach (TileInteraction n in path.LastStep.GridTile.Neighbours)
             {
                 //Debug.Log(" nb: " + n.X + " " + n.Y);
                 double d = 1;// distance(path.LastStep.GridTile, n);
@@ -41,7 +41,7 @@ public static class PathFinder
         return 1;
     }
 
-    static double estimate(TileInteractionBehaviour tile, TileInteractionBehaviour destTile)
+    static double estimate(TileInteraction tile, TileInteraction destTile)
     {
         float dx = Mathf.Abs(destTile.GridTile.X - tile.GridTile.X);
         float dy = Mathf.Abs(destTile.GridTile.Y - tile.GridTile.Y);

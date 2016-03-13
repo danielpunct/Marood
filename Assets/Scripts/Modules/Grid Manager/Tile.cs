@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Tile : GridObject, IHasNeighbours<TileInteractionBehaviour>
+public class Tile : GridObject, IHasNeighbours<TileInteraction>
 {
     public bool Passable;
 
@@ -12,16 +12,16 @@ public class Tile : GridObject, IHasNeighbours<TileInteractionBehaviour>
         Passable = true;
     }
 
-    public IEnumerable<TileInteractionBehaviour> AllNeighbours { get; set; }
-    public IEnumerable<TileInteractionBehaviour> Neighbours
+    public IEnumerable<TileInteraction> AllNeighbours { get; set; }
+    public IEnumerable<TileInteraction> Neighbours
     {
         get { return AllNeighbours.Where(o => o.GridTile.Passable); }
     }
 
-    public void FindNeighbours(Dictionary<Point, TileInteractionBehaviour> Board,
+    public void FindNeighbours(Dictionary<Point, TileInteraction> Board,
         Vector2 BoardSize, bool EqualLineLengths)
     {
-        List<TileInteractionBehaviour> neighbours = new List<TileInteractionBehaviour>();
+        List<TileInteraction> neighbours = new List<TileInteraction>();
 
         foreach (Point point in NeighbourShift)
         {

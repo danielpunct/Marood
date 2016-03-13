@@ -8,11 +8,11 @@ public class BoardMovement
 
     public Vector3 NextTilePos { get; private set; }
     public bool IsMoving { get; set; }
-    public List<TileInteractionBehaviour> CurrentPath { get; private set; }
+    public List<TileInteraction> CurrentPath { get; private set; }
     public List<GameObject> IndicatorsCollector { get; private set; }
-    public TileInteractionBehaviour CurrentTile { get; private set; }
-    public TileInteractionBehaviour OriginTileTB { get; private set; }
-    public TileInteractionBehaviour DestTileTB { get; private set; }
+    public TileInteraction CurrentTile { get; private set; }
+    public TileInteraction OriginTileTB { get; private set; }
+    public TileInteraction DestTileTB { get; private set; }
 
     public BoardMovement()
     {
@@ -35,7 +35,7 @@ public class BoardMovement
         CurrentTile = tb;
     }
 
-    public void DestTileChanged(TileInteractionBehaviour tileBehaviour)
+    public void DestTileChanged(TileInteraction tileBehaviour)
     {
         //deselect destination tile if user clicks on current destination tile
         if (tileBehaviour == DestTileTB)
@@ -51,7 +51,7 @@ public class BoardMovement
         //tileBehaviour.ChangeColor(Color.blue);
     }
 
-    public void OriginTileChanged(TileInteractionBehaviour tileBehaviour)
+    public void OriginTileChanged(TileInteraction tileBehaviour)
     {
         //deselect origin tile if user clicks on current origin tile
         if (tileBehaviour == OriginTileTB)
@@ -80,7 +80,7 @@ public class BoardMovement
 
 
 
-    public void SetNewDestination(TileInteractionBehaviour tile)
+    public void SetNewDestination(TileInteraction tile)
     {
         if (tile.GridTile == OriginTileTB.GridTile) //|| originTileTB == null)
             OriginTileChanged(tile);
@@ -91,7 +91,7 @@ public class BoardMovement
     }
 
     //method argument is a list of tiles we got from the path finding algorithm
-    public void StartMoving(List<TileInteractionBehaviour> path)
+    public void StartMoving(List<TileInteraction> path)
     {
         if (path.Count == 0)
             return;
