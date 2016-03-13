@@ -1,25 +1,18 @@
-﻿using System.Collections;
-using System.Linq;
-using UnityEngine;
-
-public class CharacterEntity : MonoBehaviour
+﻿public class CharacterEntity : CharacterMonoBehaviour
 {
-    public CharacterMoveBehaviour ChMove { get; private set; }
-    public CharacterVisualization ChVisualizaton { get; private set; }
-    public CharacterInteractionBehaviour ChInteraction { get; private set; }
-
-    void Awake()
+    internal override void TemplateAfterAwake()
     {
+        base.TemplateAfterAwake();
         GameSuperviser.Instance.AddCharacter(this);
-        ChMove = gameObject.AddComponent<CharacterMoveBehaviour>();
-        ChVisualizaton = gameObject.AddComponent<CharacterVisualization>();
-        ChInteraction = gameObject.AddComponent<CharacterInteractionBehaviour>();
+        MoveComponent = gameObject.AddComponent<CharacterMoveBehaviour>();
+        VisualizationComponent = gameObject.AddComponent<CharacterVisualization>();
+        InteractionComponent = gameObject.AddComponent<CharacterInteractionBehaviour>();
         gameObject.AddComponent<CharacterInputHandler>();
     }
 
     public void Init(TileInteraction originTile, cCharacters characterType)
     {
-        ChMove.Init(originTile.GridTile.Location.X, originTile.GridTile.Location.Y);
+        MoveComponent.Init(originTile.GridTile.Location.X, originTile.GridTile.Location.Y);
 
         switch (characterType)
         {
@@ -32,34 +25,23 @@ public class CharacterEntity : MonoBehaviour
         }
     }
 
-
-
-    public CharacterState InteractionState { get { return ChInteraction.StateCharacter; } }
+    public CharacterState InteractionState { get { return InteractionComponent.StateCharacter; } }
 
     public bool IsOnTile(Tile tile)
     {
-        return ChMove.IsOnTile(tile);
-    }
-
-    public TileInteraction[] CurrentPath
-    {
-        get
-        {
-            return ChMove.IsMoving ? ChMove.Movement.CurrentPath.ToArray() : (new TileInteraction[] { ChMove.GetActiveTile() });
-        }
+        return MoveComponent.IsOnTile(tile);
     }
 
     public void SetNewDestination(TileEntity tile)
     {
-        ChMove.SetNewDestination(tile.TlInteraction);
+        MoveComponent.SetNewDestination(tile.InteractionComponent);
 
         EventManager.TriggerEvent(cEvents.CHARACTER_UI_UPDATED, this);
     }
 
-
     public void EnterAttack()
     {
-        ChMove.StopOnCurrentTile();
-        ChVisualizaton.SetTauntState();
+        MoveComponent.StopOnCurrentTile();
+        VisualizationComponent.SetTauntState();
     }
 }

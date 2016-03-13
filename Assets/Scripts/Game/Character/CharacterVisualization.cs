@@ -12,7 +12,7 @@ public class CharacterVisualization : CharacterMonoBehaviour
     Animator animatorComponent_model;
     ModelAnimationState modelAnimaitonState;
 
-    internal override void TemplateAfterStart()
+    internal override void TemplateAfterAwake()
     {
         animatorComponent_indicator = GetComponent<Animator>();
         animatorComponent_model = gameObject.FindComponentInChildWithTag<Animator>("Model");
@@ -25,7 +25,7 @@ public class CharacterVisualization : CharacterMonoBehaviour
     
     void Update()
     {
-        var characterMoveBehaviour = characterManager.ChMove;
+        var characterMoveBehaviour = cEntity.MoveComponent;
         if (!characterMoveBehaviour.IsMoving)
         {
             if (modelAnimaitonState != ModelAnimationState.Idle)
@@ -99,7 +99,7 @@ public class CharacterVisualization : CharacterMonoBehaviour
 
     IEnumerator TauntAfterStop()
     {
-        while (characterManager.ChMove.IsMoving)
+        while (cEntity.MoveComponent.IsMoving)
         {
             yield return new WaitForSeconds(0.5f);
         }

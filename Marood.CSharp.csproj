@@ -97,6 +97,7 @@
     <Compile Include="Assets\Scripts\Modules\Grid Manager\Point.cs" />
     <Compile Include="Assets\Scripts\Modules\Grid Manager\Tile.cs" />
     <Compile Include="Assets\Scripts\Templates\HolyTools.cs" />
+    <Compile Include="Assets\Scripts\Templates\TileMonoBehaviour.cs" />
     <Compile Include="Assets\Scripts\Temp\CameraDrag.cs" />
     <Compile Include="Assets\Scripts\Temp\TemporaryGameManager.cs" />
     <Compile Include="Assets\Scripts\Templates\CharacterMonoBehaviour.cs" />

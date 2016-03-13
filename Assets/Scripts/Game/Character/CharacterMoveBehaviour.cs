@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CharacterMoveBehaviour : MonoBehaviour
+public class CharacterMoveBehaviour : CharacterMonoBehaviour
 {
-
-    public CharacterVisualization ChVisualization { get; private set; } 
 
     public BoardMovement Movement { get; private set; }
 
@@ -15,16 +12,11 @@ public class CharacterMoveBehaviour : MonoBehaviour
     {
         Movement.CheckPathDestination();
     }
-
-    void Awake()
+    internal override void TemplateAfterAwake()
     {
+        base.TemplateAfterAwake();
         Movement = new BoardMovement();
         Movement.IsMoving = false;
-    }
-
-    void Start()
-    {
-        ChVisualization = GetComponent<CharacterVisualization>();
     }
 
     public void Init(int x, int y)

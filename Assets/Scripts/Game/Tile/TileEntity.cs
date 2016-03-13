@@ -1,22 +1,19 @@
-﻿using UnityEngine;
-
-public class TileEntity : MonoBehaviour
+﻿public class TileEntity : TileMonoBehaviour
 {
-    public TileVisualization TlVisualization { get; private set; }
-    public TileInteraction TlInteraction { get; private set; }
 
-    void Awake()
+    internal override void TemplateAfterAwake()
     {
-        TlInteraction = gameObject.AddComponent<TileInteraction>();
-        TlVisualization = GetComponent<TileVisualization>();
-        TlVisualization.RendererGO.gameObject.AddComponent<TileInputHandler>().TileBehaviour = TlInteraction;
+        base.TemplateAfterAwake();
+        InteractionComponent = gameObject.AddComponent<TileInteraction>();
+        VisualizationComponent = GetComponent<TileVisualization>();
+        VisualizationComponent.RendererGO.gameObject.AddComponent<TileInputHandler>().TileBehaviour = InteractionComponent;
     }
 
     public CharacterEntity CharacterOnTile()
     {
         foreach (var character in HolyTools.Characters)
         {
-            if (character.ChMove.IsOnTile(TlInteraction.GridTile))
+            if (character.MoveComponent.IsOnTile(InteractionComponent.GridTile))
             {
                 return character;
             }

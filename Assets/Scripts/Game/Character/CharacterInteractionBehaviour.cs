@@ -28,13 +28,13 @@ public class CharacterInteractionBehaviour : MonoBehaviour
     public void SetActiveUI()
     {
         StateCharacter = CharacterState.Active;
-        characterManager.ChVisualizaton.SetActiveState();
+        characterManager.VisualizationComponent.SetActiveState();
     }
 
     public void SetInactiveUI()
     {
         StateCharacter = CharacterState.Inactive;
-        characterManager.ChVisualizaton.SetInactiveState();
+        characterManager.VisualizationComponent.SetInactiveState();
     }
 }
 

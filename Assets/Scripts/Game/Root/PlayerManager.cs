@@ -9,14 +9,14 @@
         {
             if (selectedCharacter != null)
             {
-                selectedCharacter.ChInteraction.SetInactiveUI();
+                selectedCharacter.InteractionComponent.SetInactiveUI();
             }
 
             selectedCharacter = value;
 
             if (selectedCharacter != null)
             {
-                selectedCharacter.ChInteraction.SetActiveUI();
+                selectedCharacter.InteractionComponent.SetActiveUI();
             }
 
             EventManager.TriggerEvent(cEvents.CHARACTER_UI_UPDATED, selectedCharacter);

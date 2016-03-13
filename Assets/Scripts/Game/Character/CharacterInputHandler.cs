@@ -13,7 +13,7 @@ public class CharacterInputHandler : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            charactermanager.ChInteraction.OnUserClick();
+            charactermanager.InteractionComponent.OnUserClick();
         }
     }
 }

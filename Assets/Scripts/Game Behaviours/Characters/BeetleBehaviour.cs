@@ -2,9 +2,9 @@
 
 class BeetleBehaviour : CharacterMonoBehaviour
 {
-    internal override void TemplateAfterStart()
+    internal override void TemplateAfterAwake()
     {
-        base.TemplateAfterStart();
+        base.TemplateAfterAwake();
         gameObject.AddComponent<AttackBehaviour>();
     }
 }
