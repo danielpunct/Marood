@@ -9,7 +9,7 @@
         _InteractionComponent = gameObject.AddComponent<TileInteraction>();
         _VisualizationComponent = GetComponent<TileVisualization>();
 
-        VisualizationComponent.RendererGO.gameObject.AddComponent<TileInputHandler>().TileBehaviour = InteractionComponent;
+        VisualizationComponent.rendererGO.gameObject.AddComponent<TileInputHandler>().SetExternalCustomEntity(this);
     }
 
     public CharacterEntity CharacterOnTile()

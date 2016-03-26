@@ -12,11 +12,11 @@ public class GameSuperviser : MonoBehaviour
         Characters = new List<CharacterEntity>();
         gameObject.AddComponent<EventManager>();
         gameObject.AddComponent<CharacterInvoker>();
+        gameObject.AddComponent<UIManager>();
     }
 
     void Start()
     {
-        EventManager.TriggerEvent(cEvents.INVOKE_CHARACTER, new CharacterInvokerTag() { Character = cCharacters.Beetle, X = -3, Y = 6 });
         EventManager.TriggerEvent(cEvents.INVOKE_CHARACTER, new CharacterInvokerTag() { Character = cCharacters.RedBeetle, X = -3, Y = 8 });
 
         // When the user clicks on a tile

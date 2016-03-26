@@ -20,13 +20,13 @@
     public void SetActiveUI()
     {
         StateCharacter = CharacterState.Active;
-        cEntity.VisualizationComponent.SetActiveState();
+        VisualizationComponent.SetActiveState();
     }
 
     public void SetInactiveUI()
     {
         StateCharacter = CharacterState.Inactive;
-        cEntity.VisualizationComponent.SetInactiveState();
+        VisualizationComponent.SetInactiveState();
     }
 }
 

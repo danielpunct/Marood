@@ -8,6 +8,11 @@ public class TileMonoBehaviour : MonoBehaviour
     internal TileEntity tEntity;
     internal virtual void TemplateAfterAwake() { }
 
+    public void SetExternalCustomEntity(TileEntity ent)
+    {
+        tEntity = ent;
+    }
+
     void Awake()
     {
         tEntity = GetComponent<TileEntity>();
@@ -16,5 +21,5 @@ public class TileMonoBehaviour : MonoBehaviour
     }
 
 
-    public TileInteraction[] InteractionNeighbours {  get { return tEntity.InteractionComponent.Neighbours; } }
+    public TileInteraction[] InteractionNeighbours {  get { return InteractionComponent.Neighbours; } }
 }

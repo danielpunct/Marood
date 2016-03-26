@@ -146,6 +146,10 @@ public class BoardMovement
     public void StopOnCurrentTile()
     {
         DestTileTB = CurrentTile;
-        CurrentPath[0] = CurrentTile;
+
+        if (CurrentPath != null)
+        {
+            CurrentPath[0] = CurrentTile;
+        }
     }
 }

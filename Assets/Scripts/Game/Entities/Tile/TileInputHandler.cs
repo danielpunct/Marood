@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 
-class TileInputHandler : MonoBehaviour
+class TileInputHandler : TileMonoBehaviour
 {
-    public TileInteraction TileBehaviour { get; set; }
 
     void OnMouseEnter()
     {
-        TileBehaviour.UserHoverStart();
+        InteractionComponent.UserHoverStart();
     }
 
     void OnMouseExit()
@@ -33,7 +32,13 @@ class TileInputHandler : MonoBehaviour
         //if user left-clicks the tile
         if (Input.GetMouseButtonUp(0))
         {
-            TileBehaviour.UserClick();
+            InteractionComponent.UserEndDragOnTile();
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            InteractionComponent.UserStartDragOnTile();
+        }
+
     }
 }

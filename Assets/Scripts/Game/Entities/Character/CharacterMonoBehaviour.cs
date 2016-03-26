@@ -17,6 +17,6 @@ public class CharacterMonoBehaviour : MonoBehaviour
     }
 
 
-    public TileInteraction CurrentInteractionTile { get { return cEntity.MoveComponent.GetCurrentTile(); } }
+    public TileInteraction CurrentInteractionTile { get { return MoveComponent.GetCurrentTile(); } }
     public TileInteraction[] CurrentInteractionPath { get { return MoveComponent.IsMoving ? MoveComponent.Movement.CurrentPath.ToArray() : (new TileInteraction[] { MoveComponent.GetActiveTile() }); } }
 }

@@ -25,7 +25,7 @@ public class CharacterVisualization : CharacterMonoBehaviour
     
     void Update()
     {
-        var characterMoveBehaviour = cEntity.MoveComponent;
+        var characterMoveBehaviour = MoveComponent;
         if (!characterMoveBehaviour.IsMoving)
         {
             if (modelAnimaitonState != ModelAnimationState.Idle)
@@ -99,7 +99,7 @@ public class CharacterVisualization : CharacterMonoBehaviour
 
     IEnumerator TauntAfterStop()
     {
-        while (cEntity.MoveComponent.IsMoving)
+        while (MoveComponent.IsMoving)
         {
             yield return new WaitForSeconds(0.5f);
         }

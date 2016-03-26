@@ -15,12 +15,26 @@ public class TileInteraction : TileMonoBehaviour
     {
         //GridBoard.Instance.selectedTile = GridTile;
     }
+    
 
-
-    public void UserClick()
+    public void UserStartDragOnTile()
     {
-        //GameManager.Instance.OnUserSendTile(tileManager);
-        EventManager.TriggerEvent(cEvents.USER_SEND_TILE, tEntity);
+        if(UIManager.IsInMenu)
+        {
+            EventManager.TriggerEvent(cEvents.USER_START_DRAG_ON_TILE, tEntity);
+        }
+    }
+
+    public void UserEndDragOnTile()
+    {
+        if (UIManager.IsInMenu)
+        {
+            EventManager.TriggerEvent(cEvents.USER_END_DRAG_ON_TILE, tEntity);
+        }
+        else
+        {
+            EventManager.TriggerEvent(cEvents.USER_SEND_TILE, tEntity);
+        }
     }
 
     void OnCHARACTER_UI_UPDATED(object tag)
@@ -57,9 +71,6 @@ public class TileInteraction : TileMonoBehaviour
             return GridTile.Neighbours.ToArray();
         }
     }
-
-   
-
 
     public void InitTile(int x, int y, string text)
     {

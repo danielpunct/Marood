@@ -8,6 +8,8 @@ class cEvents
 
     public const string CHARACTER_UI_UPDATED = "CHARACTER_UI_ACTIVATED";
     public const string USER_SEND_TILE = "USER_SEND_TILE";
+    public const string USER_START_DRAG_ON_TILE = "USER_START_DRAG_ON_TILE";
+    public const string USER_END_DRAG_ON_TILE = "USER_END_DRAG_ON_TILE";
 
 
     //GAME

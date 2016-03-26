@@ -5,6 +5,7 @@ public class CameraDrag : MonoBehaviour
     public float dragSpeed = 2;
     private Vector3 dragOrigin;
 
+    public bool Direction { get; set; }
 
     void Update()
     {
@@ -18,7 +19,7 @@ public class CameraDrag : MonoBehaviour
 
         Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOrigin);
         //Vector3 move = new Vector3(-pos.y * dragSpeed, 0, pos.x * dragSpeed);
-        Vector3 move = new Vector3(0, 0, -pos.x * dragSpeed);
+        Vector3 move = new Vector3(0, 0, -pos.x * dragSpeed * (Direction ? -1 : 1));
 
         transform.Translate(move, Space.World);
     }

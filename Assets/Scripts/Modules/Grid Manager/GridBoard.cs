@@ -49,11 +49,6 @@ public class GridBoard : MonoBehaviour
         foreach (TileInteraction tb in Board.Values)
             tb.GridTile.FindNeighbours(Board, gridSize, equalLineLengths);
     }
-
-
-
-    
-
     
     public static Vector3 CalcWorldPosFromCoords(int X, int Y)
     {

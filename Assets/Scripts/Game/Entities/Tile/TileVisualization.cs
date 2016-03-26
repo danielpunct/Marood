@@ -5,12 +5,12 @@ public class TileVisualization : MonoBehaviour
     public TextMesh textMesh;
     public Tile Tile;
     //After attaching this script to hex tile prefab don't forget to initialize following materials with the ones we created earlier
-    public Material OpaqueMaterial;
+    public Material opaqueMaterial;
     public Material defaultMaterial;
+
     //Slightly transparent orange
     Color orange = new Color(255f / 255f, 127f / 255f, 0, 127f / 255f);
-    public Renderer RendererGO;
-
+    public Renderer rendererGO;
     Animator animatorComponent;
 
     void Awake()
@@ -25,18 +25,22 @@ public class TileVisualization : MonoBehaviour
 
     public void Reset()
     {
-        RendererGO.material = defaultMaterial;
-        RendererGO.material.color = Color.white;
+        rendererGO.material = defaultMaterial;
+        rendererGO.material.color = Color.white;
     }
 
+    GameObject GetRenderObject()
+    {
+        return rendererGO.gameObject;
+    }
 
     void ChangeColor(Color color)
     {
         //If transparency is not set already, set it to default value
         if (color.a == 1)
             color.a = 200f / 255f;
-        RendererGO.material = OpaqueMaterial;
-        RendererGO.material.color = color;
+        rendererGO.material = opaqueMaterial;
+        rendererGO.material.color = color;
     }
 
 
@@ -65,6 +69,6 @@ public class TileVisualization : MonoBehaviour
 
     public Vector3 GetBounds()
     {
-        return RendererGO.bounds.size;
+        return rendererGO.bounds.size;
     }
 }

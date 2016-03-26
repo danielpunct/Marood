@@ -6,7 +6,7 @@ public class CharacterInputHandler : CharacterMonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            cEntity.InteractionComponent.OnUserClick();
+            InteractionComponent.OnUserClick();
         }
     }
 }

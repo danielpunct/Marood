@@ -21,6 +21,7 @@ public class CharacterMove : CharacterMonoBehaviour
     public void Init(int x, int y)
     {
         var t = gameObject.transform;
+        t.SetParent(null);
         t.localPosition = GridBoard.CalcWorldPosFromCoords(x, y);
         t.localRotation = Quaternion.identity;
         t.localScale = Vector3.one;
