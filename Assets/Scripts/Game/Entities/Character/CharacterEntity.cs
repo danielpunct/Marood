@@ -15,16 +15,16 @@
         gameObject.AddComponent<CharacterInputHandler>();
     }
 
-    public void Init(TileInteraction originTile, cCharacters characterType)
+    public void Init(TileInteraction originTile, cCards characterType)
     {
         MoveComponent.Init(originTile.GridTile.Location.X, originTile.GridTile.Location.Y);
 
         switch (characterType)
         {
-            case cCharacters.Beetle:
+            case cCards.Beetle:
                 gameObject.AddComponent<BeetleBehaviour>();
                 break;
-            case cCharacters.RedBeetle:
+            case cCards.RedBeetle:
                 gameObject.AddComponent<RedBeetleBehaviour>();
                 break;
         }

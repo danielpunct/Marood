@@ -15,31 +15,21 @@ public class TileInteraction : TileMonoBehaviour
     {
         //GridBoard.Instance.selectedTile = GridTile;
     }
-    
+
 
     public void UserStartDragOnTile()
     {
-        if(UIManager.IsInMenu)
-        {
-            EventManager.TriggerEvent(cEvents.USER_START_DRAG_ON_TILE, tEntity);
-        }
+        EventManager.TriggerEvent(cEvents.USER_START_DRAG_ON_TILE, InteractionComponent);
     }
 
     public void UserEndDragOnTile()
     {
-        if (UIManager.IsInMenu)
-        {
-            EventManager.TriggerEvent(cEvents.USER_END_DRAG_ON_TILE, tEntity);
-        }
-        else
-        {
-            EventManager.TriggerEvent(cEvents.USER_SEND_TILE, tEntity);
-        }
+        EventManager.TriggerEvent(cEvents.USER_END_DRAG_ON_TILE, tEntity);
     }
 
     void OnCHARACTER_UI_UPDATED(object tag)
     {
-        if(tag == null)
+        if (tag == null)
         {
             VisualizationComponent.ShowAsDefault();
             return;

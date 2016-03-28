@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 
-class CharacterInvoker : MonoBehaviour
+public class CharacterInvoker : MonoBehaviour
 {
     void Awake()
     {
         EventManager.StartListening(cEvents.INVOKE_CHARACTER, OnInvokeCharacter);
-        EventManager.StartListening(cEvents.USER_START_DRAG_ON_TILE, ShowPreviewObject);
-        EventManager.StartListening(cEvents.USER_END_DRAG_ON_TILE, GenerateCharacterFromPrefab);
+       // EventManager.StartListening(cEvents.USER_END_DRAG_ON_TILE, GenerateCharacterFromPrefab);
     }
 
     void OnInvokeCharacter(object tag)
@@ -20,33 +19,32 @@ class CharacterInvoker : MonoBehaviour
         cm.Init(GridBoard.Instance.GetTile(invokerTag.X, invokerTag.Y), invokerTag.Character);
     }
 
-    void ShowPreviewObject(object tag)
+    public void ShowPreviewObject(TileInteraction tInteraction)
     {
-        TileEntity tEnt = tag as TileEntity;
-
         if (previewGO == null)
         {
-            var go = Instantiate(Resources.Load<GameObject>(UIManager.CurrentCharacterTag.ToString()));
+            var go = Instantiate(Resources.Load<GameObject>(UiController.CurrentCharacterTag.ToString()));
             previewGO = go;
 
             var bidp = go.AddComponent<BuildItemDragPreview>();
 
-            bidp.Init(tEnt.InteractionComponent.GridTile.X, tEnt.InteractionComponent.GridTile.Y);
+            bidp.Init(tInteraction.GridTile.X, tInteraction.GridTile.Y);
         }
     }
 
-    void GenerateCharacterFromPrefab(object tag)
+    public void GenerateCharacterFromPrefab()
     {
         var preview = previewGO.GetComponent<BuildItemDragPreview>();
 
-        TileEntity tEnt = tag as TileEntity;
-
         var cm = previewGO.AddComponent<CharacterEntity>();
 
-        cm.Init(GridBoard.Instance.GetTile(preview.X, preview.Y), UIManager.CurrentCharacterTag);
+        cm.Init(GridBoard.Instance.GetTile(preview.X, preview.Y), UiController.CurrentCharacterTag);
+
+        Destroy(preview);
 
         previewGO = null;
-        UIManager.IsInMenu = false;
+       
+        //EventManager.TriggerEvent()
     }
 
     public static GameObject previewGO;
@@ -56,5 +54,5 @@ class CharacterInvokerTag
 {
     public int X;
     public int Y;
-    public cCharacters Character;
+    public cCards Character;
 }

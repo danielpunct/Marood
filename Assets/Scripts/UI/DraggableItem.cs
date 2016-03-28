@@ -3,24 +3,30 @@ using UnityEngine.UI;
 
 public class DraggableItem : MonoBehaviour
 {
-    public cCharacters prefabName;
+    public cCards prefabName;
 
     Animator uiAnimator;
 
-    void Awake()
+    void Start()
     {
         uiAnimator = GetComponent<Animator>();
+        EventManager.StartListening(cEvents.SM_END_MENU_SELECTION, OnEndMenuSelection);
+
+
     }
 
     public void UiItemChecked()
     {
         bool isChecked = GetComponent<Toggle>().isOn;
-
-        var cam  =Camera.main.GetComponent<CameraDrag>();
-        cam.Direction = isChecked;
-
-        UIManager.IsInMenu = isChecked;
-        UIManager.CurrentCharacterTag = prefabName;
         uiAnimator.SetTrigger(isChecked ? "Checked" : "Normal");
+
+        UiController.SetInMenu(isChecked ? prefabName : cCards.None);
+
+    }
+
+    public void OnEndMenuSelection(object notUsed)
+    {
+        GetComponent<Toggle>().isOn = false;
+        uiAnimator.SetTrigger( "Normal");
     }
 }

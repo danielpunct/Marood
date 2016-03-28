@@ -1,1 +1,1 @@
-﻿public enum cCharacters {  Beetle, RedBeetle }
+﻿public enum cCards { None, Beetle, RedBeetle }

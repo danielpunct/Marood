@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class GameSuperviser : MonoBehaviour
 {
+    public GeneralSMController SM_General;
+
+    public static CharacterInvoker Invoker { get; private set; }
     public static GameSuperviser Instance { get; private set; }
     public List<CharacterEntity> Characters { get; private set; }
 
@@ -11,13 +14,17 @@ public class GameSuperviser : MonoBehaviour
         Instance = this;
         Characters = new List<CharacterEntity>();
         gameObject.AddComponent<EventManager>();
-        gameObject.AddComponent<CharacterInvoker>();
-        gameObject.AddComponent<UIManager>();
+        Invoker = gameObject.AddComponent<CharacterInvoker>();
+        gameObject.AddComponent<UiController>();
+
+        var anim = GameObject.Find("GeneralSM").GetComponent<Animator>();
+        SM_General = anim.GetBehaviour<GeneralSMController>();
+        SM_General.Init(anim);
     }
 
     void Start()
     {
-        EventManager.TriggerEvent(cEvents.INVOKE_CHARACTER, new CharacterInvokerTag() { Character = cCharacters.RedBeetle, X = -3, Y = 8 });
+        EventManager.TriggerEvent(cEvents.INVOKE_CHARACTER, new CharacterInvokerTag() { Character = cCards.RedBeetle, X = -3, Y = 8 });
 
         // When the user clicks on a tile
         EventManager.StartListening(cEvents.USER_SEND_TILE, OnUSER_SEND_TILE);

@@ -23,6 +23,4 @@ public class CameraDrag : MonoBehaviour
 
         transform.Translate(move, Space.World);
     }
-
-
 }

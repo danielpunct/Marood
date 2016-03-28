@@ -11,6 +11,9 @@ class cEvents
     public const string USER_START_DRAG_ON_TILE = "USER_START_DRAG_ON_TILE";
     public const string USER_END_DRAG_ON_TILE = "USER_END_DRAG_ON_TILE";
 
+    public const string SM_END_MENU_SELECTION = "SM_END_MENU_SELECTION";
+
+
 
     //GAME
     public const string INVOKE_CHARACTER = "InvokeCharacter";
