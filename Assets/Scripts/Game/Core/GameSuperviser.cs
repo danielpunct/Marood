@@ -24,6 +24,7 @@ public class GameSuperviser : MonoBehaviour
 
     void Start()
     {
+        ActiveEntity.ResetCount();
         EventManager.TriggerEvent(cEvents.INVOKE_CHARACTER, new CharacterInvokerTag() { Character = cCards.RedBeetle, X = -3, Y = 8 });
 
         // When the user clicks on a tile

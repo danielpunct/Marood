@@ -4,7 +4,6 @@
     public CharacterVisualization _VisualizationComponent { get; private set; }
     public CharacterInteraction _InteractionComponent { get; private set; }
 
-
     internal override void TemplateAfterAwake()
     {
         base.TemplateAfterAwake();
@@ -47,6 +46,6 @@
     public void EnterAttack()
     {
         MoveComponent.StopOnCurrentTile();
-        VisualizationComponent.SetTauntState();
+        InteractionComponent.SetTauntState();
     }
 }

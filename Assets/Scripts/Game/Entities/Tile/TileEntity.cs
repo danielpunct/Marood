@@ -14,7 +14,7 @@
 
     public CharacterEntity CharacterOnTile()
     {
-        foreach (var character in HolyTools.Characters)
+        foreach (CharacterEntity character in HolyTools.GameEntities)
         {
             if (character.MoveComponent.IsOnTile(InteractionComponent.GridTile))
             {

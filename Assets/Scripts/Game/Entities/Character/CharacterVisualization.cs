@@ -94,16 +94,17 @@ public class CharacterVisualization : CharacterMonoBehaviour
 
     public void SetTauntState()
     {
-        StartCoroutine(TauntAfterStop());
+        animatorComponent_model.SetTrigger("Taunt");
     }
 
-    IEnumerator TauntAfterStop()
+    public void SetAttackState()
     {
-        while (MoveComponent.IsMoving)
-        {
-            yield return new WaitForSeconds(0.5f);
-        }
-        animatorComponent_model.SetTrigger("Taunt");
+        animatorComponent_model.SetTrigger("Attack");
+    }
+
+    public void SetIdleState()
+    {
+        animatorComponent_model.SetTrigger("Idle");
     }
 
     public enum ModelAnimationState { Idle, Move }

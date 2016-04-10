@@ -9,7 +9,6 @@ public class TileVisualization : MonoBehaviour
     public Material defaultMaterial;
 
     //Slightly transparent orange
-    Color orange = new Color(255f / 255f, 127f / 255f, 0, 127f / 255f);
     public Renderer rendererGO;
     Animator animatorComponent;
 

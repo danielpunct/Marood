@@ -24,6 +24,7 @@ public class GridBoard : MonoBehaviour
     {
         Vector2 gridSize = CalcGridSize();
         GameObject hexGridGO = new GameObject("HexGrid");
+        hexGridGO.AddComponent<BoardInteraction>();
         hexGridGO.transform.SetParent(transform);
         Board = new Dictionary<Point, TileInteraction>();
 

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CharacterMonoBehaviour : MonoBehaviour
+public class CharacterMonoBehaviour : ActiveEntity
 {
     public CharacterMove MoveComponent { get { return cEntity._MoveComponent; } }
     public CharacterVisualization VisualizationComponent { get { return cEntity._VisualizationComponent; } }

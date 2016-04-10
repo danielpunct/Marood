@@ -43,9 +43,7 @@ public class CharacterInvoker : MonoBehaviour
         Destroy(preview);
 
         previewGO = null;
-       
-        //EventManager.TriggerEvent()
-    }
+    }       
 
     public static GameObject previewGO;
 }
